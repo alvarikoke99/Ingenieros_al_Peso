@@ -4,7 +4,7 @@
 
 ## ¿Quiénes somos?
 
-Ingenieros al Peso S.A. pone a disposición de sus clientes ingenieros cualificados con el objetivo de mejorar su productividad general. 
+Ingenieros al Peso S.A. pone a disposición de sus clientes, ingenieros cualificados con el objetivo de mejorar su productividad general. 
 
 ## Objetivo de la aplicación
 
@@ -12,12 +12,12 @@ La aplicación web alojada en esta plataforma tiene el objetivo de gestionar la 
 
 ## Estructura de la aplicación
 
-La aplicación web implementa el patrón Modelo-Vista-Controlador. Gracias a este planteamiento. la mantenibilidad del sistema es mayor y es más sencilla la comprensión de su estructura lógica.
+La aplicación web implementa el patrón Modelo-Vista-Controlador. Gracias a este planteamiento, la mantenibilidad del sistema es mayor y la comprensión de su estructura lógica es más sencilla.
 
 ## Tecnologías utilizadas
 
 Para la implementación de las diferentes partes del sistema se han usado los siguientes lenguajes de programación:
 
 * **Modelo** -> MySQL 
-* **Vista** -> HTML y Javascrpt
+* **Vista** -> HTML y Javascript
 * **Controlador** -> Java
