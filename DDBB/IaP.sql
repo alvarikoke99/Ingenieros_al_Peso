@@ -18,10 +18,7 @@ USE `Web` ;
 -- Table `Web`.`trabajador`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Web`.`trabajador` (
-  `id_trabajador` INT NOT NULL,
-  `usuario` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
-  `departamento` VARCHAR(45) NULL,
+  `id_trabajador` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   `apellidos` VARCHAR(45) NULL,
   `dni` VARCHAR(45) NULL,
@@ -66,6 +63,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `Web`.`relacion_empresa_trabajador` (
   `trabajador_id_trabajador` INT NOT NULL,
   `empresa_id_empresa` INT NOT NULL,
+  `departamento` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`trabajador_id_trabajador`, `empresa_id_empresa`),
   INDEX `fk_trabajador_has_empresa_empresa1_idx` (`empresa_id_empresa` ASC) VISIBLE,
   INDEX `fk_trabajador_has_empresa_trabajador1_idx` (`trabajador_id_trabajador` ASC) VISIBLE,
