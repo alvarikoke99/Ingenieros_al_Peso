@@ -43,7 +43,7 @@ public class TrabajadorController extends HttpServlet{
             int id_trabajador = Integer.parseInt(request.getParameter("id_trabajador"));
             dao.deleteTrabajador(id_trabajador);
             forward = LIST_TRABAJADORES;
-            request.setAttribute("trabajadores", /*dao.getAllUsers()*/);
+            //request.setAttribute("trabajadores", /*dao.getAllUsers()*/);
         } else if (action.equalsIgnoreCase("edit")) {
             forward = INSERT_OR_EDIT;
             int id_trabajador = Integer.parseInt(request.getParameter("id_trabajador"));
@@ -51,7 +51,7 @@ public class TrabajadorController extends HttpServlet{
             request.setAttribute("trabajador", trabajador);
         } else if (action.equalsIgnoreCase("listTrabajador")) {
             forward = LIST_TRABAJADORES;
-            request.setAttribute("trabajadores", /*dao.getAllUsers()*/);
+            //request.setAttribute("trabajadores", /*dao.getAllUsers()*/);
         } else { //insert
             forward = INSERT_OR_EDIT;
         }
@@ -67,9 +67,6 @@ public class TrabajadorController extends HttpServlet{
         Trabajador trabajador = new Trabajador();
         trabajador.setNombre(request.getParameter("_"));
         trabajador.setApellidos(request.getParameter("_")); 
-        trabajador.setUsuario(request.getParameter("_"));  
-        trabajador.setPassword(request.getParameter("_"));  
-        trabajador.setDepartamento(request.getParameter("_"));
         String id_trabajador = request.getParameter("_");
         if (id_trabajador == null || id_trabajador.isEmpty()) {
             dao.addTrabajador(trabajador);
@@ -77,7 +74,7 @@ public class TrabajadorController extends HttpServlet{
             trabajador.setId_trabajador(Integer.parseInt(id_trabajador));
             dao.updateTrabajador(trabajador);
         }
-        request.setAttribute("trabajadores", /*dao.getAllUsers()*/);
+        //request.setAttribute("trabajadores", /*dao.getAllUsers()*/);
         RequestDispatcher view = request.getRequestDispatcher(LIST_TRABAJADORES);            
         view.forward(request, response);
         return;
