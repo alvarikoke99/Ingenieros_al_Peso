@@ -1,0 +1,250 @@
+/*-------------------------------------------------------------------
+                                TITULO
+--------------------------------------------------------------------*/
+
+
+
+/*-------------------------------------------------------------------
+                            INICIAR SESIÓN
+--------------------------------------------------------------------*/
+
+.fondo {
+    background-color: red;
+}
+
+.container {
+    position: absolute;
+    right: 0;
+    width: 500px;
+    height: 410px;
+    margin-right: 2%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding: 16px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+input[type=text], input[type=password] {
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    width: 75%;
+    border-radius: 15px;
+}
+  
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.btn {
+    background-color: #2670AB;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: x-large;
+    border-radius: 15px;
+  }
+  
+  .btn:hover {
+    opacity: 1;
+  }
+
+/*-------------------------------------------------------------------
+                        BARRA NAVEGACION
+--------------------------------------------------------------------*/
+.cabecera {
+    padding: 20px;
+    text-align: center;
+    font-size: xx-large;
+    color: white;
+}
+
+#cabeceraRRHH{
+    background-color: #2670AB;
+}
+
+#topnavRRHH{
+    background-color: #2670AB;
+}
+
+#cabeceraUser{
+    background-color: rgb(202, 111, 30);
+}
+
+#topnavUser{
+    background-color: rgb(202, 111, 30);
+}
+
+.subcabecera {
+    font-size: large;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: rgb(33,97,140);
+    
+}
+
+.topnav .enlace:hover {
+    background-color: #2670AB;
+}
+
+.topnav .enlace {
+    float: left;
+    font-size: large;
+    color: white;
+    text-align: center;
+    padding: 24px;
+    text-decoration: none;
+}
+
+
+/*-------------------------------------------------------------------
+                            CONTENIDO
+--------------------------------------------------------------------*/
+body {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#index {
+    background: rgb(230, 230, 230); 
+}
+
+#cuerpo{
+    background: rgb(230, 230, 230); 
+}
+
+#iniciarSesion{
+    background: ;
+}
+
+h1{
+    color: rgb(33,97,140);
+    text-align: center;
+    margin-top: 15%;
+    font-size: 300%;
+}
+
+.buttonRRHH{
+    background-color: #ffffff;
+    border: 25%;
+    color:  rgba(53, 102, 235, 0.9);
+    text-align: center;
+    display: inline-block;
+    font-size: 45%;
+    cursor: pointer;
+    margin: 2%;
+    padding: 1%;
+}
+
+.buttonUser{
+    background-color:rgba(27, 41, 168, 0.788);
+    border: 25%;
+    color:  #fff;
+    text-align: center;
+    display: inline-block;
+    font-size: 45%;
+    cursor: pointer;
+    margin: 2%;
+    padding: 1%;
+}
+
+.casilla{
+    padding-right: 20%;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+/*-------------------------------------------------------------------
+                    BARRA NAVEGACIÓN VERTICAL
+--------------------------------------------------------------------*/
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+/*-------------------------------------------------------------------
+                            LISTA USUARIOS
+--------------------------------------------------------------------*/
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+/*-------------------------------------------------------------------
+                            PIE DE PAGINA
+--------------------------------------------------------------------*/
+
+footer { 
+    width: 100%; 
+    bottom: 0%; 
+    background-color: #000; 
+    color: #fff; 
+    position: absolute; 
+    padding-top:20px; 
+    padding-bottom:30px; 
+    text-align:center; 
+    font-size:10px; 
+    font-weight:bold; 
+} 
+
+.footerLargo { 
+    width: 100%; 
+    bottom: 0%; 
+    background-color: #000; 
+    color: #fff; 
+    padding-top:20px; 
+    padding-bottom:30px; 
+    text-align:center; 
+    font-size:10px; 
+    font-weight:bold; 
+}
+

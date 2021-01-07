@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>
+            Ingenieros al peso S.A. | RRHH
+        </title> 
+        <!--link rel="icon"  type="image/png" href="iconos/icono.png"-->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body id="cuerpo">
+         <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" /> 
+
+        <!--JavaScript-->
+        <script src="funciones.js"></script>
+        
+        <!-- Cabecera -->
+        <div class="cabecera" id="cabeceraRRHH">
+            Ingenieros al peso S.A. <br>
+            <div class="subcabecera">
+                Recursos humanos
+            </div> 
+        </div>
+
+        <div class="topnav" id="topnavRRHH">
+            <a class="enlace" href="index.html">Inicio</a>
+            <a class="enlace" onclick="openNav()">Ver información</a>
+            <a class="enlace" href="componentes.html">Lista peticiones</a>
+            <a class="enlace" href="componentes.html">Solicitar informe</a>
+            <a class="enlace" href="listaUsuario.html">Lista de usuarios</a>
+            <a class="enlace" href="annadirUser.html">Añadir / Eliminar usuario</a>
+        </div>
+
+        <!-- Contenido -->    
+        <form action="listaUsuario.html">
+            <h2>Añadir usuario:</h2>
+            <label>Nombre del usuario:</label><br><br>
+            <input type="text" id="reclamación" class="casilla" name="nombre" required><br>
+            <label>Apellidos del usuario:</label><br><br>
+            <input type="text" id="apellido" class="casilla" name="apellido" required><br>
+            <label>Departamento del usuario:</label><br><br>
+            <input type="text" id="dep" class="casilla" name="dep" required><br>
+            <label>DNI del usuario:</label><br><br>
+            <input type="text" id="dni" class="casilla" name="dni" required><br>
+            <button type="button" onclick="annadirUsuario()">Añadir</button>
+        </form>
+
+        <!-- Pie de pagina -->
+        <footer>Ingenieros al peso S.A. - Campus Universitario, Ctra. Madrid-Barcelona km, 33, 600, 28805 Alcalá de Henares - Teléfono: 900.000.000
+            <br> Condiciones generales de venta, política de privacidad y utilización web y APP
+            <br> © Ingenieros al peso S.A. 2020
+        </footer>
+    </body>
+</html>
