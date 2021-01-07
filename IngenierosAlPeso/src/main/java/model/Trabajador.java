@@ -52,29 +52,29 @@ public class Trabajador {
         this.apellidos = apellidos;
     }
     
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
-    }
+//    public String getUsuario() {
+//        return usuario;
+//    }
+//
+//    public void setUsuario(String usuario) {
+//        this.usuario = usuario;
+//    }
+//
+//    public String getPassword() {
+//        return password;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
+//
+//    public String getDepartamento() {
+//        return departamento;
+//    }
+//
+//    public void setDepartamento(String departamento) {
+//        this.departamento = departamento;
+//    }
 
     @Override
     public String toString() {

@@ -28,89 +28,87 @@ public class TrabajadorDao {
         connection = DbUtil.getConnection();
     }
 
-//    public void addUser(User user) {
-//        try {
-//            PreparedStatement preparedStatement = connection.prepareStatement("insert into users(firstname,lastname,email) values (?, ?, ? )");
-//// Parameters start with 1 
-//            preparedStatement.setString(1, user.getFirstName());
-//            preparedStatement.setString(2, user.getLastName());            
-//            preparedStatement.setString(3, user.getEmail());
-//            preparedStatement.executeUpdate();
-//        } catch (SQLException e) {
-//            Log.logdb.error("SQL Exception: " + e);
-//        }
-//    }
-//
-//    public void deleteUser(int userId) {
-//        try {
-//            PreparedStatement preparedStatement = connection.prepareStatement("delete from users where userid=?");
-//            // Parameters start with 1 
-//            preparedStatement.setInt(1, userId);
-//            preparedStatement.executeUpdate();
-//        } catch (SQLException e) {
-//            Log.logdb.error("SQL Exception: " + e);
-//        }
-//    }
-//
-//    public void updateUser(User user) {
-//        try {
-//            PreparedStatement preparedStatement = connection.prepareStatement("update users set firstname=?, lastname=?, email=?" + "where userid=?");
-//// Parameters start with 1 
-//            preparedStatement.setString(1, user.getFirstName());
-//            preparedStatement.setString(2, user.getLastName());            
-//            preparedStatement.setString(3, user.getEmail());
-//            preparedStatement.setInt(4, user.getUserid());
-//            preparedStatement.executeUpdate();
-//        } catch (SQLException e) {
-//            Log.logdb.error("SQL Exception: " + e);            
-//        }
-//    }
-//
-//    public List<User> getAllUsers() {
-//        List<User> userdb = new ArrayList<User>();
-//        if (connection != null)
-//        {
-//            try {
-//                Statement statement = connection.createStatement();
-//                ResultSet rs = statement.executeQuery("select * from users;");
-//                while (rs.next()) {
-//                    User user = new User();
-//                    user.setUserid(rs.getInt("userid"));
-//                    user.setFirstName(rs.getString("firstname"));
-//                    user.setLastName(rs.getString("lastname"));
-//                    user.setDob(rs.getDate("dob"));
-//                    user.setEmail(rs.getString("email"));
-//                    userdb.add(user);
-//                }
-//            } catch (SQLException e) {
-//                Log.logdb.error("SQL Exception: " + e);            
-//            }
-//            return userdb;
-//        }
-//        else
-//        {
-//            Log.logdb.error("No hay conexion con la bbdd");
-//            return null;
-//        }
-//       
-//    }
-//
-//    public User getUserById(int userId) {
-//        User user = new User();
-//        try {
-//            PreparedStatement preparedStatement = connection.prepareStatement("select * from users where userid=?");
-//            preparedStatement.setInt(1, userId);
-//            ResultSet rs = preparedStatement.executeQuery();
-//            if (rs.next()) {
-//                user.setUserid(rs.getInt("userid"));
-//                user.setFirstName(rs.getString("firstname"));
-//                user.setLastName(rs.getString("lastname"));
-//                user.setDob(rs.getDate("dob"));
-//                user.setEmail(rs.getString("email"));
-//            }
-//        } catch (SQLException e) {
-//            Log.logdb.error("SQL Exception: " + e);
-//        }
-//        return user;
-//    }
+    public void addTrabajador(Trabajador trabajador) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into trabajador(nombre,apellidos, dni) values (?, ?, ? )");
+            // Parameters start with 1 
+            preparedStatement.setString(1, trabajador.getNombre());
+            preparedStatement.setString(2, trabajador.getApellidos());            
+            preparedStatement.setString(3, trabajador.getDni());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            Log.logdb.error("SQL Exception: " + e);
+        }
+    }
+
+    public void deleteTrabajador(int userId) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from trabajador where userid=?");
+            // Parameters start with 1 
+            preparedStatement.setInt(1, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            Log.logdb.error("SQL Exception: " + e);
+        }
+    }
+
+    public void updateTrabajador(Trabajador trabajador) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("update users set nombre=?, apellidos=?, dni=?" + "where id_trabajador=?");
+            // Parameters start with 1 
+            preparedStatement.setString(1, trabajador.getNombre());
+            preparedStatement.setString(2, trabajador.getApellidos());            
+            preparedStatement.setString(3, trabajador.getDni());
+            preparedStatement.setInt(4, trabajador.getId_trabajador());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            Log.logdb.error("SQL Exception: " + e);            
+        }
+    }
+
+    public List<Trabajador> getAllTrabajadores() {
+        List<Trabajador> dbTrabajador = new ArrayList<Trabajador>();
+        if (connection != null)
+        {
+            try {
+                Statement statement = connection.createStatement();
+                ResultSet rs = statement.executeQuery("select * from trabajador;");
+                while (rs.next()) {
+                    Trabajador trabajador = new Trabajador();
+                    trabajador.setId_trabajador(rs.getInt("userid"));
+                    trabajador.setNombre(rs.getString("firstname"));
+                    trabajador.setApellidos(rs.getString("lastname"));
+                    trabajador.setDni(rs.getString("dni"));              
+                    dbTrabajador.add(trabajador);
+                }
+            } catch (SQLException e) {
+                Log.logdb.error("SQL Exception: " + e);            
+            }
+            return dbTrabajador;
+        }
+        else
+        {
+            Log.logdb.error("No hay conexion con la bbdd");
+            return null;
+        }
+       
+    }
+
+    public Trabajador getTrabajadorById(int idTrabajador) {
+        Trabajador trabajador = new Trabajador();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from trabajador where id_trabajador=?");
+            preparedStatement.setInt(1, idTrabajador);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                trabajador.setId_trabajador(rs.getInt("userid"));
+                trabajador.setNombre(rs.getString("firstname"));
+                trabajador.setApellidos(rs.getString("lastname"));
+                trabajador.setDni(rs.getString("dni"));
+            }
+        } catch (SQLException e) {
+            Log.logdb.error("SQL Exception: " + e);
+        }
+        return trabajador;
+    }
 }
