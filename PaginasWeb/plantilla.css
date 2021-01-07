@@ -1,36 +1,56 @@
 /*-------------------------------------------------------------------
-                                TITULO
+                                INDEX
 --------------------------------------------------------------------*/
+#index {
+    background-image: url("img/fondo.jpg");
+    background-size: cover;
+}
 
+h1{
+    color: rgb(7, 7, 7);
+    text-align: center;
+    margin-top: 15%;
+    font-size: 300%;
+}
+
+.buttonIndex{
+    background-color: rgba(27, 41, 168, 0.788);
+    border-radius: 15px;
+    color:  #fff;
+    text-align: center;
+    font-size: 45%;
+    cursor: pointer;
+    margin: 2%;
+    padding: 1%;
+    width: 250px;
+}
 
 
 /*-------------------------------------------------------------------
                             INICIAR SESIÓN
 --------------------------------------------------------------------*/
-
-.fondo {
-    background-color: red;
+#iniciarSesion{
+    background-image: url("img/fondo.jpg");
+    background-size: cover;
 }
 
 .container {
     position: absolute;
-    right: 0;
+    left: 0;
     width: 500px;
-    height: 410px;
-    margin-right: 2%;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    padding: 16px;
+    height: 420px;
+    margin: 5%;
+    padding: 25px;
     background-color: white;
     border-radius: 15px;
 }
 
 input[type=text], input[type=password] {
     padding: 15px;
-    margin: 5px 0 22px 0;
+    margin: 5px 0 30px 0;
     border: none;
     background: #f1f1f1;
-    width: 75%;
+    width: 94%;
     border-radius: 15px;
 }
   
@@ -113,47 +133,8 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#index {
-    background: rgb(230, 230, 230); 
-}
-
 #cuerpo{
     background: rgb(230, 230, 230); 
-}
-
-#iniciarSesion{
-    background: ;
-}
-
-h1{
-    color: rgb(33,97,140);
-    text-align: center;
-    margin-top: 15%;
-    font-size: 300%;
-}
-
-.buttonRRHH{
-    background-color: #ffffff;
-    border: 25%;
-    color:  rgba(53, 102, 235, 0.9);
-    text-align: center;
-    display: inline-block;
-    font-size: 45%;
-    cursor: pointer;
-    margin: 2%;
-    padding: 1%;
-}
-
-.buttonUser{
-    background-color:rgba(27, 41, 168, 0.788);
-    border: 25%;
-    color:  #fff;
-    text-align: center;
-    display: inline-block;
-    font-size: 45%;
-    cursor: pointer;
-    margin: 2%;
-    padding: 1%;
 }
 
 .casilla{
