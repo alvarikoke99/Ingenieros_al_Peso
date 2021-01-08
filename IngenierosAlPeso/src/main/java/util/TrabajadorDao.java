@@ -54,7 +54,7 @@ public class TrabajadorDao {
 
     public void updateTrabajador(Trabajador trabajador) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update users set nombre=?, apellidos=?, dni=?" + "where id_trabajador=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("update trabajador set nombre=?, apellidos=?, dni=?" + "where id_trabajador=?");
             // Parameters start with 1 
             preparedStatement.setString(1, trabajador.getNombre());
             preparedStatement.setString(2, trabajador.getApellidos());            

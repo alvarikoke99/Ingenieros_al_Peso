@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import model.Trabajador;
+import model.Empresa;
 import util.DbUtil;
 import util.Log;
 
@@ -28,63 +28,56 @@ public class EmpresaDao {
         connection = DbUtil.getConnection();
     }
 
-    public void addTrabajador(Trabajador trabajador) {
+    public void addEmpresa(Empresa empresa) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into trabajador(nombre,apellidos, dni) values (?, ?, ? )");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into empresa(nombre) values (?)");
             // Parameters start with 1 
-            preparedStatement.setString(1, trabajador.getNombre());
-            preparedStatement.setString(2, trabajador.getApellidos());            
-            preparedStatement.setString(3, trabajador.getDni());
+            preparedStatement.setString(1, empresa.getNombre());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
         }
     }
 
-    public void deleteTrabajador(int userId) {
+    public void deleteEmpresa(int idEmpresa) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from trabajador where userid=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from trabajador where id_empresa=?");
             // Parameters start with 1 
-            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(1, idEmpresa);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
         }
     }
 
-    public void updateTrabajador(Trabajador trabajador) {
+    public void updateEmpresa(Empresa empresa) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update users set nombre=?, apellidos=?, dni=?" + "where id_trabajador=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("update empresa set nombre=?, apellidos=?, dni=?" + "where id_trabajador=?");
             // Parameters start with 1 
-            preparedStatement.setString(1, trabajador.getNombre());
-            preparedStatement.setString(2, trabajador.getApellidos());            
-            preparedStatement.setString(3, trabajador.getDni());
-            preparedStatement.setInt(4, trabajador.getId_trabajador());
+            preparedStatement.setString(1, empresa.getNombre());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);            
         }
     }
 
-    public List<Trabajador> getAllTrabajadores() {
-        List<Trabajador> dbTrabajador = new ArrayList<Trabajador>();
+    public List<Empresa> getAllEmpresas() {
+        List<Empresa> dbEmpresa = new ArrayList<Empresa>();
         if (connection != null)
         {
             try {
                 Statement statement = connection.createStatement();
-                ResultSet rs = statement.executeQuery("select * from trabajador;");
+                ResultSet rs = statement.executeQuery("select * from empresa;");
                 while (rs.next()) {
-                    Trabajador trabajador = new Trabajador();
-                    trabajador.setId_trabajador(rs.getInt("userid"));
-                    trabajador.setNombre(rs.getString("firstname"));
-                    trabajador.setApellidos(rs.getString("lastname"));
-                    trabajador.setDni(rs.getString("dni"));              
-                    dbTrabajador.add(trabajador);
+                    Empresa empresa = new Empresa();
+                    empresa.setId_empresa(rs.getInt("id_empresa"));
+                    empresa.setNombre(rs.getString("nombre"));            
+                    dbEmpresa.add(empresa);
                 }
             } catch (SQLException e) {
                 Log.logdb.error("SQL Exception: " + e);            
             }
-            return dbTrabajador;
+            return dbEmpresa;
         }
         else
         {
@@ -94,21 +87,19 @@ public class EmpresaDao {
        
     }
 
-    public Trabajador getTrabajadorById(int idTrabajador) {
-        Trabajador trabajador = new Trabajador();
+    public Empresa getEmpresaById(int idEmpresa) {
+        Empresa empresa = new Empresa();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from trabajador where id_trabajador=?");
-            preparedStatement.setInt(1, idTrabajador);
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from empresa where id_empresa=?");
+            preparedStatement.setInt(1, idEmpresa);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                trabajador.setId_trabajador(rs.getInt("userid"));
-                trabajador.setNombre(rs.getString("firstname"));
-                trabajador.setApellidos(rs.getString("lastname"));
-                trabajador.setDni(rs.getString("dni"));
+                empresa.setId_empresa(rs.getInt("id_empresa"));
+                empresa.setNombre(rs.getString("nombre")); 
             }
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
         }
-        return trabajador;
+        return empresa;
     }
 }

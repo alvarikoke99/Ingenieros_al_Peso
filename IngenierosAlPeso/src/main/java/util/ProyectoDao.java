@@ -78,7 +78,7 @@ public class ProyectoDao {
                     proyecto.setId_proyecto(rs.getInt("id_proyecto"));
                     proyecto.setNombre(rs.getString("nombre"));
                     proyecto.setInformacion(rs.getString("informacion"));
-                    proyecto.setId_empresa(rs.getString("id_empresa"));              
+                    proyecto.setId_empresa(rs.getInt("id_empresa"));              
                     dbProyecto.add(proyecto);
                 }
             } catch (SQLException e) {
@@ -97,14 +97,14 @@ public class ProyectoDao {
     public Proyecto getProyectoById(int idProyecto) {
         Proyecto proyecto = new Proyecto();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from trabajador where id_trabajador=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from proyecto where id_proyecto=?");
             preparedStatement.setInt(1, idProyecto);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 proyecto.setId_proyecto(rs.getInt("id_proyecto"));
                 proyecto.setNombre(rs.getString("nombre"));
                 proyecto.setInformacion(rs.getString("informacion"));
-                proyecto.setId_empresa(rs.getString("id_empresa"));
+                proyecto.setId_empresa(rs.getInt("id_empresa"));
             }
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
