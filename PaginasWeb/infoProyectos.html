@@ -4,33 +4,45 @@
         <title>
             Ingenieros al peso S.A. | RRHH
         </title> 
-        <!--link rel="icon"  type="image/png" href="iconos/icono.png"-->
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body id="cuerpo">
          <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" /> 
+
+        <!--JavaScript-->
+        <script src="funciones.js"></script>
         
         <!-- Cabecera -->
-        <div class="cabecera" id="cabeceraRRHH">
-            Ingenieros al peso S.A. <br>
-            <div class="subcabecera">
-                Recursos humanos
-            </div> 
+        <div class="cabecera" id="cabecera">
+            <img src="img/logoSmall.png" alt="logo">
         </div>
 
-        <div class="topnav" id="topnavRRHH">
-            <a class="enlace" href="info.html">Ver información</a>
+        <div class="topnav" id="topnav">
+            <div class="dropdown" id="idPag">
+                <a class="dropbtn">Ver informacion
+                  <i class="down"></i>
+                </a>
+                <div class="dropdown-content">
+                  <a href="infoEmpresa.html">Empresa</a>
+                  <a href="#">Proyectos</a>
+                  <a href="#">Trabajadores</a>
+                  <a href="#">Calendario</a>
+                </div>
+            </div>
             <a class="enlace" href="componentes.html">Lista peticiones</a>
             <a class="enlace" href="componentes.html">Solicitar informe</a>
             <a class="enlace" href="listaUsuario.html">Lista de usuarios</a>
-            <a class="enlace" href="annadirUser.html">Añadir / Eliminar usuario</a>
+            <a class="enlace" href="annadirUser.html">Añadir usuario</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
-        <!-- Contenido -->    
-
+        <!-- Contenido -->   
+        <div class="content">
+            Empresa
+        </div> 
+        
         <!-- Pie de pagina -->
         <footer>Ingenieros al peso S.A. - Campus Universitario, Ctra. Madrid-Barcelona km, 33, 600, 28805 Alcalá de Henares - Teléfono: 900.000.000
             <br> Condiciones generales de venta, política de privacidad y utilización web y APP
