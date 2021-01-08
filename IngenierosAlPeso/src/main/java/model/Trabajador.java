@@ -10,22 +10,19 @@ package model;
  * @author Usuario
  */
 public class Trabajador {
-    private int id_trabajador;
+    private int idTrabajador;
     private String dni;
     private String nombre;
     private String apellidos;
-    private String usuario;
-    private String password;
-    private String departamento;
     
     
     //Getters and setters
-    public int getId_trabajador() {
-        return id_trabajador;
+    public int getIdTrabajador() {
+        return idTrabajador;
     }
 
-    public void setId_trabajador(int id_trabajador) {
-        this.id_trabajador = id_trabajador;
+    public void setIdTrabajador(int idTrabajador) {
+        this.idTrabajador = idTrabajador;
     }
 
     public String getDni() {
@@ -51,33 +48,11 @@ public class Trabajador {
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
-    
-//    public String getUsuario() {
-//        return usuario;
-//    }
-//
-//    public void setUsuario(String usuario) {
-//        this.usuario = usuario;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-//
-//    public String getDepartamento() {
-//        return departamento;
-//    }
-//
-//    public void setDepartamento(String departamento) {
-//        this.departamento = departamento;
-//    }
 
     @Override
     public String toString() {
-        return "Trabajador{" + "id_trabajador=" + id_trabajador + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", usuario=" + usuario + ", password=" + password + ", departamento=" + departamento + '}';
+        return "Trabajador{" + "idTrabajador=" + idTrabajador + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + '}';
     }
+
+  
 }

@@ -10,16 +10,17 @@ package model;
  * @author Usuario
  */
 public class Proyecto {
-    private int id_proyecto;
+    private int idProyecto;
     private String nombre;
     private String informacion;
+    private int empresaIdEmpresa;
 
-    public int getId_proyecto() {
-        return id_proyecto;
+    public int getIdProyecto() {
+        return idProyecto;
     }
 
-    public void setId_proyecto(int id_proyecto) {
-        this.id_proyecto = id_proyecto;
+    public void setIdProyecto(int idProyecto) {
+        this.idProyecto = idProyecto;
     }
 
     public String getNombre() {
@@ -38,8 +39,19 @@ public class Proyecto {
         this.informacion = informacion;
     }
 
+    public int getEmpresaIdEmpresa() {
+        return empresaIdEmpresa;
+    }
+
+    public void setEmpresaIdEmpresa(int empresaIdEmpresa) {
+        this.empresaIdEmpresa = empresaIdEmpresa;
+    }
+
     @Override
     public String toString() {
-        return "Proyecto{" + "id_proyecto=" + id_proyecto + ", nombre=" + nombre + ", informacion=" + informacion + '}';
+        return "Proyecto{" + "idProyecto=" + idProyecto + ", nombre=" + nombre + ", informacion=" + informacion + ", empresaIdEmpresa=" + empresaIdEmpresa + '}';
     }
+
+    
+    
 }

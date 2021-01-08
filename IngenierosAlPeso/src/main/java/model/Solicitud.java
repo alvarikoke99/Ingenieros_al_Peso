@@ -5,26 +5,27 @@
  */
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
  * @author Usuario
  */
 public class Solicitud {
-    private int id_solicitud;
+    private int idSolicitud;
     private String tipo;
-    private Date fecha_ini;
-    private Date fecha_final;
+    private Date fechaIni;
+    private Date fechaFinal;
     private String observacion;
-    private String tramitada;
+    private boolean tramitada;
+    private int trabajadorIdTrabajador;
 
-    public int getId_solicitud() {
-        return id_solicitud;
+    public int getIdSolicitud() {
+        return idSolicitud;
     }
 
-    public void setId_solicitud(int id_solicitud) {
-        this.id_solicitud = id_solicitud;
+    public void setIdSolicitud(int idSolicitud) {
+        this.idSolicitud = idSolicitud;
     }
 
     public String getTipo() {
@@ -35,20 +36,20 @@ public class Solicitud {
         this.tipo = tipo;
     }
 
-    public Date getFecha_ini() {
-        return fecha_ini;
+    public Date getFechaIni() {
+        return fechaIni;
     }
 
-    public void setFecha_ini(Date fecha_ini) {
-        this.fecha_ini = fecha_ini;
+    public void setFechaIni(Date fechaIni) {
+        this.fechaIni = fechaIni;
     }
 
-    public Date getFecha_final() {
-        return fecha_final;
+    public Date getFechaFinal() {
+        return fechaFinal;
     }
 
-    public void setFecha_final(Date fecha_final) {
-        this.fecha_final = fecha_final;
+    public void setFechaFinal(Date fechaFinal) {
+        this.fechaFinal = fechaFinal;
     }
 
     public String getObservacion() {
@@ -59,16 +60,29 @@ public class Solicitud {
         this.observacion = observacion;
     }
 
-    public String getTramitada() {
+    public boolean getTramitada() {
         return tramitada;
     }
 
-    public void setTramitada(String tramitada) {
+    public void setTramitada(boolean tramitada) {
         this.tramitada = tramitada;
+    }
+
+    public int getTrabajadorIdTrabajador() {
+        return trabajadorIdTrabajador;
+    }
+
+    public void setTrabajadorIdTrabajador(int trabajadorIdTrabajador) {
+        this.trabajadorIdTrabajador = trabajadorIdTrabajador;
     }
 
     @Override
     public String toString() {
-        return "Solicitud{" + "id_solicitud=" + id_solicitud + ", tipo=" + tipo + ", fecha_ini=" + fecha_ini + ", fecha_final=" + fecha_final + ", observacion=" + observacion + ", tramitada=" + tramitada + '}';
+        return "Solicitud{" + "idSolicitud=" + idSolicitud + ", tipo=" + tipo + ", fechaIni=" + fechaIni + ", fechaFinal=" + fechaFinal + ", observacion=" + observacion + ", tramitada=" + tramitada + ", trabajadorIdTrabajador=" + trabajadorIdTrabajador + '}';
     }
+
+    
+
+    
+    
 }

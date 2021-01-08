@@ -10,15 +10,15 @@ package model;
  * @author Usuario
  */
 public class Empresa {
-    private int id_empresa;
+    private int idEmpresa;
     private String nombre;
 
-    public int getId_empresa() {
-        return id_empresa;
+    public int getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setId_empresa(int id_empresa) {
-        this.id_empresa = id_empresa;
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     public String getNombre() {
@@ -31,6 +31,6 @@ public class Empresa {
 
     @Override
     public String toString() {
-        return "Empresa{" + "id_empresa=" + id_empresa + ", nombre=" + nombre + '}';
+        return "Empresa{" + "idEmpresa=" + idEmpresa + ", nombre=" + nombre + '}';
     }
 }
