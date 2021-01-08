@@ -30,7 +30,7 @@ ENGINE = InnoDB;
 -- Table `Web`.`solicitud`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Web`.`solicitud` (
-  `id_solicitud` INT NOT NULL,
+  `id_solicitud` INT NOT NULL AUTO_INCREMENT,
   `tipo` VARCHAR(45) NULL,
   `fecha_ini` DATE NULL,
   `fecha_final` DATE NULL,
@@ -51,7 +51,7 @@ ENGINE = InnoDB;
 -- Table `Web`.`empresa`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Web`.`empresa` (
-  `id_empresa` INT NOT NULL,
+  `id_empresa` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   PRIMARY KEY (`id_empresa`))
 ENGINE = InnoDB;
@@ -84,7 +84,7 @@ ENGINE = InnoDB;
 -- Table `Web`.`proyecto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Web`.`proyecto` (
-  `id_proyecto` INT NOT NULL,
+  `id_proyecto` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   `informacion` VARCHAR(45) NULL,
   `empresa_id_empresa` INT NOT NULL,
