@@ -15,10 +15,26 @@ function annadirUsuario() {
     eliminar.innerHTML = "eliminar";
 }
 
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
+function iniciarSesion() {
+  usuario = document.getElementById("idUser").value;
+  password = document.getElementById("idPsw").value;
+
+  if(usuario=="Admin"){
+    if(password=="RRHH"){
+      window.open("./listaUsuario.html");
+      window.close("./iniciarSesion.html");
+    }else{
+      window.alert("La contraseña no es válida");
+    }
   }
-  
-  function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
+  else if (usuario=="Pruebas"){
+    if(password=="Pruebas"){
+      window.open("./user.html");
+      window.close("./iniciarSesion.html");
+    }else{
+      window.alert("La contraseña no es válida");
+    }
+  }else{
+    window.alert("Ese usuario no existe");
   }
+}

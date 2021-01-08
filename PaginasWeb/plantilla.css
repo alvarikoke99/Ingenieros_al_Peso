@@ -45,35 +45,35 @@ h1{
     border-radius: 15px;
 }
 
-input[type=text], input[type=password] {
-    padding: 15px;
-    margin: 5px 0 30px 0;
-    border: none;
-    background: #f1f1f1;
-    width: 94%;
-    border-radius: 15px;
+.container input[type=text], input[type=password] {
+  padding: 15px;
+  margin: 5px 0 30px 0;
+  border: none;
+  background: #f1f1f1;
+  width: 94%;
+  border-radius: 15px;
 }
-  
-input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
+
+.container input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
 }
 
 .btn {
-    background-color: #2670AB;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-    font-size: x-large;
-    border-radius: 15px;
-  }
+  background-color: #2670AB;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-size: x-large;
+  border-radius: 15px;
+}
   
-  .btn:hover {
-    opacity: 1;
-  }
+.btn:hover {
+  opacity: 1;
+}
 
 /*-------------------------------------------------------------------
                         BARRA NAVEGACION
@@ -85,34 +85,17 @@ input[type=text]:focus, input[type=password]:focus {
     color: white;
 }
 
-#cabeceraRRHH{
+#cabecera{
     background-color: #2670AB;
 }
 
-#topnavRRHH{
+#topnav{
     background-color: #2670AB;
-}
-
-#cabeceraUser{
-    background-color: rgb(202, 111, 30);
-}
-
-#topnavUser{
-    background-color: rgb(202, 111, 30);
-}
-
-.subcabecera {
-    font-size: large;
 }
 
 .topnav {
     overflow: hidden;
-    background-color: rgb(33,97,140);
-    
-}
-
-.topnav .enlace:hover {
-    background-color: #2670AB;
+    background-color:#2670AB; 
 }
 
 .topnav .enlace {
@@ -122,6 +105,51 @@ input[type=text]:focus, input[type=password]:focus {
     text-align: center;
     padding: 24px;
     text-decoration: none;
+}
+
+#idPag {
+    background-color: rgb(33,97,140);
+}
+
+/*-------------------------------------------------------------------
+                            DESPLEGABLE VERTICAL
+--------------------------------------------------------------------*/
+
+.dropdown {
+  float: left;
+  font-size: large;
+  color: white;
+  text-align: center;
+  padding: 24px;
+  text-decoration: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #2670AB;
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-top: 24px;
+  left: 0;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color:  rgb(33,97,140);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 
@@ -134,51 +162,21 @@ body {
 }
 
 #cuerpo{
-    background: rgb(230, 230, 230); 
+    background: rgb(255, 255, 255); 
 }
 
-.casilla{
-    padding-right: 20%;
-    border-radius: 5px;
-    font-size: 18px;
+.content {
+    margin: 3%;
 }
 
 /*-------------------------------------------------------------------
-                    BARRA NAVEGACIÓN VERTICAL
+                          LISTA PETICIONES
 --------------------------------------------------------------------*/
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
 
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
+/*-------------------------------------------------------------------
+                          SOLICITAR INFORME
+--------------------------------------------------------------------*/
 
 
 /*-------------------------------------------------------------------
@@ -199,6 +197,31 @@ table {
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+
+/*-------------------------------------------------------------------
+                            AÑADIR USUARIOS
+--------------------------------------------------------------------*/
+.casilla{
+  padding: 10px;
+  margin: 0 0 15px 0;
+  border: none;
+  background: #f1f1f1;
+  width: 21%;
+  border-radius: 15px;
+}
+
+.btnAdd {
+  background-color: #2670AB;
+  color: white;
+  padding: 5px 20px;
+  border: none;
+  cursor: pointer;
+  width: 22%;
+  opacity: 0.9;
+  font-size: x-large;
+  border-radius: 15px;
+  margin-top: 15px;
+}
 
 /*-------------------------------------------------------------------
                             PIE DE PAGINA
