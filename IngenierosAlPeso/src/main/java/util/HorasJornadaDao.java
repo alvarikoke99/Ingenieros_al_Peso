@@ -20,17 +20,17 @@ import model.Trabajador;
 import util.DbUtil;
 import util.Log;
 
-public class TrabajadorDao {
+public class HorasJornadaDao {
 
     private Connection connection;
 
-    public TrabajadorDao() {
+    public HorasJornadaDao() {
         connection = DbUtil.getConnection();
     }
 
     public void addTrabajador(Trabajador trabajador) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into trabajador(nombre,apellidos, dni) values (?, ?, ?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into trabajador(nombre,apellidos, dni) values (?, ?, ? )");
             // Parameters start with 1 
             preparedStatement.setString(1, trabajador.getNombre());
             preparedStatement.setString(2, trabajador.getApellidos());            
@@ -41,11 +41,11 @@ public class TrabajadorDao {
         }
     }
 
-    public void deleteTrabajador(int idTrabajador) {
+    public void deleteTrabajador(int userId) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from trabajador where id_trabajador=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from trabajador where userid=?");
             // Parameters start with 1 
-            preparedStatement.setInt(1, idTrabajador);
+            preparedStatement.setInt(1, userId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
