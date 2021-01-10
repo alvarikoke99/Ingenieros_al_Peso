@@ -14,8 +14,8 @@ import java.sql.Date;
 public class HorasJornada {
     private int horas;
     private Date fecha;
-    private int proyectoIdProyecto;
-    private int trabajadorIdTrabajador;
+    private int idProyecto;
+    private int idTrabajador;
 
     public int getHoras() {
         return horas;
@@ -33,27 +33,25 @@ public class HorasJornada {
         this.fecha = fecha;
     }
 
-    public int getProyectoIdProyecto() {
-        return proyectoIdProyecto;
+    public int getIdProyecto() {
+        return idProyecto;
     }
 
-    public void setProyectoIdProyecto(int proyectoIdProyecto) {
-        this.proyectoIdProyecto = proyectoIdProyecto;
+    public void setIdProyecto(int idProyecto) {
+        this.idProyecto = idProyecto;
     }
 
-    public int getTrabajadorIdTrabajador() {
-        return trabajadorIdTrabajador;
+    public int getIdTrabajador() {
+        return idTrabajador;
     }
 
-    public void setTrabajadorIdTrabajador(int trabajadorIdTrabajador) {
-        this.trabajadorIdTrabajador = trabajadorIdTrabajador;
+    public void setIdTrabajador(int idTrabajador) {
+        this.idTrabajador = idTrabajador;
     }
 
     @Override
     public String toString() {
-        return "HorasJornada{" + "horas=" + horas + ", fecha=" + fecha + ", proyectoIdProyecto=" + proyectoIdProyecto + ", trabajadorIdTrabajador=" + trabajadorIdTrabajador + '}';
+        return "HorasJornada{" + "horas=" + horas + ", fecha=" + fecha + ", idProyecto=" + idProyecto + ", idTrabajador=" + idTrabajador + '}';
     }
-
-    
-    
+  
 }

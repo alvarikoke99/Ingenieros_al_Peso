@@ -13,7 +13,7 @@ public class Proyecto {
     private int idProyecto;
     private String nombre;
     private String informacion;
-    private int empresaIdEmpresa;
+    private int idEmpresa;
 
     public int getIdProyecto() {
         return idProyecto;
@@ -39,19 +39,17 @@ public class Proyecto {
         this.informacion = informacion;
     }
 
-    public int getEmpresaIdEmpresa() {
-        return empresaIdEmpresa;
+    public int getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setEmpresaIdEmpresa(int empresaIdEmpresa) {
-        this.empresaIdEmpresa = empresaIdEmpresa;
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     @Override
     public String toString() {
-        return "Proyecto{" + "idProyecto=" + idProyecto + ", nombre=" + nombre + ", informacion=" + informacion + ", empresaIdEmpresa=" + empresaIdEmpresa + '}';
+        return "Proyecto{" + "idProyecto=" + idProyecto + ", nombre=" + nombre + ", informacion=" + informacion + ", idEmpresa=" + idEmpresa + '}';
     }
-
-    
     
 }

@@ -18,7 +18,7 @@ public class Solicitud {
     private Date fechaFinal;
     private String observacion;
     private boolean tramitada;
-    private int trabajadorIdTrabajador;
+    private int idTrabajador;
 
     public int getIdSolicitud() {
         return idSolicitud;
@@ -68,21 +68,17 @@ public class Solicitud {
         this.tramitada = tramitada;
     }
 
-    public int getTrabajadorIdTrabajador() {
-        return trabajadorIdTrabajador;
+    public int getIdTrabajador() {
+        return idTrabajador;
     }
 
-    public void setTrabajadorIdTrabajador(int trabajadorIdTrabajador) {
-        this.trabajadorIdTrabajador = trabajadorIdTrabajador;
+    public void setIdTrabajador(int idTrabajador) {
+        this.idTrabajador = idTrabajador;
     }
 
     @Override
     public String toString() {
-        return "Solicitud{" + "idSolicitud=" + idSolicitud + ", tipo=" + tipo + ", fechaIni=" + fechaIni + ", fechaFinal=" + fechaFinal + ", observacion=" + observacion + ", tramitada=" + tramitada + ", trabajadorIdTrabajador=" + trabajadorIdTrabajador + '}';
+        return "Solicitud{" + "idSolicitud=" + idSolicitud + ", tipo=" + tipo + ", fechaIni=" + fechaIni + ", fechaFinal=" + fechaFinal + ", observacion=" + observacion + ", tramitada=" + tramitada + ", idTrabajador=" + idTrabajador + '}';
     }
-
-    
-
-    
     
 }
