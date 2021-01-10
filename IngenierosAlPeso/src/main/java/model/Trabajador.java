@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author Usuario
@@ -14,6 +16,7 @@ public class Trabajador {
     private String dni;
     private String nombre;
     private String apellidos;
+    private Timestamp ultimaJornada;
     
     
     //Getters and setters
@@ -49,10 +52,21 @@ public class Trabajador {
         this.apellidos = apellidos;
     }
 
+    public Timestamp getUltimaJornada() {
+        return ultimaJornada;
+    }
+
+    public void setUltimaJornada(Timestamp ultimaJornada) {
+        this.ultimaJornada = ultimaJornada;
+    }
+
     @Override
     public String toString() {
-        return "Trabajador{" + "idTrabajador=" + idTrabajador + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + '}';
+        return "Trabajador{" + "idTrabajador=" + idTrabajador + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", ultimaJornada=" + ultimaJornada + '}';
     }
+
+    
+    
 
   
 }
