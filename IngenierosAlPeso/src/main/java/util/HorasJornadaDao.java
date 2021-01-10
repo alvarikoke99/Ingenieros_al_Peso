@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import model.Horas_jornada;
+import model.HorasJornada;
 import util.DbUtil;
 import util.Log;
 
@@ -28,7 +28,7 @@ public class HorasJornadaDao {
         connection = DbUtil.getConnection();
     }
 
-    public void addHorasJornada(Horas_jornada horasJornada) {
+    public void addHorasJornada(HorasJornada horasJornada) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into horas_jornada(horas, fecha, id_proyecto, id_trabajador) values (?, ?, ?, ?)");
             // Parameters start with 1 
@@ -42,15 +42,15 @@ public class HorasJornadaDao {
         }
     }
 
-    public List<Horas_jornada> getAllHorasJornadas() {
-        List<Horas_jornada> dbHorasJornada = new ArrayList<Horas_jornada>();
+    public List<HorasJornada> getAllHorasJornadas() {
+        List<HorasJornada> dbHorasJornada = new ArrayList<HorasJornada>();
         if (connection != null)
         {
             try {
                 Statement statement = connection.createStatement();
                 ResultSet rs = statement.executeQuery("select * from horas_jornada;");
                 while (rs.next()) {
-                    Horas_jornada trabajador = new Horas_jornada();
+                    HorasJornada trabajador = new HorasJornada();
                     trabajador.setHoras(rs.getInt("userid"));
                     trabajador.setFecha(rs.getDate("fecha"));
                     trabajador.setIdProyecto(rs.getInt("id_proyecto"));
@@ -69,8 +69,8 @@ public class HorasJornadaDao {
         }   
     }
 
-    public List<Horas_jornada> getHorasJornadaByIdProyecto(int idProyecto) {
-        List<Horas_jornada> dbHorasJornada = new ArrayList<Horas_jornada>();
+    public List<HorasJornada> getHorasJornadaByIdProyecto(int idProyecto) {
+        List<HorasJornada> dbHorasJornada = new ArrayList<HorasJornada>();
         if (connection != null)
         {
             try {
@@ -79,7 +79,7 @@ public class HorasJornadaDao {
                 preparedStatement.setInt(1, idProyecto);
                 ResultSet rs = preparedStatement.executeQuery();
                 while (rs.next()) {
-                    Horas_jornada trabajador = new Horas_jornada();
+                    HorasJornada trabajador = new HorasJornada();
                     trabajador.setHoras(rs.getInt("userid"));
                     trabajador.setFecha(rs.getDate("fecha"));
                     trabajador.setIdProyecto(rs.getInt("id_proyecto"));
@@ -98,8 +98,8 @@ public class HorasJornadaDao {
         }
     }
     
-    public List<Horas_jornada> getHorasJornadaByIdTrabajador(int idTrabajador) {
-        List<Horas_jornada> dbHorasJornada = new ArrayList<Horas_jornada>();
+    public List<HorasJornada> getHorasJornadaByIdTrabajador(int idTrabajador) {
+        List<HorasJornada> dbHorasJornada = new ArrayList<HorasJornada>();
         if (connection != null)
         {
             try {
@@ -108,7 +108,7 @@ public class HorasJornadaDao {
                 preparedStatement.setInt(1, idTrabajador);
                 ResultSet rs = preparedStatement.executeQuery();
                 while (rs.next()) {
-                    Horas_jornada trabajador = new Horas_jornada();
+                    HorasJornada trabajador = new HorasJornada();
                     trabajador.setHoras(rs.getInt("userid"));
                     trabajador.setFecha(rs.getDate("fecha"));
                     trabajador.setIdProyecto(rs.getInt("id_proyecto"));
@@ -127,8 +127,8 @@ public class HorasJornadaDao {
         }
     }
     
-    public List<Horas_jornada> getHorasJornadaById(int idProyecto, int idTrabajador) {
-        List<Horas_jornada> dbHorasJornada = new ArrayList<Horas_jornada>();
+    public List<HorasJornada> getHorasJornadaById(int idProyecto, int idTrabajador) {
+        List<HorasJornada> dbHorasJornada = new ArrayList<HorasJornada>();
         if (connection != null)
         {
             try {
@@ -138,7 +138,7 @@ public class HorasJornadaDao {
                 preparedStatement.setInt(2, idTrabajador);
                 ResultSet rs = preparedStatement.executeQuery();
                 while (rs.next()) {
-                    Horas_jornada trabajador = new Horas_jornada();
+                    HorasJornada trabajador = new HorasJornada();
                     trabajador.setHoras(rs.getInt("userid"));
                     trabajador.setFecha(rs.getDate("fecha"));
                     trabajador.setIdProyecto(rs.getInt("id_proyecto"));
