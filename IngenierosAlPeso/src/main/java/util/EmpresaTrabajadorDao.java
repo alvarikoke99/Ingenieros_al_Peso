@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import model.EmpresaTrabajador;
+import model.RelacionEmpresaTrabajador;
 import util.DbUtil;
 import util.Log;
 
@@ -28,12 +28,12 @@ public class EmpresaTrabajadorDao {
         connection = DbUtil.getConnection();
     }
 
-    public void addRelacion(EmpresaTrabajador relacion) {
+    public void addRelacion(RelacionEmpresaTrabajador relacion) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into relacion_empresa_trabajador(id_trabajador, id_empresa, departamento) values (?, ?, ? )");
             // Parameters start with 1 
             preparedStatement.setInt(1, relacion.getIdTrabajador());
-            preparedStatement.setInt(2, relacion.getIdEmpresa);            
+            preparedStatement.setInt(2, relacion.getIdEmpresa());            
             preparedStatement.setString(3, relacion.getDepartamento());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -41,12 +41,12 @@ public class EmpresaTrabajadorDao {
         }
     }
 
-    public void deleteRelacion(EmpresaTrabajador relacion) {
+    public void deleteRelacion(RelacionEmpresaTrabajador relacion) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from relacion_empresa_trabajador where id_trabajador=? and id_empresa=? and departamento=?");
             // Parameters start with 1 
             preparedStatement.setInt(1, relacion.getIdTrabajador());
-            preparedStatement.setInt(2, relacion.getIdEmpresa);            
+            preparedStatement.setInt(2, relacion.getIdEmpresa());            
             preparedStatement.setString(3, relacion.getDepartamento());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -54,15 +54,15 @@ public class EmpresaTrabajadorDao {
         }
     }
 
-    public List<EmpresaTrabajador> getAllRelaciones() {
-        List<EmpresaTrabajador> dbRelacion = new ArrayList<EmpresaTrabajador>();
+    public List<RelacionEmpresaTrabajador> getAllRelaciones() {
+        List<RelacionEmpresaTrabajador> dbRelacion = new ArrayList<RelacionEmpresaTrabajador>();
         if (connection != null)
         {
             try {
                 Statement statement = connection.createStatement();
                 ResultSet rs = statement.executeQuery("select * from relacion_empresa_trabajador;");
                 while (rs.next()) {
-                    EmpresaTrabajador relacion = new EmpresaTrabajador();
+                    RelacionEmpresaTrabajador relacion = new RelacionEmpresaTrabajador();
                     relacion.setIdTrabajador(rs.getInt("id_trabajador"));
                     relacion.setIdEmpresa(rs.getInt("id_empresa"));
                     relacion.setDepartamento(rs.getString("departamento"));              
@@ -81,8 +81,8 @@ public class EmpresaTrabajadorDao {
        
     }
 
-    public List<EmpresaTrabajador> getRelacionesByIdTrabajador(int idTrabajador) {
-        List<EmpresaTrabajador> dbRelacion = new ArrayList<EmpresaTrabajador>();
+    public List<RelacionEmpresaTrabajador> getRelacionesByIdTrabajador(int idTrabajador) {
+        List<RelacionEmpresaTrabajador> dbRelacion = new ArrayList<RelacionEmpresaTrabajador>();
         if (connection != null)
         {
             try {
@@ -91,7 +91,7 @@ public class EmpresaTrabajadorDao {
                 preparedStatement.setInt(1, idTrabajador);
                 ResultSet rs = preparedStatement.executeQuery();
                 while (rs.next()) {
-                    EmpresaTrabajador relacion = new EmpresaTrabajador();
+                    RelacionEmpresaTrabajador relacion = new RelacionEmpresaTrabajador();
                     relacion.setIdTrabajador(rs.getInt("id_trabajador"));
                     relacion.setIdEmpresa(rs.getInt("id_empresa"));
                     relacion.setDepartamento(rs.getString("departamento"));              
@@ -109,8 +109,8 @@ public class EmpresaTrabajadorDao {
         }
     }
     
-    public List<EmpresaTrabajador> getRelacionesByIdEmpresa(int idEmpresa) {
-        List<EmpresaTrabajador> dbRelacion = new ArrayList<EmpresaTrabajador>();
+    public List<RelacionEmpresaTrabajador> getRelacionesByIdEmpresa(int idEmpresa) {
+        List<RelacionEmpresaTrabajador> dbRelacion = new ArrayList<RelacionEmpresaTrabajador>();
         if (connection != null)
         {
             try {
@@ -119,7 +119,7 @@ public class EmpresaTrabajadorDao {
                 preparedStatement.setInt(1, idEmpresa);
                 ResultSet rs = preparedStatement.executeQuery();
                 while (rs.next()) {
-                    EmpresaTrabajador relacion = new EmpresaTrabajador();
+                    RelacionEmpresaTrabajador relacion = new RelacionEmpresaTrabajador();
                     relacion.setIdTrabajador(rs.getInt("id_trabajador"));
                     relacion.setIdEmpresa(rs.getInt("id_empresa"));
                     relacion.setDepartamento(rs.getString("departamento"));              
@@ -137,8 +137,8 @@ public class EmpresaTrabajadorDao {
         }
     }
     
-    public List<EmpresaTrabajador> getRelacionesById(int idTrabajador, int idEmpresa) {
-        List<EmpresaTrabajador> dbRelacion = new ArrayList<EmpresaTrabajador>();
+    public List<RelacionEmpresaTrabajador> getRelacionesById(int idTrabajador, int idEmpresa) {
+        List<RelacionEmpresaTrabajador> dbRelacion = new ArrayList<RelacionEmpresaTrabajador>();
         if (connection != null)
         {
             try {
@@ -147,7 +147,7 @@ public class EmpresaTrabajadorDao {
                 preparedStatement.setInt(1, idTrabajador);
                 ResultSet rs = preparedStatement.executeQuery();
                 while (rs.next()) {
-                    EmpresaTrabajador relacion = new EmpresaTrabajador();
+                    RelacionEmpresaTrabajador relacion = new RelacionEmpresaTrabajador();
                     relacion.setIdTrabajador(rs.getInt("id_trabajador"));
                     relacion.setIdEmpresa(rs.getInt("id_empresa"));
                     relacion.setDepartamento(rs.getString("departamento"));              

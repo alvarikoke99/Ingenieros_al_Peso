@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import model.Trabajador;
+import model.RelacionProyectoTrabajador;
 import util.DbUtil;
 import util.Log;
 
@@ -28,63 +28,47 @@ public class ProyectoTrabajadorDao {
         connection = DbUtil.getConnection();
     }
 
-    public void addTrabajador(Trabajador trabajador) {
+    public void addRelacion(RelacionProyectoTrabajador relacion) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into trabajador(nombre,apellidos, dni) values (?, ?, ? )");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into relacion_proyecto_trabajador(id_proyecto, id_trabajador) values (?, ?)");
             // Parameters start with 1 
-            preparedStatement.setString(1, trabajador.getNombre());
-            preparedStatement.setString(2, trabajador.getApellidos());            
-            preparedStatement.setString(3, trabajador.getDni());
+            preparedStatement.setInt(1, relacion.getIdProyecto());
+            preparedStatement.setInt(2, relacion.getIdTrabajador());         
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
         }
     }
 
-    public void deleteTrabajador(int userId) {
+    public void deleteRelacion(RelacionProyectoTrabajador relacion) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from trabajador where userid=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from relacion_proyecto_trabajador where id_proyecto=? and id_trabajador=?");
             // Parameters start with 1 
-            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(1, relacion.getIdProyecto());
+            preparedStatement.setInt(2, relacion.getIdTrabajador());            
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
         }
     }
 
-    public void updateTrabajador(Trabajador trabajador) {
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update users set nombre=?, apellidos=?, dni=?" + "where id_trabajador=?");
-            // Parameters start with 1 
-            preparedStatement.setString(1, trabajador.getNombre());
-            preparedStatement.setString(2, trabajador.getApellidos());            
-            preparedStatement.setString(3, trabajador.getDni());
-            preparedStatement.setInt(4, trabajador.getIdTrabajador());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            Log.logdb.error("SQL Exception: " + e);            
-        }
-    }
-
-    public List<Trabajador> getAllTrabajadores() {
-        List<Trabajador> dbTrabajador = new ArrayList<Trabajador>();
+    public List<RelacionProyectoTrabajador> getAllRelaciones() {
+        List<RelacionProyectoTrabajador> dbRelacion = new ArrayList<RelacionProyectoTrabajador>();
         if (connection != null)
         {
             try {
                 Statement statement = connection.createStatement();
-                ResultSet rs = statement.executeQuery("select * from trabajador;");
+                ResultSet rs = statement.executeQuery("select * from relacion_proyecto_trabajador;");
                 while (rs.next()) {
-                    Trabajador trabajador = new Trabajador();
-                    trabajador.setIdTrabajador(rs.getInt("userid"));
-                    trabajador.setNombre(rs.getString("firstname"));
-                    trabajador.setApellidos(rs.getString("lastname"));
-                    trabajador.setDni(rs.getString("dni"));              
-                    dbTrabajador.add(trabajador);
+                    RelacionProyectoTrabajador relacion = new RelacionProyectoTrabajador();
+                    relacion.setIdProyecto(rs.getInt("id_proyecto"));
+                    relacion.setIdTrabajador(rs.getInt("id_trabajador"));              
+                    dbRelacion.add(relacion);
                 }
             } catch (SQLException e) {
                 Log.logdb.error("SQL Exception: " + e);            
             }
-            return dbTrabajador;
+            return dbRelacion;
         }
         else
         {
@@ -93,22 +77,85 @@ public class ProyectoTrabajadorDao {
         }
        
     }
-
-    public Trabajador getTrabajadorById(int idTrabajador) {
-        Trabajador trabajador = new Trabajador();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from trabajador where id_trabajador=?");
-            preparedStatement.setInt(1, idTrabajador);
-            ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {
-                trabajador.setIdTrabajador(rs.getInt("userid"));
-                trabajador.setNombre(rs.getString("firstname"));
-                trabajador.setApellidos(rs.getString("lastname"));
-                trabajador.setDni(rs.getString("dni"));
+    
+    public List<RelacionProyectoTrabajador> getRelacionesByIdProyecto(int idProyecto) {
+        List<RelacionProyectoTrabajador> dbRelacion = new ArrayList<RelacionProyectoTrabajador>();
+        if (connection != null)
+        {
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement("select * from relacion_proyecto_trabajador where id_proyecto=?;");
+                // Parameters start with 1 
+                preparedStatement.setInt(1, idProyecto);
+                ResultSet rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    RelacionProyectoTrabajador relacion = new RelacionProyectoTrabajador();
+                    relacion.setIdProyecto(rs.getInt("id_proyecto"));
+                    relacion.setIdTrabajador(rs.getInt("id_trabajador"));             
+                    dbRelacion.add(relacion);
+                }
+            } catch (SQLException e) {
+                Log.logdb.error("SQL Exception: " + e);            
             }
-        } catch (SQLException e) {
-            Log.logdb.error("SQL Exception: " + e);
+            return dbRelacion;
         }
-        return trabajador;
+        else
+        {
+            Log.logdb.error("No hay conexion con la bbdd");
+            return null;
+        }
+    }
+
+    public List<RelacionProyectoTrabajador> getRelacionesByIdTrabajador(int idTrabajador) {
+        List<RelacionProyectoTrabajador> dbRelacion = new ArrayList<RelacionProyectoTrabajador>();
+        if (connection != null)
+        {
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement("select * from relacion_proyecto_trabajador where id_trabajador=?;");
+                // Parameters start with 1 
+                preparedStatement.setInt(1, idTrabajador);
+                ResultSet rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    RelacionProyectoTrabajador relacion = new RelacionProyectoTrabajador();
+                    relacion.setIdProyecto(rs.getInt("id_proyecto"));
+                    relacion.setIdTrabajador(rs.getInt("id_trabajador"));              
+                    dbRelacion.add(relacion);
+                }
+            } catch (SQLException e) {
+                Log.logdb.error("SQL Exception: " + e);            
+            }
+            return dbRelacion;
+        }
+        else
+        {
+            Log.logdb.error("No hay conexion con la bbdd");
+            return null;
+        }
+    }
+    
+    public List<RelacionProyectoTrabajador> getRelacionesById(int idProyecto, int idTrabajador) {
+        List<RelacionProyectoTrabajador> dbRelacion = new ArrayList<RelacionProyectoTrabajador>();
+        if (connection != null)
+        {
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement("select * from relacion_proyecto_trabajador where id_proyecto=? and id_trabajador=?;");
+                // Parameters start with 1 
+                preparedStatement.setInt(1, idTrabajador);
+                ResultSet rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    RelacionProyectoTrabajador relacion = new RelacionProyectoTrabajador();
+                    relacion.setIdProyecto(rs.getInt("id_proyecto"));
+                    relacion.setIdTrabajador(rs.getInt("id_trabajador"));            
+                    dbRelacion.add(relacion);
+                }
+            } catch (SQLException e) {
+                Log.logdb.error("SQL Exception: " + e);            
+            }
+            return dbRelacion;
+        }
+        else
+        {
+            Log.logdb.error("No hay conexion con la bbdd");
+            return null;
+        }
     }
 }

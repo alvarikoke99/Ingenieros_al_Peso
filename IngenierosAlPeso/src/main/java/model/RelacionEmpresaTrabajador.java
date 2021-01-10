@@ -22,7 +22,7 @@ public class RelacionEmpresaTrabajador {
         this.idEmpresa = idEmpresa;
     }
 
-    public int getidTrabajador() {
+    public int getIdTrabajador() {
         return idTrabajador;
     }
 
