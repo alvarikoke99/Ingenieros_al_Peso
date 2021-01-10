@@ -12,6 +12,7 @@ package model;
 public class Empresa {
     private int idEmpresa;
     private String nombre;
+    private String descripción;
 
     public int getIdEmpresa() {
         return idEmpresa;
@@ -29,8 +30,17 @@ public class Empresa {
         this.nombre = nombre;
     }
 
+    public String getDescripción() {
+        return descripción;
+    }
+
+    public void setDescripción(String descripción) {
+        this.descripción = descripción;
+    }
+
     @Override
     public String toString() {
-        return "Empresa{" + "idEmpresa=" + idEmpresa + ", nombre=" + nombre + '}';
+        return "Empresa{" + "idEmpresa=" + idEmpresa + ", nombre=" + nombre + ", descripci\u00f3n=" + descripción + '}';
     }
+ 
 }
