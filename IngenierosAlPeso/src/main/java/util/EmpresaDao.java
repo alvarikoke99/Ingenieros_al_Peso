@@ -30,9 +30,10 @@ public class EmpresaDao {
 
     public void addEmpresa(Empresa empresa) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into empresa(nombre) values (?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into empresa(nombre,descripcion) values (?,?)");
             // Parameters start with 1 
             preparedStatement.setString(1, empresa.getNombre());
+            preparedStatement.setString(2, empresa.getDescripcion());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
@@ -52,9 +53,10 @@ public class EmpresaDao {
 
     public void updateEmpresa(Empresa empresa) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update empresa set nombre=?, apellidos=?, dni=?" + "where id_trabajador=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("update empresa set nombre=?, descripcion=?" + "where id_empresa=?");
             // Parameters start with 1 
             preparedStatement.setString(1, empresa.getNombre());
+            preparedStatement.setString(2, empresa.getDescripcion());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);            
@@ -71,7 +73,8 @@ public class EmpresaDao {
                 while (rs.next()) {
                     Empresa empresa = new Empresa();
                     empresa.setIdEmpresa(rs.getInt("id_empresa"));
-                    empresa.setNombre(rs.getString("nombre"));            
+                    empresa.setNombre(rs.getString("nombre"));    
+                     empresa.setDescripcion(rs.getString("descripcion")); 
                     dbEmpresa.add(empresa);
                 }
             } catch (SQLException e) {
@@ -96,6 +99,7 @@ public class EmpresaDao {
             if (rs.next()) {
                 empresa.setIdEmpresa(rs.getInt("id_empresa"));
                 empresa.setNombre(rs.getString("nombre")); 
+                empresa.setDescripcion(rs.getString("descripcion")); 
             }
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
