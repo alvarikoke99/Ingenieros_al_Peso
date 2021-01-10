@@ -10,24 +10,24 @@ package model;
  * @author Usuario
  */
 public class RelacionEmpresaTrabajador {
-    private int empresaIdEmpresa;
-    private int trabajadorIdTrabajador;
+    private int idEmpresa;
+    private int idTrabajador;
     private String departamento;
 
-    public int getEmpresaIdEmpresa() {
-        return empresaIdEmpresa;
+    public int getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setEmpresaIdEmpresa(int empresaIdEmpresa) {
-        this.empresaIdEmpresa = empresaIdEmpresa;
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
-    public int getTrabajadorIdTrabajador() {
-        return trabajadorIdTrabajador;
+    public int getidTrabajador() {
+        return idTrabajador;
     }
 
-    public void setTrabajadorIdTrabajador(int trabajadorIdTrabajador) {
-        this.trabajadorIdTrabajador = trabajadorIdTrabajador;
+    public void setIdTrabajador(int idTrabajador) {
+        this.idTrabajador = idTrabajador;
     }
 
     public String getDepartamento() {
@@ -40,7 +40,7 @@ public class RelacionEmpresaTrabajador {
 
     @Override
     public String toString() {
-        return "RelacionEmpresaTrabajador{" + "trabajadorIdTrabajador=" + trabajadorIdTrabajador + ", empresaIdEmpresa=" + empresaIdEmpresa + ", departamento=" + departamento + '}';
+        return "RelacionEmpresaTrabajador{" + "idTrabajador=" + idTrabajador + ", idEmpresa=" + idEmpresa + ", departamento=" + departamento + '}';
     }
     
     

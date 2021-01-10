@@ -10,28 +10,28 @@ package model;
  * @author Usuario
  */
 public class RelacionProyectoTrabajador {
-    private int proyectoIdProyecto;
-    private int trabajadorIdTrabajador;
+    private int idProyecto;
+    private int idTrabajador;
 
-    public int getProyectoIdProyecto() {
-        return proyectoIdProyecto;
+    public int getIdProyecto() {
+        return idProyecto;
     }
 
-    public void setProyectoIdProyecto(int proyectoIdProyecto) {
-        this.proyectoIdProyecto = proyectoIdProyecto;
+    public void setIdProyecto(int idProyecto) {
+        this.idProyecto = idProyecto;
     }
 
-    public int getTrabajadorIdTrabajador() {
-        return trabajadorIdTrabajador;
+    public int getIdTrabajador() {
+        return idTrabajador;
     }
 
-    public void setTrabajadorIdTrabajador(int trabajadorIdTrabajador) {
-        this.trabajadorIdTrabajador = trabajadorIdTrabajador;
+    public void setIdTrabajador(int idTrabajador) {
+        this.idTrabajador = idTrabajador;
     }
 
     @Override
     public String toString() {
-        return "RelacionProyectoTrabajador{" + "proyectoIdProyecto=" + proyectoIdProyecto + ", trabajadorIdTrabajador=" + trabajadorIdTrabajador + '}';
+        return "RelacionProyectoTrabajador{" + "idProyecto=" + idProyecto + ", idTrabajador=" + idTrabajador + '}';
     }
     
     
