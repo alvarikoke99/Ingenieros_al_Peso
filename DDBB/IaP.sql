@@ -151,7 +151,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `Web`.`registro_jornada` (
   `fecha_entrada` DATETIME NOT NULL,
   `fecha_salida` DATETIME NOT NULL,
-  `id_jornada` INT NOT NULL,
   `id_trabajador` INT NOT NULL,
   `id_proyecto` INT NOT NULL,
   INDEX `fk_registro_jornada_trabajador1_idx` (`id_trabajador` ASC) VISIBLE,

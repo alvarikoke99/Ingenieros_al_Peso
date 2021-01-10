@@ -30,11 +30,12 @@ public class TrabajadorDao {
 
     public void addTrabajador(Trabajador trabajador) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into trabajador(nombre,apellidos, dni) values (?, ?, ?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into trabajador(nombre,apellidos, dni, ultima_jornada) values (?, ?, ?, ?)");
             // Parameters start with 1 
             preparedStatement.setString(1, trabajador.getNombre());
             preparedStatement.setString(2, trabajador.getApellidos());            
             preparedStatement.setString(3, trabajador.getDni());
+            preparedStatement.setTimestamp(4, trabajador.getUltimaJornada());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
@@ -54,12 +55,13 @@ public class TrabajadorDao {
 
     public void updateTrabajador(Trabajador trabajador) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update trabajador set nombre=?, apellidos=?, dni=?" + "where id_trabajador=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("update trabajador set nombre=?, apellidos=?, dni=?, ultima_jornada=?" + "where id_trabajador=?");
             // Parameters start with 1 
             preparedStatement.setString(1, trabajador.getNombre());
             preparedStatement.setString(2, trabajador.getApellidos());            
             preparedStatement.setString(3, trabajador.getDni());
-            preparedStatement.setInt(4, trabajador.getIdTrabajador());
+            preparedStatement.setTimestamp(4, trabajador.getUltimaJornada());
+            preparedStatement.setInt(5, trabajador.getIdTrabajador());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);            
@@ -75,10 +77,11 @@ public class TrabajadorDao {
                 ResultSet rs = statement.executeQuery("select * from trabajador;");
                 while (rs.next()) {
                     Trabajador trabajador = new Trabajador();
-                    trabajador.setIdTrabajador(rs.getInt("userid"));
-                    trabajador.setNombre(rs.getString("firstname"));
-                    trabajador.setApellidos(rs.getString("lastname"));
-                    trabajador.setDni(rs.getString("dni"));              
+                    trabajador.setIdTrabajador(rs.getInt("id_trabajador"));
+                    trabajador.setNombre(rs.getString("nombre"));
+                    trabajador.setApellidos(rs.getString("apellidos"));
+                    trabajador.setDni(rs.getString("dni"));
+                    trabajador.setUltimaJornada(rs.getTimestamp("ultima_jornada"));   
                     dbTrabajador.add(trabajador);
                 }
             } catch (SQLException e) {
@@ -101,10 +104,11 @@ public class TrabajadorDao {
             preparedStatement.setInt(1, idTrabajador);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                trabajador.setIdTrabajador(rs.getInt("userid"));
-                trabajador.setNombre(rs.getString("firstname"));
-                trabajador.setApellidos(rs.getString("lastname"));
+                trabajador.setIdTrabajador(rs.getInt("id_trabajador"));
+                trabajador.setNombre(rs.getString("nombre"));
+                trabajador.setApellidos(rs.getString("apellidos"));
                 trabajador.setDni(rs.getString("dni"));
+                trabajador.setUltimaJornada(rs.getTimestamp("ultima_jornada"));
             }
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);

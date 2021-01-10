@@ -18,7 +18,7 @@ public class DbUtil {
     private static Connection connection = null;
 
     public static Connection getConnection() {
-        String driver = "com.mysql.jdbc.Driver";
+        String driver = "com.mysql.jdbc.Driver";// Cambiar userdb por el nombre de la base de datos en MySQL
         String url="jdbc:mysql://localhost:3306/userdb?useTimezone=true&serverTimezone=UTC";
         String user="root";
         String password="root"; 
