@@ -169,6 +169,11 @@ body {
     margin: 3%;
 }
 
+.contentCenter {
+  margin-top: 3%;
+  text-align: center;
+}
+
 /*-------------------------------------------------------------------
                           LISTA PETICIONES
 --------------------------------------------------------------------*/
@@ -217,6 +222,22 @@ table {
   border: none;
   cursor: pointer;
   width: 22%;
+  opacity: 0.9;
+  font-size: x-large;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+
+/*-------------------------------------------------------------------
+                                FICHAR
+--------------------------------------------------------------------*/
+.btnFichar {
+  background-color: #2670AB;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 11%;
   opacity: 0.9;
   font-size: x-large;
   border-radius: 15px;

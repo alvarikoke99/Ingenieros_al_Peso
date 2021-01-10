@@ -29,12 +29,20 @@ function iniciarSesion() {
   }
   else if (usuario=="Pruebas"){
     if(password=="Pruebas"){
-      window.open("./user.html");
+      window.open("./fichar.html");
       window.close("./iniciarSesion.html");
     }else{
       window.alert("La contraseña no es válida");
     }
   }else{
     window.alert("Ese usuario no existe");
+  }
+}
+
+function fichar(elem) {
+  if (elem = "e") {
+    
+  } else {
+
   }
 }
