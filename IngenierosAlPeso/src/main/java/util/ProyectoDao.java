@@ -34,7 +34,7 @@ public class ProyectoDao {
             // Parameters start with 1 
             preparedStatement.setString(1, proyecto.getNombre());
             preparedStatement.setString(2, proyecto.getInformacion());            
-            preparedStatement.setInt(3, proyecto.getId_empresa());
+            preparedStatement.setInt(3, proyecto.getIdEmpresa());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
@@ -58,8 +58,8 @@ public class ProyectoDao {
             // Parameters start with 1 
             preparedStatement.setString(1, proyecto.getNombre());
             preparedStatement.setString(2, proyecto.getInformacion());            
-            preparedStatement.setInt(3, proyecto.getId_empresa());
-            preparedStatement.setInt(4, proyecto.getId_proyecto());
+            preparedStatement.setInt(3, proyecto.getIdEmpresa());
+            preparedStatement.setInt(4, proyecto.getIdProyecto());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);            
@@ -75,10 +75,10 @@ public class ProyectoDao {
                 ResultSet rs = statement.executeQuery("select * from proyecto;");
                 while (rs.next()) {
                     Proyecto proyecto = new Proyecto();
-                    proyecto.setId_proyecto(rs.getInt("id_proyecto"));
+                    proyecto.setIdProyecto(rs.getInt("id_proyecto"));
                     proyecto.setNombre(rs.getString("nombre"));
                     proyecto.setInformacion(rs.getString("informacion"));
-                    proyecto.setId_empresa(rs.getInt("id_empresa"));              
+                    proyecto.setIdEmpresa(rs.getInt("id_empresa"));              
                     dbProyecto.add(proyecto);
                 }
             } catch (SQLException e) {
@@ -101,10 +101,10 @@ public class ProyectoDao {
             preparedStatement.setInt(1, idProyecto);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                proyecto.setId_proyecto(rs.getInt("id_proyecto"));
+                proyecto.setIdProyecto(rs.getInt("id_proyecto"));
                 proyecto.setNombre(rs.getString("nombre"));
                 proyecto.setInformacion(rs.getString("informacion"));
-                proyecto.setId_empresa(rs.getInt("id_empresa"));
+                proyecto.setIdEmpresa(rs.getInt("id_empresa"));
             }
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);

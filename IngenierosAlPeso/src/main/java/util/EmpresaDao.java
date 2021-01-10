@@ -70,7 +70,7 @@ public class EmpresaDao {
                 ResultSet rs = statement.executeQuery("select * from empresa;");
                 while (rs.next()) {
                     Empresa empresa = new Empresa();
-                    empresa.setId_empresa(rs.getInt("id_empresa"));
+                    empresa.setIdEmpresa(rs.getInt("id_empresa"));
                     empresa.setNombre(rs.getString("nombre"));            
                     dbEmpresa.add(empresa);
                 }
@@ -94,7 +94,7 @@ public class EmpresaDao {
             preparedStatement.setInt(1, idEmpresa);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                empresa.setId_empresa(rs.getInt("id_empresa"));
+                empresa.setIdEmpresa(rs.getInt("id_empresa"));
                 empresa.setNombre(rs.getString("nombre")); 
             }
         } catch (SQLException e) {

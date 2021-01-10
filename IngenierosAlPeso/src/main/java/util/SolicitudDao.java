@@ -33,11 +33,11 @@ public class SolicitudDao {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into solicitud(tipo,fecha_ini,fecha_final,observacion,tramitada,id_trabajador) values (?, ?, ?, ?, ?, ?)");
             // Parameters start with 1 
             preparedStatement.setString(1, solicitud.getTipo());
-            preparedStatement.setDate(2, solicitud.getFecha_ini());            
-            preparedStatement.setString(3, solicitud.getFecha_final());
+            preparedStatement.setDate(2, solicitud.getFechaIni());            
+            preparedStatement.setDate(3, solicitud.getFechaFinal());
             preparedStatement.setString(4, solicitud.getObservacion());
             preparedStatement.setBoolean(5, solicitud.getTramitada());
-            preparedStatement.setInt(6, solicitud.getId_trabajador());
+            preparedStatement.setInt(6, solicitud.getIdTrabajador());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
@@ -60,12 +60,12 @@ public class SolicitudDao {
             PreparedStatement preparedStatement = connection.prepareStatement("update solicitud set tipo=?, fecha_ini=?, fecha_final=?, observacion=?, tramitada=?, id_trabajador=?" + "where id_solicitud=?");
             // Parameters start with 1 
             preparedStatement.setString(1, solicitud.getTipo());
-            preparedStatement.setDate(2, solicitud.getFecha_ini());            
-            preparedStatement.setString(3, solicitud.getFecha_final());
+            preparedStatement.setDate(2, solicitud.getFechaIni());            
+            preparedStatement.setDate(3, solicitud.getFechaFinal());
             preparedStatement.setString(4, solicitud.getObservacion());
             preparedStatement.setBoolean(5, solicitud.getTramitada());
-            preparedStatement.setInt(6, solicitud.getId_trabajador());
-            preparedStatement.setInt(7, solicitud.getId_solicitud());
+            preparedStatement.setInt(6, solicitud.getIdTrabajador());
+            preparedStatement.setInt(7, solicitud.getIdSolicitud());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);            
@@ -81,13 +81,13 @@ public class SolicitudDao {
                 ResultSet rs = statement.executeQuery("select * from solicitud;");
                 while (rs.next()) {
                     Solicitud solicitud = new Solicitud();
-                    solicitud.setId_solicitud(rs.getInt("id_solicitud"));
+                    solicitud.setIdSolicitud(rs.getInt("id_solicitud"));
                     solicitud.setTipo(rs.getString("tipo"));
-                    solicitud.setFecha_ini(rs.getString("fecha_ini"));
-                    solicitud.setFecha_final(rs.getString("fecha_final"));
-                    solicitud.setObservacion(rs.getInt("observacion"));
-                    solicitud.setTramitada(rs.getInt("tramitada"));
-                    solicitud.setId_trabajador(rs.getInt("id_trabajador"));
+                    solicitud.setFechaIni(rs.getDate("fecha_ini"));
+                    solicitud.setFechaFinal(rs.getDate("fecha_final"));
+                    solicitud.setObservacion(rs.getString("observacion"));
+                    solicitud.setTramitada(rs.getBoolean("tramitada"));
+                    solicitud.setIdTrabajador(rs.getInt("id_trabajador"));
                     dbSolicitud.add(solicitud);
                 }
             } catch (SQLException e) {
@@ -110,13 +110,13 @@ public class SolicitudDao {
             preparedStatement.setInt(1, idSolicitud);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                solicitud.setId_solicitud(rs.getInt("id_solicitud"));
+                solicitud.setIdSolicitud(rs.getInt("id_solicitud"));
                 solicitud.setTipo(rs.getString("tipo"));
-                solicitud.setFecha_ini(rs.getString("fecha_ini"));
-                solicitud.setFecha_final(rs.getString("fecha_final"));
-                solicitud.setObservacion(rs.getInt("observacion"));
-                solicitud.setTramitada(rs.getInt("tramitada"));
-                solicitud.setId_trabajador(rs.getInt("id_trabajador"));
+                solicitud.setFechaIni(rs.getDate("fecha_ini"));
+                solicitud.setFechaFinal(rs.getDate("fecha_final"));
+                solicitud.setObservacion(rs.getString("observacion"));
+                solicitud.setTramitada(rs.getBoolean("tramitada"));
+                solicitud.setIdTrabajador(rs.getInt("id_trabajador"));
             }
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);

@@ -59,7 +59,7 @@ public class TrabajadorDao {
             preparedStatement.setString(1, trabajador.getNombre());
             preparedStatement.setString(2, trabajador.getApellidos());            
             preparedStatement.setString(3, trabajador.getDni());
-            preparedStatement.setInt(4, trabajador.getId_trabajador());
+            preparedStatement.setInt(4, trabajador.getIdTrabajador());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);            
@@ -75,7 +75,7 @@ public class TrabajadorDao {
                 ResultSet rs = statement.executeQuery("select * from trabajador;");
                 while (rs.next()) {
                     Trabajador trabajador = new Trabajador();
-                    trabajador.setId_trabajador(rs.getInt("userid"));
+                    trabajador.setIdTrabajador(rs.getInt("userid"));
                     trabajador.setNombre(rs.getString("firstname"));
                     trabajador.setApellidos(rs.getString("lastname"));
                     trabajador.setDni(rs.getString("dni"));              
@@ -101,7 +101,7 @@ public class TrabajadorDao {
             preparedStatement.setInt(1, idTrabajador);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                trabajador.setId_trabajador(rs.getInt("userid"));
+                trabajador.setIdTrabajador(rs.getInt("userid"));
                 trabajador.setNombre(rs.getString("firstname"));
                 trabajador.setApellidos(rs.getString("lastname"));
                 trabajador.setDni(rs.getString("dni"));
