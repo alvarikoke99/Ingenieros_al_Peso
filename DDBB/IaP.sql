@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `Web`.`trabajador` (
   `nombre` VARCHAR(45) NULL,
   `apellidos` VARCHAR(45) NULL,
   `dni` VARCHAR(45) NULL,
+  `ultima_jornada` DATETIME NULL,
   PRIMARY KEY (`id_trabajador`))
 ENGINE = InnoDB;
 
@@ -53,6 +54,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `Web`.`empresa` (
   `id_empresa` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
   PRIMARY KEY (`id_empresa`))
 ENGINE = InnoDB;
 
@@ -125,7 +127,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Web`.`horas_jornada` (
   `horas` INT NULL,
-  `fecha` DATETIME NULL,
+  `fecha` DATE NULL,
   `id_proyecto` INT NOT NULL,
   `id_trabajador` INT NOT NULL,
   INDEX `fk_horas_jornada_proyecto1_idx` (`id_proyecto` ASC) VISIBLE,
@@ -138,6 +140,30 @@ CREATE TABLE IF NOT EXISTS `Web`.`horas_jornada` (
   CONSTRAINT `fk_horas_jornada_trabajador1`
     FOREIGN KEY (`id_trabajador`)
     REFERENCES `Web`.`trabajador` (`id_trabajador`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Web`.`registro_jornada`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Web`.`registro_jornada` (
+  `fecha_entrada` DATETIME NOT NULL,
+  `fecha_salida` DATETIME NOT NULL,
+  `id_jornada` INT NOT NULL,
+  `id_trabajador` INT NOT NULL,
+  `id_proyecto` INT NOT NULL,
+  INDEX `fk_registro_jornada_trabajador1_idx` (`id_trabajador` ASC) VISIBLE,
+  INDEX `fk_registro_jornada_proyecto1_idx` (`id_proyecto` ASC) VISIBLE,
+  CONSTRAINT `fk_registro_jornada_trabajador1`
+    FOREIGN KEY (`id_trabajador`)
+    REFERENCES `Web`.`trabajador` (`id_trabajador`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_registro_jornada_proyecto1`
+    FOREIGN KEY (`id_proyecto`)
+    REFERENCES `Web`.`proyecto` (`id_proyecto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
