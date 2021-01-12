@@ -71,7 +71,7 @@ public class TrabajadorController extends HttpServlet{
         if (id_trabajador == null || id_trabajador.isEmpty()) {
             dao.addTrabajador(trabajador);
         } else {
-            trabajador.setId_trabajador(Integer.parseInt(id_trabajador));
+            trabajador.setIdTrabajador(Integer.parseInt(id_trabajador));
             dao.updateTrabajador(trabajador);
         }
         //request.setAttribute("trabajadores", /*dao.getAllUsers()*/);
