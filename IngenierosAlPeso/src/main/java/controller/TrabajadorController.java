@@ -16,7 +16,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import model.Trabajador;
+import model.RelacionEmpresaTrabajador;
+import model.RelacionProyectoTrabajador;
 import util.TrabajadorDao;
+import util.EmpresaTrabajadorDao;
+import util.ProyectoTrabajadorDao;
 //import util.Log;
 /**
  *
@@ -26,12 +30,14 @@ public class TrabajadorController extends HttpServlet{
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "_";
     private static String LIST_TRABAJADORES = "_";
-    private TrabajadorDao dao;
+    private TrabajadorDao daoTrabajador;
+    private EmpresaTrabajadorDao daoEmpresa;
+    private ProyectoTrabajadorDao daoProyecto;
     //private Log log;
     
     public TrabajadorController () {
         super();
-        dao = new TrabajadorDao();
+        daoTrabajador = new TrabajadorDao();
     }
 
     @Override
@@ -41,13 +47,13 @@ public class TrabajadorController extends HttpServlet{
         
         if (action.equalsIgnoreCase("delete")) {
             int id_trabajador = Integer.parseInt(request.getParameter("id_trabajador"));
-            dao.deleteTrabajador(id_trabajador);
+            daoTrabajador.deleteTrabajador(id_trabajador);
             forward = LIST_TRABAJADORES;
             //request.setAttribute("trabajadores", /*dao.getAllUsers()*/);
         } else if (action.equalsIgnoreCase("edit")) {
             forward = INSERT_OR_EDIT;
             int id_trabajador = Integer.parseInt(request.getParameter("id_trabajador"));
-            Trabajador trabajador = dao.getTrabajadorById(id_trabajador);
+            Trabajador trabajador = daoTrabajador.getTrabajadorById(id_trabajador);
             request.setAttribute("trabajador", trabajador);
         } else if (action.equalsIgnoreCase("listTrabajador")) {
             forward = LIST_TRABAJADORES;
@@ -69,10 +75,10 @@ public class TrabajadorController extends HttpServlet{
         trabajador.setApellidos(request.getParameter("_")); 
         String id_trabajador = request.getParameter("_");
         if (id_trabajador == null || id_trabajador.isEmpty()) {
-            dao.addTrabajador(trabajador);
+            daoTrabajador.addTrabajador(trabajador);
         } else {
             trabajador.setIdTrabajador(Integer.parseInt(id_trabajador));
-            dao.updateTrabajador(trabajador);
+            daoTrabajador.updateTrabajador(trabajador);
         }
         //request.setAttribute("trabajadores", /*dao.getAllUsers()*/);
         RequestDispatcher view = request.getRequestDispatcher(LIST_TRABAJADORES);            
