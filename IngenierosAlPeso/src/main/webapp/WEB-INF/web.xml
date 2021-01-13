@@ -10,7 +10,7 @@
     </session-config>
     <error-page>
         <error-code>404</error-code>
-        <location>/error-404.html</location>
+        <location>/error404.html</location>
         <!-- /src/main/webapp/error-404.html-->
     </error-page>
     <error-page>
