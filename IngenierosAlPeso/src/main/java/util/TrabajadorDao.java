@@ -115,4 +115,23 @@ public class TrabajadorDao {
         }
         return trabajador;
     }
+    
+    public Trabajador getTrabajadorByDni(String dni) {
+        Trabajador trabajador = new Trabajador();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from trabajador where dni=?");
+            preparedStatement.setString(1, dni);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                trabajador.setIdTrabajador(rs.getInt("id_trabajador"));
+                trabajador.setNombre(rs.getString("nombre"));
+                trabajador.setApellidos(rs.getString("apellidos"));
+                trabajador.setDni(rs.getString("dni"));
+                trabajador.setUltimaJornada(rs.getTimestamp("ultima_jornada"));
+            }
+        } catch (SQLException e) {
+            Log.logdb.error("SQL Exception: " + e);
+        }
+        return trabajador;
+    }
 }
