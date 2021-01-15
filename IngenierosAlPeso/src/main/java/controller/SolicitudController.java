@@ -13,10 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 import javax.servlet.RequestDispatcher;
 import model.Solicitud;
+import model.Trabajador;
 import util.SolicitudDao;
+import util.TrabajadorDao;
 import util.Log;
 
 /**
@@ -27,13 +29,15 @@ public class SolicitudController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_USER = "/listUser.jsp";
+    private static String LIST_SOLICITUDES = "/listUser.jsp";
     private SolicitudDao dao;
+    private TrabajadorDao daoTrabajador;
     private Log log;
 
     public SolicitudController() {
         super();
         dao = new SolicitudDao();
+        daoTrabajador = new TrabajadorDao();
     }
    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -46,28 +50,27 @@ public class SolicitudController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String forward = "";
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String forward;
         Log.log.info("Entramos en el doGet");
         String action = request.getParameter("action");
         Log.log.info("Recogemos el parametro action con valor " + action);
         if (action.equalsIgnoreCase("delete")) {
             Log.log.info("Parametro valor DELETE");
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            dao.deleteUser(userId);
-            forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());
+            int idSolicitud = Integer.parseInt(request.getParameter("solicitudId"));
+            dao.deleteSolicitud(idSolicitud);
+            forward = LIST_SOLICITUDES;
+            request.setAttribute("solicitudes", dao.getAllSolicitudes());
         } else if (action.equalsIgnoreCase("edit")) {
             Log.log.info("Parametro valor EDIT");
             forward = INSERT_OR_EDIT;
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            User user = dao.getUserById(userId);
-            request.setAttribute("user", user);
-        } else if (action.equalsIgnoreCase("listUser")) {
+            int idSolicitud = Integer.parseInt(request.getParameter("userId"));
+            Solicitud solicitud = dao.getSolicitudById(idSolicitud);
+            request.setAttribute("solicitud", solicitud);
+        } else if (action.equalsIgnoreCase("listSolicitudes")) {
             Log.log.info("Parametro valor LIST");
-            forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());
+            forward = LIST_SOLICITUDES;
+            request.setAttribute("solicitudes", dao.getAllSolicitudes());
         } else {
             Log.log.info("Parametro valor vacio vamos a insertar");
             forward = INSERT_OR_EDIT;
@@ -86,24 +89,31 @@ public class SolicitudController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         Log.log.info("Entramos por el doPost");
 /*        processRequest(request, response); */
-        User user = new User();
-        user.setFirstName(request.getParameter("firstName"));
-        user.setLastName(request.getParameter("lastName"));                
-        user.setEmail(request.getParameter("email"));
-        String userid = request.getParameter("userid");
-        if (userid == null || userid.isEmpty()) {
+        Solicitud solicitud = new Solicitud();
+        solicitud.setTipo(request.getParameter("tipo"));
+        Date fechaIni = Date.valueOf(request.getParameter("fechaIni"));
+        solicitud.setFechaIni(fechaIni); 
+        Date fechaFinal = Date.valueOf(request.getParameter("fechaFinal"));
+        solicitud.setFechaIni(fechaFinal); 
+        solicitud.setObservacion(request.getParameter("observacion"));
+        solicitud.setTramitada(false);
+        
+        String dni = request.getParameter("dni");
+        Trabajador trabajador = daoTrabajador.getTrabajadorByDni(dni);
+        solicitud.setIdTrabajador(trabajador.getIdTrabajador());
+        
+        /*if (dni == null || dni.isEmpty()) {
             Log.log.info("Vamos a añadir el usuario");
-            dao.addUser(user);
+            dao.addUser(solicitud);
         } else {
-            user.setUserid(Integer.parseInt(userid));
-            dao.updateUser(user);
-        }
-        request.setAttribute("users", dao.getAllUsers());
-        RequestDispatcher view = request.getRequestDispatcher(LIST_USER);            
+            solicitud.setUserid(Integer.parseInt(userid));
+            dao.updateUser(solicitud);
+        }*/
+        request.setAttribute("solicitudes", dao.getAllSolicitudes());
+        RequestDispatcher view = request.getRequestDispatcher(LIST_SOLICITUDES);            
         view.forward(request, response);
         return;
     }
