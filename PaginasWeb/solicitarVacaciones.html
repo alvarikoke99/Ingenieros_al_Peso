@@ -18,7 +18,7 @@
 
         <div class="topnav" id="topnav">
             <a class="enlace" href="fichar.html">Fichar</a>
-            <a class="enlace" id="idPag" href="solicitarVacaciones.html">Solicitar vacaciones</a>
+            <a class="enlace" id="idPag" href="solicitarVacaciones.html">Solicitar días libres</a>
             <a class="enlace" href="misProyectos.html">Mis proyectos</a>
             <a class="enlace" href="misDatos.html">Mis datos</a>
             <a class="enlace" href="bandejaEntrada.html">Mis mensajes</a>
@@ -27,13 +27,23 @@
 
         <!-- Contenido -->    
         <div class="contentCenter">
-            <h2>Solicitar vacaciones:</h2><br>
+            <h2>Solicitar días libres:</h2>
+            <label>DNI:</label>
+            <input type="text" id="dni" placeholder="Introduzca su DNI" required><br><br>
             <label>Desde:</label>
             <input type="date" id="entrada" required><br><br>
             <label>Hasta:</label>
             <input type="date" id="salida" required><br><br>
             <label>Observaciones:</label><br><br>
             <textarea id="observaciones" rows="15" cols="50" required></textarea><br><br>
+            <label class="contenido">Días libres
+                <input type="radio" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="contenido">Vacaciones
+                <input type="radio" name="radio">
+                <span class="checkmark"></span>
+            </label> <br><br>
             <button type="submit" class="btnAdd">Mandar solicitud</button>
         </div>
 
