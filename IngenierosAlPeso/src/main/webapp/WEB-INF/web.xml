@@ -3,6 +3,54 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
    version="4.0">
+    <servlet>
+        <servlet-name>EmpresaController</servlet-name>
+        <servlet-class>controller.EmpresaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>JornadaController</servlet-name>
+        <servlet-class>controller.JornadaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProyectoController</servlet-name>
+        <servlet-class>controller.ProyectoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SolicitudController</servlet-name>
+        <servlet-class>controller.SolicitudController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TrabajadorController</servlet-name>
+        <servlet-class>controller.TrabajadorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ErrorHandler</servlet-name>
+        <servlet-class>util.ErrorHandler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EmpresaController</servlet-name>
+        <url-pattern>/EmpresaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JornadaController</servlet-name>
+        <url-pattern>/JornadaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProyectoController</servlet-name>
+        <url-pattern>/ProyectoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SolicitudController</servlet-name>
+        <url-pattern>/SolicitudController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TrabajadorController</servlet-name>
+        <url-pattern>/TrabajadorController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ErrorHandler</servlet-name>
+        <url-pattern>/ErrorHandler</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
