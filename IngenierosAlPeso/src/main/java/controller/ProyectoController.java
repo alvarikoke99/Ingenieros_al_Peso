@@ -27,7 +27,7 @@ public class ProyectoController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_USER = "/listUser.jsp";
+    private static String LIST_PROYECTOS = "/listUser.jsp";
     private ProyectoDao dao;
     private Log log;
 
@@ -46,28 +46,27 @@ public class ProyectoController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String forward = "";
         Log.log.info("Entramos en el doGet");
         String action = request.getParameter("action");
         Log.log.info("Recogemos el parametro action con valor " + action);
         if (action.equalsIgnoreCase("delete")) {
             Log.log.info("Parametro valor DELETE");
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            dao.deleteUser(userId);
-            forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());
+            int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
+            dao.deleteProyecto(idProyecto);
+            forward = LIST_PROYECTOS;
+            request.setAttribute("proyectos", dao.getAllProyectos());
         } else if (action.equalsIgnoreCase("edit")) {
             Log.log.info("Parametro valor EDIT");
             forward = INSERT_OR_EDIT;
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            User user = dao.getUserById(userId);
-            request.setAttribute("user", user);
-        } else if (action.equalsIgnoreCase("listUser")) {
+            int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
+            Proyecto proyecto = dao.getProyectoById(idProyecto);
+            request.setAttribute("proyecto", proyecto);
+            } else if (action.equalsIgnoreCase("listProyectos")) {
             Log.log.info("Parametro valor LIST");
-            forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());
+            forward = LIST_PROYECTOS;
+            request.setAttribute("proyectos", dao.getAllProyectos());
         } else {
             Log.log.info("Parametro valor vacio vamos a insertar");
             forward = INSERT_OR_EDIT;
@@ -90,20 +89,20 @@ public class ProyectoController extends HttpServlet {
             throws ServletException, IOException {
         Log.log.info("Entramos por el doPost");
 /*        processRequest(request, response); */
-        User user = new User();
-        user.setFirstName(request.getParameter("firstName"));
-        user.setLastName(request.getParameter("lastName"));                
-        user.setEmail(request.getParameter("email"));
-        String userid = request.getParameter("userid");
-        if (userid == null || userid.isEmpty()) {
+        Proyecto proyecto = new Proyecto();
+        proyecto.setNombre(request.getParameter("nombre"));
+        proyecto.setInformacion(request.getParameter("info"));                
+        proyecto.setIdEmpresa(Integer.parseInt(request.getParameter("idEmpresa")));
+        String idProyecto = request.getParameter("userid");
+        if (idProyecto == null || idProyecto.isEmpty()) {
             Log.log.info("Vamos a añadir el usuario");
-            dao.addUser(user);
+            dao.addProyecto(proyecto);
         } else {
-            user.setUserid(Integer.parseInt(userid));
-            dao.updateUser(user);
+            proyecto.setIdProyecto(Integer.parseInt(idProyecto));
+            dao.updateProyecto(proyecto);
         }
-        request.setAttribute("users", dao.getAllUsers());
-        RequestDispatcher view = request.getRequestDispatcher(LIST_USER);            
+        request.setAttribute("proyectos", dao.getAllProyectos());
+        RequestDispatcher view = request.getRequestDispatcher(LIST_PROYECTOS);            
         view.forward(request, response);
         return;
     }

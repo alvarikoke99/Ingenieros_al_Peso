@@ -27,7 +27,7 @@ public class EmpresaController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_USER = "/listUser.jsp";
+    private static String LIST_EMPRESAS = "/listUser.jsp";
     private EmpresaDao dao;
     private Log log;
 
@@ -54,20 +54,20 @@ public class EmpresaController extends HttpServlet {
         Log.log.info("Recogemos el parametro action con valor " + action);
         if (action.equalsIgnoreCase("delete")) {
             Log.log.info("Parametro valor DELETE");
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            dao.deleteUser(userId);
-            forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());
+            int idEmpresa = Integer.parseInt(request.getParameter("idEmpresa"));
+            dao.deleteEmpresa(idEmpresa);
+            forward = LIST_EMPRESAS;
+            request.setAttribute("empresas", dao.getAllEmpresas());
         } else if (action.equalsIgnoreCase("edit")) {
             Log.log.info("Parametro valor EDIT");
             forward = INSERT_OR_EDIT;
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            Empresa user = dao.getUserById(userId);
-            request.setAttribute("user", user);
-        } else if (action.equalsIgnoreCase("listUser")) {
+            int idEmpresa = Integer.parseInt(request.getParameter("idEmpresa"));
+            Empresa empresa = dao.getEmpresaById(idEmpresa);
+            request.setAttribute("empresa", empresa);
+        } else if (action.equalsIgnoreCase("listEmpresas")) {
             Log.log.info("Parametro valor LIST");
-            forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());
+            forward = LIST_EMPRESAS;
+            request.setAttribute("empresas", dao.getAllEmpresas());
         } else {
             Log.log.info("Parametro valor vacio vamos a insertar");
             forward = INSERT_OR_EDIT;
@@ -86,24 +86,22 @@ public class EmpresaController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Log.log.info("Entramos por el doPost");
 /*        processRequest(request, response); */
-        User user = new User();
-        user.setFirstName(request.getParameter("firstName"));
-        user.setLastName(request.getParameter("lastName"));                
-        user.setEmail(request.getParameter("email"));
-        String userid = request.getParameter("userid");
-        if (userid == null || userid.isEmpty()) {
+        Empresa empresa = new Empresa();
+        empresa.setNombre(request.getParameter("nombre"));
+        empresa.setDescripcion(request.getParameter("descripcion"));                
+        String idEmpresa = request.getParameter("idEmpresa");
+        if (idEmpresa == null || idEmpresa.isEmpty()) {
             Log.log.info("Vamos a añadir el usuario");
-            dao.addUser(user);
+            dao.addEmpresa(empresa);
         } else {
-            user.setUserid(Integer.parseInt(userid));
-            dao.updateUser(user);
+            empresa.setIdEmpresa(Integer.parseInt(idEmpresa));
+            dao.updateEmpresa(empresa);
         }
-        request.setAttribute("users", dao.getAllUsers());
-        RequestDispatcher view = request.getRequestDispatcher(LIST_USER);            
+        request.setAttribute("empresas", dao.getAllEmpresas());
+        RequestDispatcher view = request.getRequestDispatcher(LIST_EMPRESAS);            
         view.forward(request, response);
         return;
     }
