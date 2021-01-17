@@ -32,7 +32,7 @@ public class HorasJornadaDao {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into horas_jornada(horas, fecha, id_proyecto, id_trabajador) values (?, ?, ?, ?)");
             // Parameters start with 1 
-            preparedStatement.setInt(1, horasJornada.getHoras());
+            preparedStatement.setFloat(1, horasJornada.getHoras());
             preparedStatement.setDate(2, horasJornada.getFecha());            
             preparedStatement.setInt(3, horasJornada.getIdProyecto());
             preparedStatement.setInt(4, horasJornada.getIdTrabajador());
@@ -51,7 +51,7 @@ public class HorasJornadaDao {
                 ResultSet rs = statement.executeQuery("select * from horas_jornada;");
                 while (rs.next()) {
                     HorasJornada trabajador = new HorasJornada();
-                    trabajador.setHoras(rs.getInt("userid"));
+                    trabajador.setHoras(rs.getFloat("horas"));
                     trabajador.setFecha(rs.getDate("fecha"));
                     trabajador.setIdProyecto(rs.getInt("id_proyecto"));
                     trabajador.setIdTrabajador(rs.getInt("id_trabajador"));              

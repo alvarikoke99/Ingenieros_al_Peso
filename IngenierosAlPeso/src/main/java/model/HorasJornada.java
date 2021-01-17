@@ -12,16 +12,16 @@ import java.sql.Date;
  * @author Usuario
  */
 public class HorasJornada {
-    private int horas;
+    private float horas;
     private Date fecha;
     private int idProyecto;
     private int idTrabajador;
 
-    public int getHoras() {
+    public float getHoras() {
         return horas;
     }
 
-    public void setHoras(int horas) {
+    public void setHoras(float horas) {
         this.horas = horas;
     }
 

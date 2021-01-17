@@ -13,12 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Timestamp;
+import java.sql.Date;
 import javax.servlet.RequestDispatcher;
 import model.HorasJornada;
 import model.RegistroJornada;
+import model.Trabajador;
 import util.HorasJornadaDao;
 import util.RegistroJornadaDao;
+import util.TrabajadorDao;
 import util.Log;
 
 /**
@@ -28,15 +31,18 @@ import util.Log;
 public class JornadaController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_USER = "/listUser.jsp";
+    private static String FICHAR = "/user.jsp";
+    private static String LIST_HORAS = "/listUser.jsp";
     private HorasJornadaDao daoHoras;
     private RegistroJornadaDao daoRegistro;
+    private TrabajadorDao daoTrabajador;
     private Log log;
 
     public JornadaController() {
         super();
+        daoRegistro = new RegistroJornadaDao();
         daoHoras = new HorasJornadaDao();
+        daoTrabajador = new TrabajadorDao();
     }
    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -55,25 +61,27 @@ public class JornadaController extends HttpServlet {
         Log.log.info("Entramos en el doGet");
         String action = request.getParameter("action");
         Log.log.info("Recogemos el parametro action con valor " + action);
-        if (action.equalsIgnoreCase("delete")) {
-            Log.log.info("Parametro valor DELETE");
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            daoHoras.deleteUser(userId);
-            forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());
-        } else if (action.equalsIgnoreCase("edit")) {
-            Log.log.info("Parametro valor EDIT");
-            forward = INSERT_OR_EDIT;
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            User user = daoHoras.getUserById(userId);
-            request.setAttribute("user", user);
-        } else if (action.equalsIgnoreCase("listUser")) {
-            Log.log.info("Parametro valor LIST");
-            forward = LIST_USER;
-            request.setAttribute("users", daoHoras.getAllUsers());
+       
+        if (action.equalsIgnoreCase("listHoras")) {
+            String dni = request.getParameter("dni");
+            Trabajador trabajador = daoTrabajador.getTrabajadorByDni(dni);
+            int idTrabajador = trabajador.getIdTrabajador();
+            int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
+            request.setAttribute("horas", daoHoras.getHorasJornadaById(idProyecto, idTrabajador));
+            forward = LIST_HORAS;
+        } else if (action.equalsIgnoreCase("listHorasProyecto")) {
+            int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
+            request.setAttribute("horas", daoHoras.getHorasJornadaByIdProyecto(idProyecto)); 
+            forward = LIST_HORAS;
+        } else if (action.equalsIgnoreCase("listHorasTrabajador")) {
+            String dni = request.getParameter("dni");
+            Trabajador trabajador = daoTrabajador.getTrabajadorByDni(dni);
+            int idTrabajador = trabajador.getIdTrabajador();
+            request.setAttribute("horas", daoHoras.getHorasJornadaByIdTrabajador(idTrabajador));
+            forward = LIST_HORAS;
         } else {
-            Log.log.info("Parametro valor vacio vamos a insertar");
-            forward = INSERT_OR_EDIT;
+            Log.log.info("Vamos a fichar");
+            forward = FICHAR;
         }
         RequestDispatcher view = request.getRequestDispatcher(forward);
         view.forward(request, response);
@@ -91,22 +99,55 @@ public class JornadaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String forward = "";
         Log.log.info("Entramos por el doPost");
+        String action = request.getParameter("action");
 /*        processRequest(request, response); */
-        User user = new User();
-        user.setFirstName(request.getParameter("firstName"));
-        user.setLastName(request.getParameter("lastName"));                
-        user.setEmail(request.getParameter("email"));
-        String userid = request.getParameter("userid");
-        if (userid == null || userid.isEmpty()) {
-            Log.log.info("Vamos a añadir el usuario");
-            dao.addUser(user);
-        } else {
-            user.setUserid(Integer.parseInt(userid));
-            dao.updateUser(user);
+        
+        String dni = request.getParameter("dni");
+        Trabajador trabajador = daoTrabajador.getTrabajadorByDni(dni);
+        int idTrabajador = trabajador.getIdTrabajador();
+        int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
+        Timestamp fechaActual = new Timestamp (System.currentTimeMillis());
+        Timestamp ultimaFecha = trabajador.getUltimaJornada();
+        
+        if (action.equalsIgnoreCase("registroEntrada")) {
+            Log.log.info("Parametro valor ENTRADA");
+            RegistroJornada registro = new RegistroJornada();
+            registro.setFechaEntrada(fechaActual);
+            registro.setFechaSalida(fechaActual);
+            registro.setIdTrabajador(idTrabajador);
+            registro.setIdProyecto(idProyecto);
+            daoRegistro.addRegistro(registro);
+            
+            RegistroJornada ultimoRegistro = daoRegistro.getRegistroByFechaSalida(idTrabajador, idProyecto, ultimaFecha);
+            if(ultimoRegistro != null) {
+                long entrada = ultimoRegistro.getFechaEntrada().getTime();
+                long salida = ultimoRegistro.getFechaSalida().getTime();
+                long segundosTotales = (salida - entrada) / 1000;
+                float horasTrabajadas = (float) segundosTotales / 3600;
+                Date fechaJornada = new Date(entrada);
+                
+                HorasJornada jornada = new HorasJornada();
+                jornada.setHoras(horasTrabajadas);
+                jornada.setFecha(fechaJornada);
+                jornada.setIdProyecto(idProyecto);
+                jornada.setIdTrabajador(idTrabajador);
+                daoHoras.addHorasJornada(jornada);
+            }
+            
+            trabajador.setUltimaJornada(fechaActual);
+            daoTrabajador.updateTrabajador(trabajador);
+            
+        } else if (action.equalsIgnoreCase("registroSalida")) {
+            Log.log.info("Parametro valor SALIDA");
+            RegistroJornada registro = daoRegistro.getRegistroByFechaEntrada(idTrabajador, idProyecto, ultimaFecha);
+            registro.setFechaSalida(fechaActual);
+            daoRegistro.updateFechaSalida(registro);
+            trabajador.setUltimaJornada(fechaActual);
+            daoTrabajador.updateTrabajador(trabajador);
         }
-        request.setAttribute("users", dao.getAllUsers());
-        RequestDispatcher view = request.getRequestDispatcher(LIST_USER);            
+        RequestDispatcher view = request.getRequestDispatcher(FICHAR);            
         view.forward(request, response);
         return;
     }

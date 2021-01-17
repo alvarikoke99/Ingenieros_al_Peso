@@ -99,7 +99,7 @@ public class RegistroJornadaDao {
        
     }
 
-    public List<RegistroJornada> getRegistroByIdTrabajador(int idTrabajador) {
+    public List<RegistroJornada> getRegistrosByIdTrabajador(int idTrabajador) {
         List<RegistroJornada> dbRegistro = new ArrayList<RegistroJornada>();
         if (connection != null)
         {
@@ -128,32 +128,43 @@ public class RegistroJornadaDao {
         }
     }
     
-    public List<RegistroJornada> getRegistroByFechaSalida(Timestamp fecha) {
-        List<RegistroJornada> dbRegistro = new ArrayList<RegistroJornada>();
-        if (connection != null)
-        {
-            try {
-                PreparedStatement preparedStatement = connection.prepareStatement("select * from registro_jornada where fecha_salida=?;");
-                // Parameters start with 1 
-                preparedStatement.setTimestamp(1, fecha);
-                ResultSet rs = preparedStatement.executeQuery();
-                while (rs.next()) {
-                    RegistroJornada relacion = new RegistroJornada();
-                    relacion.setFechaEntrada(rs.getTimestamp("fecha_entrada"));
-                    relacion.setFechaSalida(rs.getTimestamp("fecha_salida"));
-                    relacion.setIdTrabajador(rs.getInt("id_trabajador"));
-                    relacion.setIdProyecto(rs.getInt("id_proyecto"));             
-                    dbRegistro.add(relacion);
-                }
-            } catch (SQLException e) {
-                Log.logdb.error("SQL Exception: " + e);            
+    public RegistroJornada getRegistroByFechaEntrada(int idTrabajador, int idProyecto, Timestamp fecha) {
+        RegistroJornada registro = new RegistroJornada();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from registro_jornada where fecha_entrada=? and id_trabajador=? and id_proyecto=?;");
+            preparedStatement.setTimestamp(1, fecha);
+            preparedStatement.setInt(2, idTrabajador);
+            preparedStatement.setInt(3, idProyecto);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                registro.setFechaEntrada(rs.getTimestamp("fecha_entrada"));
+                registro.setFechaSalida(rs.getTimestamp("fecha_salida"));
+                registro.setIdTrabajador(rs.getInt("id_trabajador"));
+                registro.setIdProyecto(rs.getInt("id_proyecto")); 
             }
-            return dbRegistro;
+        } catch (SQLException e) {
+            Log.logdb.error("SQL Exception: " + e);
         }
-        else
-        {
-            Log.logdb.error("No hay conexion con la bbdd");
-            return null;
+        return registro;
+    }
+    
+    public RegistroJornada getRegistroByFechaSalida(int idTrabajador, int idProyecto, Timestamp fecha) {
+        RegistroJornada registro = new RegistroJornada();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from registro_jornada where fecha_salida=? and id_trabajador=? and id_proyecto=?;");
+            preparedStatement.setTimestamp(1, fecha);
+            preparedStatement.setInt(2, idTrabajador);
+            preparedStatement.setInt(3, idProyecto);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                registro.setFechaEntrada(rs.getTimestamp("fecha_entrada"));
+                registro.setFechaSalida(rs.getTimestamp("fecha_salida"));
+                registro.setIdTrabajador(rs.getInt("id_trabajador"));
+                registro.setIdProyecto(rs.getInt("id_proyecto")); 
+            }
+        } catch (SQLException e) {
+            Log.logdb.error("SQL Exception: " + e);
         }
+        return registro;
     }
 }
