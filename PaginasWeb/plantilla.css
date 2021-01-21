@@ -13,6 +13,11 @@ h1{
     font-size: 300%;
 }
 
+h2{
+  color: rgb(7, 7, 7);
+  text-align: center;
+}
+
 .buttonIndex{
     background-color: rgba(27, 41, 168, 0.788);
     border-radius: 15px;
@@ -38,11 +43,31 @@ h1{
     position: absolute;
     left: 0;
     width: 500px;
-    height: 420px;
+    height: 480px;
     margin: 5%;
     padding: 25px;
     background-color: white;
     border-radius: 15px;
+}
+
+.containerRight {
+  position: absolute;
+  right: 0;
+  width: 500px;
+  height: 480px;
+  margin: 5%;
+  padding: 25px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.containerRight input[type=text], input[type=password] {
+  padding: 15px;
+  margin: 5px 0 30px 0;
+  border: none;
+  background: #f1f1f1;
+  width: 94%;
+  border-radius: 15px;
 }
 
 .container input[type=text], input[type=password] {
@@ -53,6 +78,11 @@ h1{
   width: 94%;
   border-radius: 15px;
 }
+
+.containerRight input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+} 
 
 .container input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;

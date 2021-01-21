@@ -15,6 +15,17 @@ function annadirUsuario() {
     eliminar.innerHTML = "eliminar";
 }
 
+function session(id){
+  if (id=="admin"){
+    window.open("./iniciarSesionRRHH.html");
+    window.close("./index.html");
+  } else {
+    window.open("./iniciarSesionUser.html");
+    window.close("./index.html");
+  }
+
+}
+
 function iniciarSesion() {
   usuario = document.getElementById("idUser").value;
   password = document.getElementById("idPsw").value;
@@ -22,7 +33,7 @@ function iniciarSesion() {
   if(usuario=="Admin"){
     if(password=="RRHH"){
       window.open("./listaUsuario.html");
-      window.close("./iniciarSesion.html");
+      window.close("./iniciarSesionRRHH.html");
     }else{
       window.alert("La contraseña no es válida");
     }
@@ -30,7 +41,7 @@ function iniciarSesion() {
   else if (usuario=="Pruebas"){
     if(password=="Pruebas"){
       window.open("./fichar.html");
-      window.close("./iniciarSesion.html");
+      window.close("./iniciarSesionUser.html");
     }else{
       window.alert("La contraseña no es válida");
     }
@@ -44,5 +55,23 @@ function fichar(elem) {
     
   } else {
 
+  }
+}
+
+function solicitarInforme() {
+  if(document.getElementById("empresa").checked){
+
+  }else if(document.getElementById("proyecto").checked){
+
+  }else if(document.getElementById("empleado").checked){
+
+  }else if(document.getElementById("semanal").checked){
+
+  }else if(document.getElementById("mensual").checked){
+
+  }else if(document.getElementById("anual").checked){
+
+  }else {
+    
   }
 }

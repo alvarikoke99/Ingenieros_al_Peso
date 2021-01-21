@@ -33,14 +33,51 @@
             </div>
             <a class="enlace" href="listaPeticiones.html">Lista peticiones</a>
             <a class="enlace" id="idPag"  href="solicitarInforme.html">Solicitar informe</a>
-            <a class="enlace" href="listaUsuario.html">Lista de usuarios</a>
-            <a class="enlace" href="annadirUser.html">Añadir usuario</a>
+            <a class="enlace" href="listaUsuario.html">Lista de trabajadores</a>
+            <a class="enlace" href="annadirUser.html">Añadir trabajador</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido --> 
-        <div class="content">
-            
+        <div class="contentCenter">
+            <h2>Solicitar informe:</h2>
+            <label>Parámetro de búsqueda:</label><br><br>
+            <div>
+                <label class="contenido">Empresa
+                    <input type="radio" name="tipo" id="empresa">
+                    <span class="checkmark"></span>
+                  </label>
+                <label class="contenido">Proyecto
+                    <input type="radio" name="tipo" id="proyecto">
+                    <span class="checkmark"></span>
+                </label> 
+                <label class="contenido">Empleado
+                    <input type="radio" name="tipo" id="empleado">
+                    <span class="checkmark"></span>
+                </label><br><br>
+            </div>
+            <div>
+                <label>Mostrar formato:</label><br><br>
+                <label class="contenido">Semanal
+                    <input type="radio" name="tiempo" id="semanal">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="contenido">Mensual
+                    <input type="radio" name="tiempo" id="mensual">
+                    <span class="checkmark"></span>
+                </label> 
+                <label class="contenido">Anual
+                    <input type="radio" name="tiempo" id="anual">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="contenido">Periodo determinado
+                    <input type="radio" name="tiempo" id="periodo">
+                    <span class="checkmark"></span>
+                </label><br><br>
+            </div>
+            <form action="informe.html">
+                <button type="submit" class="btnAdd" onclick="solicitarInforme()">Solicitar informe</button><br><br>
+            </form>
         </div>   
         
 
