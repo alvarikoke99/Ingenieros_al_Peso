@@ -21,15 +21,19 @@ import model.RelacionProyectoTrabajador;
 import util.TrabajadorDao;
 import util.EmpresaTrabajadorDao;
 import util.ProyectoTrabajadorDao;
-//import util.Log;
+import util.Log;
 /**
  *
  * @author Usuario
  */
 public class TrabajadorController extends HttpServlet{
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "_";
+    private static String INSERT = "_";
     private static String LIST_TRABAJADORES = "_";
+    private static String INSERT_EMPRESA = "_";
+    private static String LIST_EMPRESAS = "_";
+    private static String INSERT_PROYECTO = "_";
+    private static String LIST_PROYECTOS = "_";
     private TrabajadorDao daoTrabajador;
     private EmpresaTrabajadorDao daoEmpresa;
     private ProyectoTrabajadorDao daoProyecto;
@@ -38,50 +42,108 @@ public class TrabajadorController extends HttpServlet{
     public TrabajadorController () {
         super();
         daoTrabajador = new TrabajadorDao();
+        daoEmpresa = new EmpresaTrabajadorDao();
+        daoProyecto = new ProyectoTrabajadorDao();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String forward = "";
+        String forward;
+        Log.log.info("Entramos en el doGet");
         String action = request.getParameter("action");
+        Log.log.info("Recogemos el parametro action con valor " + action);
         
-        if (action.equalsIgnoreCase("delete")) {
-            int id_trabajador = Integer.parseInt(request.getParameter("id_trabajador"));
-            daoTrabajador.deleteTrabajador(id_trabajador);
+        if (action.equalsIgnoreCase("deleteRelEmpresa")) {
+            Log.log.info("Parametro valor DELETE RelacionEmpresaTrabajdor");
+            int idEmpresa = Integer.parseInt(request.getParameter("idEmpresa"));
+            int idTrabajador = Integer.parseInt(request.getParameter("idTrabajador"));
+            String departamento = request.getParameter("departamento");
+            daoEmpresa.deleteRelacion(idEmpresa, idTrabajador, departamento);
+            forward = LIST_EMPRESAS;
+            request.setAttribute("relaciones", daoEmpresa.getAllRelaciones());
+        } else if (action.equalsIgnoreCase("listRelEmpresa")) {
+            Log.log.info("Parametro valor LIST RelacionEmpresaTrabajdor");
+            forward = LIST_EMPRESAS;
+            request.setAttribute("relaciones", daoEmpresa.getAllRelaciones());
+            
+        } else if (action.equalsIgnoreCase("deleteRelProyecto")) {
+            Log.log.info("Parametro valor DELETE RelacionProyectoTrabajdor");
+            int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
+            int idTrabajador = Integer.parseInt(request.getParameter("idTrabajador"));
+            daoProyecto.deleteRelacion(idProyecto, idTrabajador);
+            forward = LIST_PROYECTOS;
+            request.setAttribute("relaciones", daoProyecto.getAllRelaciones());
+        } else if (action.equalsIgnoreCase("listSolicitudes")) {
+            Log.log.info("Parametro valor LIST RelacionProyectoTrabajdor");
+            forward = LIST_PROYECTOS;
+            request.setAttribute("relaciones", daoProyecto.getAllRelaciones());
+            
+        } else if (action.equalsIgnoreCase("delete")) {
+            Log.log.info("Parametro valor DELETE");
+            int idTrabajador = Integer.parseInt(request.getParameter("idTrabajador"));
+            daoTrabajador.deleteTrabajador(idTrabajador);
             forward = LIST_TRABAJADORES;
-            //request.setAttribute("trabajadores", /*dao.getAllUsers()*/);
-        } else if (action.equalsIgnoreCase("edit")) {
-            forward = INSERT_OR_EDIT;
-            int id_trabajador = Integer.parseInt(request.getParameter("id_trabajador"));
-            Trabajador trabajador = daoTrabajador.getTrabajadorById(id_trabajador);
-            request.setAttribute("trabajador", trabajador);
-        } else if (action.equalsIgnoreCase("listTrabajador")) {
+            request.setAttribute("trabajadores", daoTrabajador.getAllTrabajadores());
+        } else if (action.equalsIgnoreCase("listSolicitudes")) {
+            Log.log.info("Parametro valor LIST");
             forward = LIST_TRABAJADORES;
-            //request.setAttribute("trabajadores", /*dao.getAllUsers()*/);
-        } else { //insert
-            forward = INSERT_OR_EDIT;
+            request.setAttribute("trabajadores", daoTrabajador.getAllTrabajadores());
+        } else {
+            Log.log.info("Parametro valor vacio vamos a insertar");
+            forward = INSERT;
         }
-        
         RequestDispatcher view = request.getRequestDispatcher(forward);
         view.forward(request, response);
         return;
-    } 
+    }
 
-    
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Trabajador trabajador = new Trabajador();
-        trabajador.setNombre(request.getParameter("_"));
-        trabajador.setApellidos(request.getParameter("_")); 
-        String id_trabajador = request.getParameter("_");
-        if (id_trabajador == null || id_trabajador.isEmpty()) {
-            daoTrabajador.addTrabajador(trabajador);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+        String forward = "";
+        Log.log.info("Entramos por el doPost");
+/*        processRequest(request, response); */
+        String action = request.getParameter("action");
+        
+        if (action.equalsIgnoreCase("addRelEmpresa")) {
+            Log.log.info("Parametro valor INSERT RelacionEmpresaTrabajdor");
+            
+            RelacionEmpresaTrabajador relacionEmpresa = new RelacionEmpresaTrabajador();
+            relacionEmpresa.setIdTrabajador(Integer.parseInt(request.getParameter("idTrabajador")));
+            relacionEmpresa.setIdEmpresa(Integer.parseInt(request.getParameter("idEmpresa")));
+            relacionEmpresa.setDepartamento(request.getParameter("idEmpresa"));
+            
+            daoEmpresa.addRelacion(relacionEmpresa);
+            forward = INSERT_EMPRESA;
+            request.setAttribute("relaciones", daoEmpresa.getAllRelaciones());
+        } else if (action.equalsIgnoreCase("addRelProyecto")) {
+            Log.log.info("Parametro valor INSERT RelacionEmpresaTrabajdor");
+            
+            RelacionProyectoTrabajador relacionProyecto = new RelacionProyectoTrabajador();
+            relacionProyecto.setIdTrabajador(Integer.parseInt(request.getParameter("idTrabajador")));
+            relacionProyecto.setIdProyecto(Integer.parseInt(request.getParameter("idProyecto")));
+         
+            daoProyecto.addRelacion(relacionProyecto);
+            forward = INSERT_PROYECTO;
+            request.setAttribute("relaciones", daoProyecto.getAllRelaciones());
         } else {
-            trabajador.setIdTrabajador(Integer.parseInt(id_trabajador));
-            daoTrabajador.updateTrabajador(trabajador);
-        }
-        //request.setAttribute("trabajadores", /*dao.getAllUsers()*/);
-        RequestDispatcher view = request.getRequestDispatcher(LIST_TRABAJADORES);            
+            Log.log.info("Vamos a añadir el trabajador");
+            Trabajador trabajador = new Trabajador();
+            trabajador.setNombre(request.getParameter("nombre"));
+            trabajador.setApellidos(request.getParameter("apellidos"));
+            trabajador.setDni(request.getParameter("dni"));
+            trabajador.setUltimaJornada(null);
+            daoTrabajador.addTrabajador(trabajador);
+            forward = INSERT;
+        }      
+        RequestDispatcher view = request.getRequestDispatcher(forward);            
         view.forward(request, response);
         return;
     }

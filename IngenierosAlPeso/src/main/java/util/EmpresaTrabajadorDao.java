@@ -41,13 +41,13 @@ public class EmpresaTrabajadorDao {
         }
     }
 
-    public void deleteRelacion(RelacionEmpresaTrabajador relacion) {
+    public void deleteRelacion(int idTrabajador, int idEmpresa, String departamento) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from relacion_empresa_trabajador where id_trabajador=? and id_empresa=? and departamento=?");
             // Parameters start with 1 
-            preparedStatement.setInt(1, relacion.getIdTrabajador());
-            preparedStatement.setInt(2, relacion.getIdEmpresa());            
-            preparedStatement.setString(3, relacion.getDepartamento());
+            preparedStatement.setInt(1, idTrabajador);
+            preparedStatement.setInt(2, idEmpresa);            
+            preparedStatement.setString(3, departamento);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);

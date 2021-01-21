@@ -19,10 +19,6 @@ import model.Empresa;
 import util.EmpresaDao;
 import util.Log;
 
-/**
- *
- * @author Javi
- */
 public class EmpresaController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

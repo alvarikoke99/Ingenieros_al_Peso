@@ -21,10 +21,6 @@ import util.SolicitudDao;
 import util.TrabajadorDao;
 import util.Log;
 
-/**
- *
- * @author Javi
- */
 public class SolicitudController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

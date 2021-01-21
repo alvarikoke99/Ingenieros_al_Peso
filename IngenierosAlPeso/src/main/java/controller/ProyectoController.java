@@ -19,10 +19,6 @@ import model.Proyecto;
 import util.ProyectoDao;
 import util.Log;
 
-/**
- *
- * @author Javi
- */
 public class ProyectoController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

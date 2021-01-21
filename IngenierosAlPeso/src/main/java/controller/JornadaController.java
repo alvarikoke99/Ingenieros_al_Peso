@@ -24,10 +24,6 @@ import util.RegistroJornadaDao;
 import util.TrabajadorDao;
 import util.Log;
 
-/**
- *
- * @author Javi
- */
 public class JornadaController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

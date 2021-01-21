@@ -40,12 +40,12 @@ public class ProyectoTrabajadorDao {
         }
     }
 
-    public void deleteRelacion(RelacionProyectoTrabajador relacion) {
+    public void deleteRelacion(int idProyecto, int idTrabajador) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from relacion_proyecto_trabajador where id_proyecto=? and id_trabajador=?");
             // Parameters start with 1 
-            preparedStatement.setInt(1, relacion.getIdProyecto());
-            preparedStatement.setInt(2, relacion.getIdTrabajador());            
+            preparedStatement.setInt(1, idProyecto);
+            preparedStatement.setInt(2, idTrabajador);            
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
