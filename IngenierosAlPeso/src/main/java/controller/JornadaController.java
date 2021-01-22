@@ -95,7 +95,7 @@ public class JornadaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String forward = "";
+        String forward = "/fichar.jsp";
         Log.log.info("Entramos por el doPost");
         String action = request.getParameter("action");
 /*        processRequest(request, response); */
@@ -107,7 +107,7 @@ public class JornadaController extends HttpServlet {
         Timestamp fechaActual = new Timestamp (System.currentTimeMillis());
         Timestamp ultimaFecha = trabajador.getUltimaJornada();
         
-        if (action.equalsIgnoreCase("registroEntrada")) {
+        if (action.equalsIgnoreCase("registroEntrada")) {   //comparar value del submit button
             Log.log.info("Parametro valor ENTRADA");
             RegistroJornada registro = new RegistroJornada();
             registro.setFechaEntrada(fechaActual);
