@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>
+            Ingenieros al peso S.A. | Inicio
+        </title> 
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body id="index">
+         <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" /> 
+
+        <!--JavaScript-->
+        <script src="funciones.js"></script>
+        
+        <!-- Contenido --> 
+        <h1>Bienvenidos a Ingenieros al Peso S.A. <br>
+            <form class="botones">
+                <button class="buttonIndex" onclick="session('admin')">Recursos humanos</button>
+                <button class="buttonIndex" onclick="session('user')">Usuarios</button>
+            </form> 
+        </h1>        
     </body>
 </html>
