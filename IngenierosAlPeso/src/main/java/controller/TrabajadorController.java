@@ -29,7 +29,7 @@ import util.Log;
 public class TrabajadorController extends HttpServlet{
     private static final long serialVersionUID = 1L;
     private static String INSERT = "_";
-    private static String LIST_TRABAJADORES = "_";
+    private static String LIST_TRABAJADORES = "listaUsuario.jsp";
     private static String INSERT_EMPRESA = "_";
     private static String LIST_EMPRESAS = "_";
     private static String INSERT_PROYECTO = "_";
@@ -84,7 +84,7 @@ public class TrabajadorController extends HttpServlet{
             daoTrabajador.deleteTrabajador(idTrabajador);
             forward = LIST_TRABAJADORES;
             request.setAttribute("trabajadores", daoTrabajador.getAllTrabajadores());
-        } else if (action.equalsIgnoreCase("listSolicitudes")) {
+        } else if (action.equalsIgnoreCase("listTrabajadores")) {
             Log.log.info("Parametro valor LIST");
             forward = LIST_TRABAJADORES;
             request.setAttribute("trabajadores", daoTrabajador.getAllTrabajadores());
