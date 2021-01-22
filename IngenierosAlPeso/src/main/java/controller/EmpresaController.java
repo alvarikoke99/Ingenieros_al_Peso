@@ -22,8 +22,8 @@ import util.Log;
 public class EmpresaController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_EMPRESAS = "/listUser.jsp";
+    private static String INSERT_OR_EDIT = "/_";
+    private static String LIST_EMPRESAS = "/infoEmpresa.jsp";
     private EmpresaDao dao;
     private Log log;
 
@@ -60,7 +60,7 @@ public class EmpresaController extends HttpServlet {
             int idEmpresa = Integer.parseInt(request.getParameter("idEmpresa"));
             Empresa empresa = dao.getEmpresaById(idEmpresa);
             request.setAttribute("empresa", empresa);
-        } else if (action.equalsIgnoreCase("listEmpresas")) {
+        } else if (action.equalsIgnoreCase("listEmpresas")) {   //usado
             Log.log.info("Parametro valor LIST");
             forward = LIST_EMPRESAS;
             request.setAttribute("empresas", dao.getAllEmpresas());

@@ -59,7 +59,7 @@ public class ProyectoController extends HttpServlet {
             int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
             Proyecto proyecto = dao.getProyectoById(idProyecto);
             request.setAttribute("proyecto", proyecto);
-            } else if (action.equalsIgnoreCase("listProyectos")) {
+            } else if (action.equalsIgnoreCase("listProyectos")) {  //usado
             Log.log.info("Parametro valor LIST");
             forward = LIST_PROYECTOS;
             request.setAttribute("proyectos", dao.getAllProyectos());

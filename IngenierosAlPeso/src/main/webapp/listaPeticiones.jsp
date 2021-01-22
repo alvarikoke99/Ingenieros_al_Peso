@@ -1,6 +1,6 @@
 <%-- 
-    Document   : listaUsuario
-    Created on : 22-ene-2021, 2:27:12
+    Document   : listaPeticiones.jsp
+    Created on : 22-ene-2021, 11:44:17
     Author     : Usuario
 --%>
 
@@ -39,46 +39,45 @@
                     <a href="infoCalendario.html">Calendario</a>
                   </div>
             </div>
-            <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
+            <a class="enlace" id="idPag"  href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
             <a class="enlace" href="solicitarInforme.html">Solicitar informe</a>
-            <a class="enlace" id="idPag" href="TrabajadorController?action=listTrabajadores">Lista de trabajadores</a>
-            <a class="enlace" href="annadirUser.jsp">Añadir trabajador</a>
+            <a class="enlace" href="TrabajadorController?action=listTrabajadores">Lista de trabajadores</a>
+            <a class="enlace" href="annadirUser.html">Añadir trabajador</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
-        <!-- Contenido -->  
+        <!-- Contenido --> 
         <div class="content">
             <table id="tabla">
                 <thead>
                     <tr>
+                        <th>Id solicitud</th>
                         <th>Id trabajador</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Departamento</th>
-                        <th>Empresa</th>
-                        <th>Proyectos</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th>Tipo</th>
+                        <th>Fecha inicio</th>
+                        <th>Fecha fin</th>
+                        <th>Observaciones</th>
+                        <th>Aceptar</th>
+                        <th>Rechazar</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${trabajadores}" var="trabajador"> 
+                    <c:forEach items="${solicitudes}" var="solicitud"> 
                         <tr> 
-                            <td ><c:out value="${trabajador.idTrabajador}" /></td>
-                            <td><c:out value="${trabajador.nombre}" /></td> 
-                            <td><c:out value="${trabajador.apellidos}" /></td> 
-                            <td><c:out value="${trabajador.departamento}" /></td>
+                            <td ><c:out value="${solicitud.idSolicitud}" /></td>
+                            <td><c:out value="${solicitud.idTrabajador}" /></td> 
+                            <td><c:out value="${solicitud.tipo}" /></td> 
+                            <td><c:out value="${solicitud.fechaIni}" /></td>
+                            <td><c:out value="${solicitud.fechaFinal}" /></td>
+                            <td><c:out value="${solicitud.observacion}" /></td>
                             <!-- Revisar -->
-                            <!--<td><c:out value="${trabajador.empresa}" /></td>-->
-                            <!--<td><c:out value="${trabajador.proyectos}" /></td>-->
-                            <!-- -->
-                            <td><a href="TrabajadorController?action=edit&idTrabajador=<c:out value="${trabajador.idTrabajador}"/>">Editar</a></td> 
-                            <td><a href="TrabajadorController?action=delete&idTrabajador=<c:out value="${trabajador.idTrabajador}"/>">Eliminar</a></td> 
+                            <td><a href="SolicitudController?action=edit&idSolicitud=<c:out value="${solicitud.idSolicitud}"/>">Aceptar</a></td> 
+                            <td><a href="SolicitudrController?action=edit&idSolicitud=<c:out value="${trabajador.idSolicitud}"/>">Rechazar</a></td> 
                         </tr> 
-                    </c:forEach> 
+                    </c:forEach>
                 </tbody>
             </table>
-        </div>  
+        </div>   
         
 
         <!-- Pie de pagina -->

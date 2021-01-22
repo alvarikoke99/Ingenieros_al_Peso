@@ -1,11 +1,10 @@
 <%-- 
-    Document   : listaUsuario
-    Created on : 22-ene-2021, 2:27:12
+    Document   : infoTrabajadores
+    Created on : 22-ene-2021, 13:55:25
     Author     : Usuario
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -28,25 +27,25 @@
         </div>
 
         <div class="topnav" id="topnav">
-            <div class="dropdown">
+            <div class="dropdown" id="idPag">
                 <a class="dropbtn">Ver informacion
                   <i class="down"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="EmpresaController?action=listEmpresas">Empresa</a>
-                    <a href="ProyectoController?action=listProyectos">Proyectos</a>
+                    <a href="infoEmpresa.html">Empresa</a>
+                    <a href="infoProyectos.html">Proyectos</a>
                     <a href="infoTrabajadores.html">Trabajadores</a>
                     <a href="infoCalendario.html">Calendario</a>
-                  </div>
+                </div>
             </div>
-            <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
+            <a class="enlace" href="listaPeticiones.html">Lista peticiones</a>
             <a class="enlace" href="solicitarInforme.html">Solicitar informe</a>
-            <a class="enlace" id="idPag" href="TrabajadorController?action=listTrabajadores">Lista de trabajadores</a>
-            <a class="enlace" href="annadirUser.jsp">Añadir trabajador</a>
+            <a class="enlace" href="listaUsuario.html">Lista de trabajadores</a>
+            <a class="enlace" href="annadirUser.html">Añadir trabajador</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
-        <!-- Contenido -->  
+        <!-- Contenido -->   
         <div class="content">
             <table id="tabla">
                 <thead>
@@ -54,11 +53,7 @@
                         <th>Id trabajador</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
-                        <th>Departamento</th>
-                        <th>Empresa</th>
-                        <th>Proyectos</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th>DNI</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,20 +62,15 @@
                             <td ><c:out value="${trabajador.idTrabajador}" /></td>
                             <td><c:out value="${trabajador.nombre}" /></td> 
                             <td><c:out value="${trabajador.apellidos}" /></td> 
-                            <td><c:out value="${trabajador.departamento}" /></td>
-                            <!-- Revisar -->
-                            <!--<td><c:out value="${trabajador.empresa}" /></td>-->
-                            <!--<td><c:out value="${trabajador.proyectos}" /></td>-->
-                            <!-- -->
-                            <td><a href="TrabajadorController?action=edit&idTrabajador=<c:out value="${trabajador.idTrabajador}"/>">Editar</a></td> 
-                            <td><a href="TrabajadorController?action=delete&idTrabajador=<c:out value="${trabajador.idTrabajador}"/>">Eliminar</a></td> 
+                            <td><c:out value="${trabajador.dni}" /></td>
+                            <!-- Añadir insertar,editar y eliminar? -->
+                            
                         </tr> 
-                    </c:forEach> 
+                    </c:forEach>
                 </tbody>
             </table>
-        </div>  
+        </div> 
         
-
         <!-- Pie de pagina -->
         <div class="footerLargo">Ingenieros al peso S.A. - Campus Universitario, Ctra. Madrid-Barcelona km, 33, 600, 28805 Alcalá de Henares - Teléfono: 900.000.000
             <br> Condiciones generales de venta, política de privacidad y utilización web y APP

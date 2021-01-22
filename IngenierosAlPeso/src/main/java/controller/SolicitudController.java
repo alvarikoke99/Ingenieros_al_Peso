@@ -25,7 +25,7 @@ public class SolicitudController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_SOLICITUDES = "/listUser.jsp";
+    private static String LIST_SOLICITUDES = "/listaPeticiones.jsp";
     private SolicitudDao dao;
     private TrabajadorDao daoTrabajador;
     private Log log;
@@ -63,7 +63,7 @@ public class SolicitudController extends HttpServlet {
             int idSolicitud = Integer.parseInt(request.getParameter("userId"));
             Solicitud solicitud = dao.getSolicitudById(idSolicitud);
             request.setAttribute("solicitud", solicitud);
-        } else if (action.equalsIgnoreCase("listSolicitudes")) {
+        } else if (action.equalsIgnoreCase("listSolicitudes")) {    //usado
             Log.log.info("Parametro valor LIST");
             forward = LIST_SOLICITUDES;
             request.setAttribute("solicitudes", dao.getAllSolicitudes());
