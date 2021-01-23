@@ -1,0 +1,313 @@
+/* 
+    Created on : 23 ene. 2021, 13:12:55
+    Author     : Usuario
+*/
+
+/*-------------------------------------------------------------------
+                                INDEX
+--------------------------------------------------------------------*/
+#index {
+    background-image: url("img/fondo.jpg");
+    background-size: cover;
+}
+
+h1{
+    color: rgb(7, 7, 7);
+    text-align: center;
+    margin-top: 15%;
+    font-size: 300%;
+}
+
+h2{
+  color: rgb(7, 7, 7);
+  text-align: center;
+}
+
+.buttonIndex{
+    background-color: rgba(27, 41, 168, 0.788);
+    border-radius: 15px;
+    color:  #fff;
+    text-align: center;
+    font-size: 45%;
+    cursor: pointer;
+    margin: 2%;
+    padding: 1%;
+    width: 250px;
+}
+
+
+/*-------------------------------------------------------------------
+                            INICIAR SESIÓN
+--------------------------------------------------------------------*/
+#iniciarSesion{
+    background-image: url("img/fondo.jpg");
+    background-size: cover;
+}
+
+.container {
+    position: absolute;
+    left: 0;
+    width: 500px;
+    height: 480px;
+    margin: 5%;
+    padding: 25px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.containerRight {
+  position: absolute;
+  right: 0;
+  width: 500px;
+  height: 480px;
+  margin: 5%;
+  padding: 25px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.containerRight input[type=text], input[type=password] {
+  padding: 15px;
+  margin: 5px 0 30px 0;
+  border: none;
+  background: #f1f1f1;
+  width: 94%;
+  border-radius: 15px;
+}
+
+.container input[type=text], input[type=password] {
+  padding: 15px;
+  margin: 5px 0 30px 0;
+  border: none;
+  background: #f1f1f1;
+  width: 94%;
+  border-radius: 15px;
+}
+
+.containerRight input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+} 
+
+.container input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.btn {
+  background-color: #2670AB;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-size: x-large;
+  border-radius: 15px;
+}
+  
+.btn:hover {
+  opacity: 1;
+}
+
+/*-------------------------------------------------------------------
+                        BARRA NAVEGACION
+--------------------------------------------------------------------*/
+.cabecera {
+    padding: 20px;
+    text-align: center;
+    font-size: xx-large;
+    color: white;
+}
+
+#cabecera{
+    background-color: #2670AB;
+}
+
+#topnav{
+    background-color: #2670AB;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color:#2670AB; 
+}
+
+.topnav .enlace {
+    float: left;
+    font-size: large;
+    color: white;
+    text-align: center;
+    padding: 24px;
+    text-decoration: none;
+}
+
+#idPag {
+    background-color: rgb(33,97,140);
+}
+
+/*-------------------------------------------------------------------
+                            DESPLEGABLE VERTICAL
+--------------------------------------------------------------------*/
+
+.dropdown {
+  float: left;
+  font-size: large;
+  color: white;
+  text-align: center;
+  padding: 24px;
+  text-decoration: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #2670AB;
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-top: 24px;
+  left: 0;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color:  rgb(33,97,140);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+/*-------------------------------------------------------------------
+                            CONTENIDO
+--------------------------------------------------------------------*/
+body {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#cuerpo{
+    background: rgb(255, 255, 255); 
+}
+
+.content {
+    margin: 3%;
+}
+
+.contentCenter {
+  margin-top: 3%;
+  text-align: center;
+}
+
+/*-------------------------------------------------------------------
+                            LISTA USUARIOS
+--------------------------------------------------------------------*/
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+/*-------------------------------------------------------------------
+                            AÑADIR USUARIOS
+--------------------------------------------------------------------*/
+.casilla{
+  padding: 10px;
+  margin: 0 0 15px 0;
+  border: none;
+  background: #f1f1f1;
+  width: 21%;
+  border-radius: 15px;
+}
+
+.btnAdd {
+  background-color: #2670AB;
+  color: white;
+  padding: 5px 20px;
+  border: none;
+  cursor: pointer;
+  width: 22%;
+  opacity: 0.9;
+  font-size: x-large;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+
+/*-------------------------------------------------------------------
+                                FICHAR
+--------------------------------------------------------------------*/
+.btnFichar {
+  background-color: #2670AB;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 11%;
+  opacity: 0.9;
+  font-size: x-large;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+
+/*-------------------------------------------------------------------
+                              MIS DATOS
+--------------------------------------------------------------------*/
+.casillaPeq {
+  padding: 10px;
+  margin: 0 0 15px 0;
+  border: none;
+  background: #f1f1f1;
+  width: 11%;
+  border-radius: 15px;
+}
+
+/*-------------------------------------------------------------------
+                            PIE DE PAGINA
+--------------------------------------------------------------------*/
+
+footer { 
+    width: 100%; 
+    bottom: 0%; 
+    background-color: #000; 
+    color: #fff; 
+    position: absolute; 
+    padding-top:20px; 
+    padding-bottom:30px; 
+    text-align:center; 
+    font-size:10px; 
+    font-weight:bold; 
+} 
+
+.footerLargo { 
+    width: 100%; 
+    bottom: 0%; 
+    background-color: #000; 
+    color: #fff; 
+    padding-top:20px; 
+    padding-bottom:30px; 
+    text-align:center; 
+    font-size:10px; 
+    font-weight:bold; 
+    position: fixed;
+}
+

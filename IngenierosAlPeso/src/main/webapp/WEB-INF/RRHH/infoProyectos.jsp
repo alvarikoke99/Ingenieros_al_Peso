@@ -17,10 +17,10 @@
     </head>
     <body id="cuerpo">
          <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" /> 
+        <link rel="stylesheet" type="text/css" href="../plantilla.css" media="screen" /> 
 
         <!--JavaScript-->
-        <script src="funciones.js"></script>
+        <script src="../funciones.js"></script>
         
         <!-- Cabecera -->
         <div class="cabecera" id="cabecera">
