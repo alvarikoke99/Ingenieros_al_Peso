@@ -4,6 +4,8 @@
     Author     : Usuario
 --%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -15,10 +17,10 @@
     </head>
     <body id="cuerpo">
          <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" /> 
+        <link rel="stylesheet" type="text/css" href="../plantilla.css" media="screen" /> 
 
         <!--JavaScript-->
-        <script src="funciones.js"></script>
+        <script src="../funciones.js"></script>
         
         <!-- Cabecera -->
         <div class="cabecera" id="cabecera">
@@ -39,10 +41,10 @@
             </div>
             <a class="enlace" href="listaPeticiones.html">Lista peticiones</a>
             <a class="enlace" href="solicitarInforme.html">Solicitar informe</a>
-            <a class="enlace" href="annadirUser.html">Añadir trabajador</a>
-            <a class="enlace" href="annadirEmpresa.jsp">Añadir empresa</a>
-            <a class="enlace" href="annadirProyecto.jsp">Añadir proyecto</a>
-            <a class="enlace" href="index.html">Cerrar sesión</a>
+            <a class="enlace" href="annadirUser.html">AÃ±adir trabajador</a>
+            <a class="enlace" href="annadirEmpresa.jsp">AÃ±adir empresa</a>
+            <a class="enlace" href="annadirProyecto.jsp">AÃ±adir proyecto</a>
+            <a class="enlace" href="index.html">Cerrar sesiÃ³n</a>
         </div>
 
         <!-- Contenido -->   
@@ -51,9 +53,9 @@
         </div> 
         
         <!-- Pie de pagina -->
-        <div class="footerLargo">Ingenieros al peso S.A. - Campus Universitario, Ctra. Madrid-Barcelona km, 33, 600, 28805 Alcalá de Henares - Teléfono: 900.000.000
-            <br> Condiciones generales de venta, política de privacidad y utilización web y APP
-            <br> © Ingenieros al peso S.A. 2020
+        <div class="footerLargo">Ingenieros al peso S.A. - Campus Universitario, Ctra. Madrid-Barcelona km, 33, 600, 28805 AlcalÃ¡ de Henares - TelÃ©fono: 900.000.000
+            <br> Condiciones generales de venta, polÃ­tica de privacidad y utilizaciÃ³n web y APP
+            <br> Â© Ingenieros al peso S.A. 2020
         </div>
     </body>
 </html>
