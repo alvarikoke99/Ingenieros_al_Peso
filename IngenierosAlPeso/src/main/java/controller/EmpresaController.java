@@ -22,8 +22,8 @@ import util.Log;
 public class EmpresaController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "/_";
-    private static String LIST_EMPRESAS = "/infoEmpresa.jsp";
+    private static String INSERT_OR_EDIT = "/RRHH/annadirEmpresa.jsp";
+    private static String LIST_EMPRESAS = "/RRHH/infoEmpresa.jsp";
     private EmpresaDao dao;
     private Log log;
 
@@ -66,7 +66,7 @@ public class EmpresaController extends HttpServlet {
             request.setAttribute("empresas", dao.getAllEmpresas());
         } else {
             Log.log.info("Parametro valor vacio vamos a insertar");
-            forward = INSERT_OR_EDIT;
+            forward = LIST_EMPRESAS;
         }
         RequestDispatcher view = request.getRequestDispatcher(forward);
         view.forward(request, response);

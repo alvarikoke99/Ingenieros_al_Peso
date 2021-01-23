@@ -28,9 +28,9 @@ import util.Log;
 public class ProyectoController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_PROYECTOS = "/infoProyectos.jsp"; //RRHH
-    private static String LIST_MIS_PROYECTOS = "/misProyectosInfo.jsp"; //Trabajador
+    private static String INSERT_OR_EDIT = "/RRHH/annadirProyecto.jsp";
+    private static String LIST_PROYECTOS = "/RRHH/infoProyectos.jsp"; //RRHH
+    private static String LIST_MIS_PROYECTOS = "/Trabajador/misProyectosInfo.jsp"; //Trabajador
     private ProyectoDao dao;
     private TrabajadorDao daoTrabajador;
     private ProyectoTrabajadorDao daoProyecto;
@@ -76,7 +76,7 @@ public class ProyectoController extends HttpServlet {
             request.setAttribute("proyectos", dao.getAllProyectos());
         } else if (action.equalsIgnoreCase("listProyectosByTrabajador")) {   
             Log.log.info("Parametro valor LIST BY TRABAJADOR");
-            forward = LIST_PROYECTOS;
+            forward = LIST_MIS_PROYECTOS;
             String dni = request.getParameter("dni");
             int idTrabajador = daoTrabajador.getTrabajadorByDni(dni).getIdTrabajador();
             List<RelacionProyectoTrabajador> relaciones = daoProyecto.getRelacionesByIdTrabajador(idTrabajador);
@@ -87,7 +87,7 @@ public class ProyectoController extends HttpServlet {
             request.setAttribute("proyectosTrabajador", proyectos);
         } else {
             Log.log.info("Parametro valor vacio vamos a insertar");
-            forward = INSERT_OR_EDIT;
+            forward = LIST_PROYECTOS;
         }
         RequestDispatcher view = request.getRequestDispatcher(forward);
         view.forward(request, response);

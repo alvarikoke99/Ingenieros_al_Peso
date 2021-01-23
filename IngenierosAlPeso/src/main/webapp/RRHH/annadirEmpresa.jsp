@@ -41,16 +41,16 @@
             </div>
             <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
             <a class="enlace" href="solicitarInforme.jsp">Solicitar informe</a>
-            <a class="enlace" href="TrabajadorController?action=listTrabajadores">Añadir trabajador</a>
-            <a class="enlace" id="idPag" href="EmpresaController?action=listEmpresas">Añadir empresa</a>
-            <a class="enlace" href="ProyectoController?action=listProyectos">Añadir proyecto</a>
+            <a class="enlace" href="TrabajadorController?action=listTrabajadores">Añadir/Editar trabajador</a>
+            <a class="enlace" id="idPag" href="EmpresaController?action=listEmpresas">Añadir/Editar empresa</a>
+            <a class="enlace" href="ProyectoController?action=listProyectos">Añadir/Editar proyecto</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido --> 
         <div class="contentCenter">
-            <form method="POST" action="TrabajadorController?action=addTrabajador" name="formAnnadirTrabajador">
-                <h2>Añadir trabajador:</h2><br>
+            <form method="POST" action="EmpresaController" name="formAnnadirEmpresa">
+                <h2>Añadir/Editar trabajador:</h2><br>
                 <label>Nombre del empresa</label><br><br>
                 <input type="text" id="nombre" class="casilla" name="nombre" value="<c:out value="${empresa.nombre}" />" required><br><br>
                 <label>Descripción:</label><br><br>

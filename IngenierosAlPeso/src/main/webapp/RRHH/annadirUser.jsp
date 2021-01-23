@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -40,16 +41,16 @@
             </div>
             <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
             <a class="enlace" href="solicitarInforme.jsp">Solicitar informe</a>
-            <a class="enlace" id="idPag" href="TrabajadorController?action=listTrabajadores">Añadir trabajador</a>
-            <a class="enlace" href="EmpresaController?action=listEmpresas">Añadir empresa</a>
-            <a class="enlace" href="ProyectoController?action=listProyectos">Añadir proyecto</a>
+            <a class="enlace" id="idPag" href="TrabajadorController?action=listTrabajadores">Añadir/Editar trabajador</a>
+            <a class="enlace" href="EmpresaController?action=listEmpresas">Añadir/Editar empresa</a>
+            <a class="enlace" href="ProyectoController?action=listProyectos">Añadir/Editar proyecto</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido --> 
         <div class="contentCenter">
-            <form method="POST" action="TrabajadorController?action=addTrabajador" name="formAnnadirTrabajador">
-                <h2>Añadir trabajador:</h2><br>
+            <form method="POST" action="TrabajadorController" name="formAnnadirTrabajador">
+                <h2>Añadir/Editar trabajador:</h2><br>
                 <label>Nombre del trabajador:</label><br><br>
                 <input type="text" id="nombre" class="casilla" name="nombre" value="<c:out value="${trabajador.nombre}" />" required><br><br>
                 <label>Apellidos del trabajador:</label><br><br>

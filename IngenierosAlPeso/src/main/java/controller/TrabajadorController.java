@@ -26,8 +26,8 @@ import util.Log;
  */
 public class TrabajadorController extends HttpServlet{
     private static final long serialVersionUID = 1L;
-    private static String INSERT = "_";
-    private static String LIST_TRABAJADORES = "listaUsuario.jsp";
+    private static String INSERT = "/RRHH/annadirUser"; //usado
+    private static String LIST_TRABAJADORES = "/RRHH/infoTrabajadores.jsp";
     private static String INSERT_EMPRESA = "_";
     private static String LIST_EMPRESAS = "_";
     private static String INSERT_PROYECTO = "_";
@@ -57,7 +57,7 @@ public class TrabajadorController extends HttpServlet{
         Log.log.info("Recogemos el parametro action con valor " + action);
         
         if (action.equalsIgnoreCase("deleteRelEmpresa")) {
-            Log.log.info("Parametro valor DELETE RelacionEmpresaTrabajdor");
+            Log.log.info("Parametro valor DELETE RelacionEmpresaTrabajador");
             int idEmpresa = Integer.parseInt(request.getParameter("idEmpresa"));
             int idTrabajador = Integer.parseInt(request.getParameter("idTrabajador"));
             String departamento = request.getParameter("departamento");
@@ -65,12 +65,12 @@ public class TrabajadorController extends HttpServlet{
             forward = LIST_EMPRESAS;
             request.setAttribute("relaciones", daoRelEmpresa.getAllRelaciones());
         } else if (action.equalsIgnoreCase("listRelEmpresa")) {
-            Log.log.info("Parametro valor LIST RelacionEmpresaTrabajdor");
+            Log.log.info("Parametro valor LIST RelacionEmpresaTrabajador");
             forward = LIST_EMPRESAS;
             request.setAttribute("relaciones", daoRelEmpresa.getAllRelaciones());
             
         } else if (action.equalsIgnoreCase("deleteRelProyecto")) {
-            Log.log.info("Parametro valor DELETE RelacionProyectoTrabajdor");
+            Log.log.info("Parametro valor DELETE RelacionProyectoTrabajador");
             int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
             int idTrabajador = Integer.parseInt(request.getParameter("idTrabajador"));
             daoRelProyecto.deleteRelacion(idProyecto, idTrabajador);
