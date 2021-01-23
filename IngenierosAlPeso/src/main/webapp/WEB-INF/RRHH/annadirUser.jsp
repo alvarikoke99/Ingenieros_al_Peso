@@ -35,14 +35,15 @@
                 <div class="dropdown-content">
                     <a href="EmpresaController?action=listEmpresas">Empresa</a>
                     <a href="ProyectoController?action=listProyectos">Proyectos</a>
-                    <a href="infoTrabajadores.html">Trabajadores</a>
-                    <a href="infoCalendario.html">Calendario</a>
+                    <a href="TrabajadorController?action=listTrabajadores">Trabajadores</a>
+                    <a href="infoCalendario.jsp">Calendario</a>
                   </div>
             </div>
             <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
-            <a class="enlace" href="solicitarInforme.html">Solicitar informe</a>
-            <a class="enlace" href="TrabajadorController?action=listTrabajadores">Lista de trabajadores</a>
-            <a class="enlace" id="idPag" href="annadirUser.jsp">Añadir trabajador</a>
+            <a class="enlace" href="solicitarInforme.jsp">Solicitar informe</a>
+            <a class="enlace" id="idPag" href="TrabajadorController?action=listTrabajadores">Añadir trabajador</a>
+            <a class="enlace" href="EmpresaController?action=listEmpresas">Añadir empresa</a>
+            <a class="enlace" href="ProyectoController?action=listProyectos">Añadir proyecto</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
@@ -54,8 +55,6 @@
                 <input type="text" id="nombre" class="casilla" name="nombre" value="<c:out value="${trabajador.nombre}" />" required><br><br>
                 <label>Apellidos del trabajador:</label><br><br>
                 <input type="text" id="apellido" class="casilla" name="apellido" value="<c:out value="${trabajador.apellidos}" />" required><br><br>
-                <label>Departamento del trabajador:</label><br><br>
-                <input type="text" id="dep" class="casilla" name="dep" required><br><br>
                 <label>DNI del trabajador:</label><br><br>
                 <input type="text" id="dni" class="casilla" name="dni" value="<c:out value="${trabajador.dni}" />" required><br><br>
                 <button type="submit" class="btnAdd">Añadir</button>
@@ -64,9 +63,9 @@
         
 
         <!-- Pie de pagina -->
-        <footer>Ingenieros al peso S.A. - Campus Universitario, Ctra. Madrid-Barcelona km, 33, 600, 28805 Alcalá de Henares - Teléfono: 900.000.000
+        <div class="footerLargo">Ingenieros al peso S.A. - Campus Universitario, Ctra. Madrid-Barcelona km, 33, 600, 28805 Alcalá de Henares - Teléfono: 900.000.000
             <br> Condiciones generales de venta, política de privacidad y utilización web y APP
             <br> © Ingenieros al peso S.A. 2020
-        </footer>
+        </div>
     </body>
 </html>

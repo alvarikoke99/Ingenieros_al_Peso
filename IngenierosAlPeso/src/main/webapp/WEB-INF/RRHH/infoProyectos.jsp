@@ -35,14 +35,15 @@
                 <div class="dropdown-content">
                     <a href="EmpresaController?action=listEmpresas">Empresa</a>
                     <a href="ProyectoController?action=listProyectos">Proyectos</a>
-                    <a href="infoTrabajadores.html">Trabajadores</a>
-                    <a href="infoCalendario.html">Calendario</a>
+                    <a href="TrabajadorController?action=listTrabajadores">Trabajadores</a>
+                    <a href="infoCalendario.jsp">Calendario</a>
                 </div>
             </div>
             <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
-            <a class="enlace" href="solicitarInforme.html">Solicitar informe</a>
-            <a class="enlace" href="TrabajadorController?action=listTrabajadores">Lista de trabajadores</a>
-            <a class="enlace" href="annadirUser.jsp">Añadir trabajador</a>
+            <a class="enlace" href="solicitarInforme.jsp">Solicitar informe</a>
+            <a class="enlace" href="TrabajadorController?action=listTrabajadores">Añadir trabajador</a>
+            <a class="enlace" href="EmpresaController?action=listEmpresas">Añadir empresa</a>
+            <a class="enlace" href="ProyectoController?action=listProyectos">Añadir proyecto</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
@@ -55,6 +56,8 @@
                         <th>Id empresa</th>
                         <th>Nombre</th>
                         <th>Información</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,8 +67,8 @@
                             <td ><c:out value="${proyecto.idEmpresa}" /></td>
                             <td><c:out value="${proyecto.nombre}" /></td> 
                             <td><c:out value="${proyecto.informacion}" /></td> 
-                            <!-- Añadir insertar,editar y eliminar? -->
-                            
+                            <td><a href="ProyectoController?action=edit&idProyecto=<c:out value="${proyecto.idProyecto}"/>">Editar</a></td> 
+                            <td><a href="ProyectoController?action=delete&idProyecto=<c:out value="${proyecto.idProyecto}"/>">Eliminar</a></td> 
                         </tr> 
                     </c:forEach>
                 </tbody>   

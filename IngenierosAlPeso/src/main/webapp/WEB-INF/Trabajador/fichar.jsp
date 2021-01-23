@@ -41,8 +41,8 @@
                 <input type="text" id="id" class="casilla" name="idProyecto" required><br><br>
                 <label>DNI:</label><br><br>
                 <input type="text" id="dni" class="casilla" name="dni" required><br><br>
-                <button type="submit" class="btnFichar" name="btnEntrada" value="entrada" onclick="fichar('e')">Fichar entrada</button>
-                <button type="submit" class="btnFichar" name="btnSalida" value="salida" onclick="fichar('s')">Fichar salida</button>
+                <button type="submit" class="btnFichar" name="btn" value="entrada">Fichar entrada</button>
+                <button type="submit" class="btnFichar" name="btn" value="salida">Fichar salida</button>
             </form>
         </div>
 

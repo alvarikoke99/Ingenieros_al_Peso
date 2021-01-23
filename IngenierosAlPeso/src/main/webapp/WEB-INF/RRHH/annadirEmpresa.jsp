@@ -1,6 +1,6 @@
 <%-- 
-    Document   : listaPeticiones.jsp
-    Created on : 22-ene-2021, 11:44:17
+    Document   : annadirEmpresa
+    Created on : 23 ene. 2021, 12:11:16
     Author     : Usuario
 --%>
 
@@ -39,45 +39,24 @@
                     <a href="infoCalendario.jsp">Calendario</a>
                   </div>
             </div>
-            <a class="enlace" id="idPag"  href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
+            <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
             <a class="enlace" href="solicitarInforme.jsp">Solicitar informe</a>
             <a class="enlace" href="TrabajadorController?action=listTrabajadores">Añadir trabajador</a>
-            <a class="enlace" href="EmpresaController?action=listEmpresas">Añadir empresa</a>
+            <a class="enlace" id="idPag" href="EmpresaController?action=listEmpresas">Añadir empresa</a>
             <a class="enlace" href="ProyectoController?action=listProyectos">Añadir proyecto</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido --> 
-        <div class="content">
-            <table id="tabla">
-                <thead>
-                    <tr>
-                        <th>Id solicitud</th>
-                        <th>Id trabajador</th>
-                        <th>Tipo</th>
-                        <th>Fecha inicio</th>
-                        <th>Fecha fin</th>
-                        <th>Observaciones</th>
-                        <th>Aceptar</th>
-                        <th>Rechazar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach items="${solicitudes}" var="solicitud"> 
-                        <tr> 
-                            <td ><c:out value="${solicitud.idSolicitud}" /></td>
-                            <td><c:out value="${solicitud.idTrabajador}" /></td> 
-                            <td><c:out value="${solicitud.tipo}" /></td> 
-                            <td><c:out value="${solicitud.fechaIni}" /></td>
-                            <td><c:out value="${solicitud.fechaFinal}" /></td>
-                            <td><c:out value="${solicitud.observacion}" /></td>
-                            <!-- Revisar -->
-                            <td><a href="SolicitudController?action=edit&idSolicitud=<c:out value="${solicitud.idSolicitud}"/>">Aceptar</a></td> 
-                            <td><a href="SolicitudrController?action=edit&idSolicitud=<c:out value="${trabajador.idSolicitud}"/>">Rechazar</a></td> 
-                        </tr> 
-                    </c:forEach>
-                </tbody>
-            </table>
+        <div class="contentCenter">
+            <form method="POST" action="TrabajadorController?action=addTrabajador" name="formAnnadirTrabajador">
+                <h2>Añadir trabajador:</h2><br>
+                <label>Nombre del empresa</label><br><br>
+                <input type="text" id="nombre" class="casilla" name="nombre" value="<c:out value="${empresa.nombre}" />" required><br><br>
+                <label>Descripción:</label><br><br>
+                <input type="text" id="descripcion" class="casilla" name="descripcion" value="<c:out value="${empresa.descripcion}" />" required><br><br>
+                <button type="submit" class="btnAdd">Añadir</button>
+            </form>
         </div>   
         
 
