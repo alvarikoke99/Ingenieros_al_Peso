@@ -6,10 +6,10 @@
 
 function session(id){
   if (id=="admin"){
-    window.open("./iniciarSesionRRHH.html");
+    window.open("./iniciarSesionRRHH.jsp");
     window.close("./index.html");
   } else {
-    window.open("./iniciarSesionUser.html");
+    window.open("./iniciarSesionUser.jsp");
     window.close("./index.html");
   }
 
@@ -21,16 +21,16 @@ function iniciarSesion() {
 
   if(usuario=="Admin"){
     if(password=="RRHH"){
-      window.open("./listaUsuario.html");
-      window.close("./iniciarSesionRRHH.html");
+      window.open("./annadirUser.jsp");
+      window.close("./iniciarSesionRRHH.jsp");
     }else{
       window.alert("La contraseña no es válida");
     }
   }
   else if (usuario=="Pruebas"){
     if(password=="Pruebas"){
-      window.open("./fichar.html");
-      window.close("./iniciarSesionUser.html");
+      window.open("./fichar.jsp");
+      window.close("./iniciarSesionUser.jsp");
     }else{
       window.alert("La contraseña no es válida");
     }
