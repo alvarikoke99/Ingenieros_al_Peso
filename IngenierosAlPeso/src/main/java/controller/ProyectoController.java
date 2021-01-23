@@ -23,7 +23,8 @@ public class ProyectoController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_PROYECTOS = "/listUser.jsp";
+    private static String LIST_PROYECTOS = "/infoProyectos.jsp"; //RRHH
+    private static String LIST_MIS_PROYECTOS = "/misProyectosInfo.jsp"; //Trabajador
     private ProyectoDao dao;
     private Log log;
 
@@ -63,6 +64,9 @@ public class ProyectoController extends HttpServlet {
             Log.log.info("Parametro valor LIST");
             forward = LIST_PROYECTOS;
             request.setAttribute("proyectos", dao.getAllProyectos());
+        
+        //action listMisProyectos, attribute misProyectos, solo los proyectos de ese trabajador 
+        
         } else {
             Log.log.info("Parametro valor vacio vamos a insertar");
             forward = INSERT_OR_EDIT;

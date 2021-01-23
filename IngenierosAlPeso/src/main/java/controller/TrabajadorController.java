@@ -34,6 +34,7 @@ public class TrabajadorController extends HttpServlet{
     private static String LIST_EMPRESAS = "_";
     private static String INSERT_PROYECTO = "_";
     private static String LIST_PROYECTOS = "_";
+    private static String MIS_DATOS_INFO = "misDatosInfo.jsp";
     private TrabajadorDao daoTrabajador;
     private EmpresaTrabajadorDao daoEmpresa;
     private ProyectoTrabajadorDao daoProyecto;
@@ -89,6 +90,10 @@ public class TrabajadorController extends HttpServlet{
             forward = LIST_TRABAJADORES;
             request.setAttribute("trabajadores", daoTrabajador.getAllTrabajadores());
             //añadir relEmp y relProy para listaUsuario
+            
+        //action misDatosInfo, devuelve solo ese trabajador y RelEmpresa, RelProyecto con su id
+        //forward MIS_DATOS_INFO 
+            
         } else {    //usado - revisar
             Log.log.info("Parametro valor vacio vamos a insertar");
             forward = INSERT;

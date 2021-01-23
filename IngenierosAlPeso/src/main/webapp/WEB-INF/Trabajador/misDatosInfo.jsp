@@ -1,6 +1,6 @@
 <%-- 
-    Document   : fichar
-    Created on : 22-ene-2021, 20:21:09
+    Document   : misDatosInfo
+    Created on : 23-ene-2021, 2:15:12
     Author     : Usuario
 --%>
 
@@ -18,38 +18,44 @@
     <body>
          <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" /> 
-        
+
         <!-- Cabecera -->
         <div class="cabecera" id="cabecera">
             <img src="img/logo_small.png" alt="logo">
         </div>
 
         <div class="topnav" id="topnav">
-            <a class="enlace" id="idPag" href="fichar.jsp">Fichar</a>
+            <a class="enlace" href="fichar.jsp">Fichar</a>
             <a class="enlace" href="solicitarVacaciones.jsp">Solicitar días libres</a>
             <a class="enlace" href="misProyectos.jsp">Mis proyectos</a>
-            <a class="enlace" href="misDatos.jsp">Mis datos</a>
+            <a class="enlace" id="idPag" href="misDatos.jsp">Mis datos</a>
             <a class="enlace" href="bandejaEntrada.html">Mis mensajes</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido -->    
         <div class="contentCenter">
-            <form method="POST" action="JornadaController?action=fichar" name="formRegJornada">
-                <h2>Registro de la jornada:</h2><br>
-                <label>Id del proyecto:</label><br><br>
-                <input type="text" id="id" class="casilla" name="idProyecto" required><br><br>
-                <label>DNI:</label><br><br>
-                <input type="text" id="dni" class="casilla" name="dni" required><br><br>
-                <button type="submit" class="btnFichar" name="btnEntrada" value="entrada" onclick="fichar('e')">Fichar entrada</button>
-                <button type="submit" class="btnFichar" name="btnSalida" value="salida" onclick="fichar('s')">Fichar salida</button>
-            </form>
+            <h2>Mis datos:</h2>
+            <label>Nombre del usuario: <c:out value="${trabajador.nombre}"/> </label><br><br>
+            <label>Apellidos del usuario: <c:out value="${trabajador.apellidos}"/> </label><br><br>
+            <label>DNI del usuario: <c:out value="${trabajador.dni}"/> </label><br><br>
+            <label>Mis empresas:
+                <c:forEach items="${relEmpresa}" var="empresa"> 
+                    <c:out value=" ${empresa.idEmpresa} " />
+                </c:forEach>
+            </label><br><br>
+            <label>Mis proyectos:
+                <c:forEach items="${relProyecto}" var="proyecto"> 
+                    <c:out value=" ${proyecto.idProyecto} " />
+                </c:forEach>
+            </label><br><br>
+            <label>Mis solicitudes:</label>
         </div>
 
         <!-- Pie de pagina -->
-        <footer>Ingenieros al peso S.A. - Campus Universitario, Ctra. Madrid-Barcelona km, 33, 600, 28805 Alcalá de Henares - Teléfono: 900.000.000
+        <div class="footerLargo">Ingenieros al peso S.A. - Campus Universitario, Ctra. Madrid-Barcelona km, 33, 600, 28805 Alcalá de Henares - Teléfono: 900.000.000
             <br> Condiciones generales de venta, política de privacidad y utilización web y APP
             <br> © Ingenieros al peso S.A. 2020
-        </footer>
+        </div>
     </body>
 </html>

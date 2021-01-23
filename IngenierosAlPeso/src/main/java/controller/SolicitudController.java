@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 import model.Solicitud;
 import model.Trabajador;
 import util.SolicitudDao;
@@ -25,7 +26,8 @@ public class SolicitudController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_SOLICITUDES = "/listaPeticiones.jsp";
+    private static String LIST_SOLICITUDES = "/listaPeticiones.jsp"; //RRHH
+    private static String LIST_MIS_SOLICITUDES = "/_"; //Trabajador
     private SolicitudDao dao;
     private TrabajadorDao daoTrabajador;
     private Log log;
@@ -108,8 +110,8 @@ public class SolicitudController extends HttpServlet {
             solicitud.setUserid(Integer.parseInt(userid));
             dao.updateUser(solicitud);
         }*/
-        request.setAttribute("solicitudes", dao.getAllSolicitudes());
-        RequestDispatcher view = request.getRequestDispatcher(LIST_SOLICITUDES);            
+        request.setAttribute("solicitudes", dao.getAllSolicitudes());   //dao.getSolicitudesByIdTrabajador(idTrabajador)
+        RequestDispatcher view = request.getRequestDispatcher(LIST_MIS_SOLICITUDES);    //solic del trabajador        
         view.forward(request, response);
         return;
     }
