@@ -123,4 +123,25 @@ public class SolicitudDao {
         }
         return solicitud;
     }
+    
+    public Solicitud getSolicitudByTrabajador(int idTrabajador) {
+        Solicitud solicitud = new Solicitud();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from solicitud where id_trabajador=?");
+            preparedStatement.setInt(1, idTrabajador);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                solicitud.setIdSolicitud(rs.getInt("id_solicitud"));
+                solicitud.setTipo(rs.getString("tipo"));
+                solicitud.setFechaIni(rs.getDate("fecha_ini"));
+                solicitud.setFechaFinal(rs.getDate("fecha_final"));
+                solicitud.setObservacion(rs.getString("observacion"));
+                solicitud.setTramitada(rs.getBoolean("tramitada"));
+                solicitud.setIdTrabajador(rs.getInt("id_trabajador"));
+            }
+        } catch (SQLException e) {
+            Log.logdb.error("SQL Exception: " + e);
+        }
+        return solicitud;
+    }
 }

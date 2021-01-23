@@ -69,6 +69,12 @@ public class SolicitudController extends HttpServlet {
             Log.log.info("Parametro valor LIST");
             forward = LIST_SOLICITUDES;
             request.setAttribute("solicitudes", dao.getAllSolicitudes());
+        } else if (action.equalsIgnoreCase("listSolicitudesByTrabajador")) {    //usado
+            Log.log.info("Parametro valor LIST BY TRABAJADOR");
+            forward = LIST_SOLICITUDES;
+            String dni = request.getParameter("dni");
+            int idTrabajador = daoTrabajador.getTrabajadorByDni(dni).getIdTrabajador();
+            request.setAttribute("solicitudesTrabajador", dao.getSolicitudById(idTrabajador));
         } else {
             Log.log.info("Parametro valor vacio vamos a insertar");
             forward = INSERT_OR_EDIT;

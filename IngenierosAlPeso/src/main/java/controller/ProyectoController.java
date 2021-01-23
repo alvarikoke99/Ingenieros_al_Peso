@@ -13,10 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import model.Proyecto;
+import model.Trabajador;
+import model.RelacionProyectoTrabajador;
 import util.ProyectoDao;
+import util.TrabajadorDao;
+import util.ProyectoTrabajadorDao;
 import util.Log;
 
 public class ProyectoController extends HttpServlet {
@@ -26,11 +32,15 @@ public class ProyectoController extends HttpServlet {
     private static String LIST_PROYECTOS = "/infoProyectos.jsp"; //RRHH
     private static String LIST_MIS_PROYECTOS = "/misProyectosInfo.jsp"; //Trabajador
     private ProyectoDao dao;
+    private TrabajadorDao daoTrabajador;
+    private ProyectoTrabajadorDao daoProyecto;
     private Log log;
 
     public ProyectoController() {
         super();
         dao = new ProyectoDao();
+        daoTrabajador = new TrabajadorDao();
+        daoProyecto = new ProyectoTrabajadorDao();
     }
    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,13 +70,21 @@ public class ProyectoController extends HttpServlet {
             int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
             Proyecto proyecto = dao.getProyectoById(idProyecto);
             request.setAttribute("proyecto", proyecto);
-            } else if (action.equalsIgnoreCase("listProyectos")) {  //usado
+        } else if (action.equalsIgnoreCase("listProyectos")) {  //usado
             Log.log.info("Parametro valor LIST");
             forward = LIST_PROYECTOS;
             request.setAttribute("proyectos", dao.getAllProyectos());
-        
-        //action listMisProyectos, attribute misProyectos, solo los proyectos de ese trabajador 
-        
+        } else if (action.equalsIgnoreCase("listProyectosByTrabajador")) {   
+            Log.log.info("Parametro valor LIST BY TRABAJADOR");
+            forward = LIST_PROYECTOS;
+            String dni = request.getParameter("dni");
+            int idTrabajador = daoTrabajador.getTrabajadorByDni(dni).getIdTrabajador();
+            List<RelacionProyectoTrabajador> relaciones = daoProyecto.getRelacionesByIdTrabajador(idTrabajador);
+            List<Proyecto> proyectos = new ArrayList<>();
+            for (RelacionProyectoTrabajador relacion : relaciones) {
+                proyectos.add(dao.getProyectoById(relacion.getIdProyecto()));
+            }
+            request.setAttribute("proyectosTrabajador", proyectos);
         } else {
             Log.log.info("Parametro valor vacio vamos a insertar");
             forward = INSERT_OR_EDIT;

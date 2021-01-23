@@ -27,7 +27,7 @@ import util.Log;
 public class JornadaController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String FICHAR = "/user.jsp";
+    private static String FICHAR = "/fichar.jsp";
     private static String LIST_HORAS = "/listUser.jsp";
     private HorasJornadaDao daoHoras;
     private RegistroJornadaDao daoRegistro;
@@ -95,9 +95,9 @@ public class JornadaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String action = request.getParameter("btn");
         String forward = "/fichar.jsp";
         Log.log.info("Entramos por el doPost");
-        String action = request.getParameter("action");
 /*        processRequest(request, response); */
         
         String dni = request.getParameter("dni");
@@ -107,7 +107,7 @@ public class JornadaController extends HttpServlet {
         Timestamp fechaActual = new Timestamp (System.currentTimeMillis());
         Timestamp ultimaFecha = trabajador.getUltimaJornada();
         
-        if (action.equalsIgnoreCase("registroEntrada")) {   //comparar value del submit button
+        if (action.equalsIgnoreCase("entrada")) {   //comparar value del submit button
             Log.log.info("Parametro valor ENTRADA");
             RegistroJornada registro = new RegistroJornada();
             registro.setFechaEntrada(fechaActual);
@@ -135,7 +135,7 @@ public class JornadaController extends HttpServlet {
             trabajador.setUltimaJornada(fechaActual);
             daoTrabajador.updateTrabajador(trabajador);
             
-        } else if (action.equalsIgnoreCase("registroSalida")) {
+        } else if (action.equalsIgnoreCase("salida")) {
             Log.log.info("Parametro valor SALIDA");
             RegistroJornada registro = daoRegistro.getRegistroByFechaEntrada(idTrabajador, idProyecto, ultimaFecha);
             registro.setFechaSalida(fechaActual);

@@ -13,14 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
-import model.Trabajador;
-import model.RelacionEmpresaTrabajador;
-import model.RelacionProyectoTrabajador;
-import util.TrabajadorDao;
-import util.EmpresaTrabajadorDao;
-import util.ProyectoTrabajadorDao;
+import model.*;
+import util.*;
 import util.Log;
 /**
  *
@@ -36,15 +34,19 @@ public class TrabajadorController extends HttpServlet{
     private static String LIST_PROYECTOS = "_";
     private static String MIS_DATOS_INFO = "misDatosInfo.jsp";
     private TrabajadorDao daoTrabajador;
-    private EmpresaTrabajadorDao daoEmpresa;
-    private ProyectoTrabajadorDao daoProyecto;
+    private EmpresaDao daoEmpresa;
+    private ProyectoDao daoProyecto;
+    private EmpresaTrabajadorDao daoRelEmpresa;
+    private ProyectoTrabajadorDao daoRelProyecto;
     //private Log log;
     
     public TrabajadorController () {
         super();
         daoTrabajador = new TrabajadorDao();
-        daoEmpresa = new EmpresaTrabajadorDao();
-        daoProyecto = new ProyectoTrabajadorDao();
+        daoEmpresa = new EmpresaDao();
+        daoProyecto = new ProyectoDao();
+        daoRelEmpresa = new EmpresaTrabajadorDao();
+        daoRelProyecto = new ProyectoTrabajadorDao();
     }
 
     @Override
@@ -59,25 +61,25 @@ public class TrabajadorController extends HttpServlet{
             int idEmpresa = Integer.parseInt(request.getParameter("idEmpresa"));
             int idTrabajador = Integer.parseInt(request.getParameter("idTrabajador"));
             String departamento = request.getParameter("departamento");
-            daoEmpresa.deleteRelacion(idEmpresa, idTrabajador, departamento);
+            daoRelEmpresa.deleteRelacion(idEmpresa, idTrabajador, departamento);
             forward = LIST_EMPRESAS;
-            request.setAttribute("relaciones", daoEmpresa.getAllRelaciones());
+            request.setAttribute("relaciones", daoRelEmpresa.getAllRelaciones());
         } else if (action.equalsIgnoreCase("listRelEmpresa")) {
             Log.log.info("Parametro valor LIST RelacionEmpresaTrabajdor");
             forward = LIST_EMPRESAS;
-            request.setAttribute("relaciones", daoEmpresa.getAllRelaciones());
+            request.setAttribute("relaciones", daoRelEmpresa.getAllRelaciones());
             
         } else if (action.equalsIgnoreCase("deleteRelProyecto")) {
             Log.log.info("Parametro valor DELETE RelacionProyectoTrabajdor");
             int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
             int idTrabajador = Integer.parseInt(request.getParameter("idTrabajador"));
-            daoProyecto.deleteRelacion(idProyecto, idTrabajador);
+            daoRelProyecto.deleteRelacion(idProyecto, idTrabajador);
             forward = LIST_PROYECTOS;
-            request.setAttribute("relaciones", daoProyecto.getAllRelaciones());
+            request.setAttribute("relaciones", daoRelProyecto.getAllRelaciones());
         } else if (action.equalsIgnoreCase("listSolicitudes")) {
             Log.log.info("Parametro valor LIST RelacionProyectoTrabajdor");
             forward = LIST_PROYECTOS;
-            request.setAttribute("relaciones", daoProyecto.getAllRelaciones());
+            request.setAttribute("relaciones", daoRelProyecto.getAllRelaciones());
             
         } else if (action.equalsIgnoreCase("delete")) {
             Log.log.info("Parametro valor DELETE");
@@ -89,10 +91,28 @@ public class TrabajadorController extends HttpServlet{
             Log.log.info("Parametro valor LIST");
             forward = LIST_TRABAJADORES;
             request.setAttribute("trabajadores", daoTrabajador.getAllTrabajadores());
-            //añadir relEmp y relProy para listaUsuario
             
-        //action misDatosInfo, devuelve solo ese trabajador y RelEmpresa, RelProyecto con su id
-        //forward MIS_DATOS_INFO 
+        } else if (action.equalsIgnoreCase("listDatos")) {   //usado infoTrabajadores
+            Log.log.info("Parametro valor LIST DATOS");
+            forward = MIS_DATOS_INFO;
+            String dni = request.getParameter("dni");
+            Trabajador trabajador = daoTrabajador.getTrabajadorByDni(dni);
+            int idTrabajador = trabajador.getIdTrabajador();
+            
+            List<RelacionProyectoTrabajador> relacionesProyecto = daoRelProyecto.getRelacionesByIdTrabajador(idTrabajador);
+            List<Proyecto> proyectos = new ArrayList<>();
+            for (RelacionProyectoTrabajador relacion : relacionesProyecto) {
+                proyectos.add(daoProyecto.getProyectoById(relacion.getIdProyecto()));
+            }
+            
+            List<Empresa> empresas = new ArrayList<>();
+            for (Proyecto proyecto : proyectos) {
+                empresas.add(daoEmpresa.getEmpresaById(proyecto.getIdEmpresa()));
+            }
+            
+            request.setAttribute("trabajador", trabajador);
+            request.setAttribute("proyectos", proyectos);
+            request.setAttribute("empresas", empresas);
             
         } else {    //usado - revisar
             Log.log.info("Parametro valor vacio vamos a insertar");
@@ -126,9 +146,9 @@ public class TrabajadorController extends HttpServlet{
             relacionEmpresa.setIdEmpresa(Integer.parseInt(request.getParameter("idEmpresa")));
             relacionEmpresa.setDepartamento(request.getParameter("idEmpresa"));
             
-            daoEmpresa.addRelacion(relacionEmpresa);
+            daoRelEmpresa.addRelacion(relacionEmpresa);
             forward = INSERT_EMPRESA;
-            request.setAttribute("relaciones", daoEmpresa.getAllRelaciones());
+            request.setAttribute("relaciones", daoRelEmpresa.getAllRelaciones());
         } else if (action.equalsIgnoreCase("addRelProyecto")) {
             Log.log.info("Parametro valor INSERT RelacionEmpresaTrabajdor");
             
@@ -136,9 +156,9 @@ public class TrabajadorController extends HttpServlet{
             relacionProyecto.setIdTrabajador(Integer.parseInt(request.getParameter("idTrabajador")));
             relacionProyecto.setIdProyecto(Integer.parseInt(request.getParameter("idProyecto")));
          
-            daoProyecto.addRelacion(relacionProyecto);
+            daoRelProyecto.addRelacion(relacionProyecto);
             forward = INSERT_PROYECTO;
-            request.setAttribute("relaciones", daoProyecto.getAllRelaciones());
+            request.setAttribute("relaciones", daoRelProyecto.getAllRelaciones());
         } else {    //usado - revisar
             Log.log.info("Vamos a añadir el trabajador");
             Trabajador trabajador = new Trabajador();
