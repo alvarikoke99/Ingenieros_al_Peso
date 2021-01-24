@@ -24,9 +24,9 @@ import util.Log;
 public class ProyectoController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "/RRHH/annadirProyecto.jsp";
-    private static String LIST_PROYECTOS = "/RRHH/infoProyectos.jsp"; //RRHH
-    private static String LIST_MIS_PROYECTOS = "/Trabajador/misProyectosInfo.jsp"; //Trabajador
+    private static String INSERT_OR_EDIT = "/annadirProyecto.jsp";
+    private static String LIST_PROYECTOS = "/infoProyectos.jsp"; //RRHH
+    private static String LIST_MIS_PROYECTOS = "/misProyectosInfo.jsp"; //Trabajador
     private ProyectoDao dao;
     private TrabajadorDao daoTrabajador;
     private ProyectoTrabajadorDao daoProyecto;

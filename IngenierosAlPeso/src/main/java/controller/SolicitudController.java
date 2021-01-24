@@ -26,7 +26,7 @@ public class SolicitudController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_SOLICITUDES = "/RRHH/listaPeticiones.jsp"; //RRHH
+    private static String LIST_SOLICITUDES = "/listaPeticiones.jsp"; //RRHH
     private static String LIST_MIS_SOLICITUDES = "/_"; //Trabajador
     private SolicitudDao dao;
     private TrabajadorDao daoTrabajador;

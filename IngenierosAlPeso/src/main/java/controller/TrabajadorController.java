@@ -26,13 +26,13 @@ import util.Log;
  */
 public class TrabajadorController extends HttpServlet{
     private static final long serialVersionUID = 1L;
-    private static String INSERT = "/RRHH/annadirUser"; //usado
-    private static String LIST_TRABAJADORES = "/RRHH/infoTrabajadores.jsp";
+    private static String INSERT = "/annadirUser"; //usado
+    private static String LIST_TRABAJADORES = "/infoTrabajadores.jsp";
     private static String INSERT_EMPRESA = "_";
     private static String LIST_EMPRESAS = "_";
     private static String INSERT_PROYECTO = "_";
     private static String LIST_PROYECTOS = "_";
-    private static String MIS_DATOS_INFO = "misDatosInfo.jsp";
+    private static String MIS_DATOS_INFO = "/misDatosInfo.jsp";
     private TrabajadorDao daoTrabajador;
     private EmpresaDao daoEmpresa;
     private ProyectoDao daoProyecto;

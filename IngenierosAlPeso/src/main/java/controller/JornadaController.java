@@ -27,9 +27,9 @@ import util.Log;
 public class JornadaController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String FICHAR = "/Trabajador/fichar.jsp";
-    private static String LIST_MIS_HORAS = "/Trabajador/misDatosInfo.jsp";
-    private static String LIST_HORAS = "/RRHH/solicitarInforme.jsp";
+    private static String FICHAR = "/fichar.jsp";
+    private static String LIST_MIS_HORAS = "/misDatosInfo.jsp";
+    private static String LIST_HORAS = "/solicitarInforme.jsp";
     private HorasJornadaDao daoHoras;
     private RegistroJornadaDao daoRegistro;
     private TrabajadorDao daoTrabajador;
