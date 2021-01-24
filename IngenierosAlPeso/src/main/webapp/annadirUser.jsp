@@ -1,7 +1,7 @@
 <%-- 
-    Document   : asignarTrabajador
-    Created on : 24 ene. 2021, 11:41:28
-    Author     : maria
+    Document   : annadirUser
+    Created on : 22-ene-2021, 0:47:26
+    Author     : Usuario
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,14 +17,14 @@
     </head>
     <body id="cuerpo">
          <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="../plantilla.css" media="screen" /> 
+        <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" /> 
 
         <!--JavaScript-->
-        <script src="../funciones.js"></script>
+        <script src="funciones.js"></script>
         
         <!-- Cabecera -->
         <div class="cabecera" id="cabecera">
-            <img src="../img/logoSmall.png" alt="logo">
+            <img src="img/logoSmall.png" alt="logo">
         </div>
 
         <div class="topnav" id="topnav">
@@ -33,31 +33,31 @@
                   <i class="down"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="/src/main/java/controller/EmpresaController?action=listEmpresas">Empresa</a>
-                    <a href="/src/main/java/controller/ProyectoController?action=listProyectos">Proyectos</a>
-                    <a href="/src/main/java/controller/TrabajadorController?action=listTrabajadores">Trabajadores</a>
+                    <a href="EmpresaController?action=listEmpresas">Empresa</a>
+                    <a href="ProyectoController?action=listProyectos">Proyectos</a>
+                    <a href="TrabajadorController?action=listTrabajadores">Trabajadores</a>
                     <a href="infoCalendario.jsp">Calendario</a>
                   </div>
             </div>
-            <a class="enlace" href="/src/main/java/controller/SolicitudController?action=listSolicitudes">Lista peticiones</a>
+            <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
             <a class="enlace" href="solicitarInforme.jsp">Solicitar informe</a>
-            <a class="enlace" href="annadirUser.jsp">Añadir/Editar trabajador</a>
+            <a class="enlace" id="idPag" href="annadirUser.jsp">Añadir/Editar trabajador</a>
             <a class="enlace" href="annadirEmpresa.jsp">Añadir/Editar empresa</a>
             <a class="enlace" href="annadirProyecto.jsp">Añadir/Editar proyecto</a>
-            <a class="enlace" id="idPag" href="asignarTrabajador.jsp">Asignar trabajador</a>
-            <a class="enlace" href="../index.html">Cerrar sesión</a>
+            <a class="enlace" href="asignarTrabajador.jsp">Asignar trabajador</a>
+            <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido --> 
         <div class="contentCenter">
-            <form method="POST" action="TrabajadorController?action=addRelaciones" name="formAnnadirTrabajador">
-                <h2>Asignar trabajador a un proyecto:</h2><br>
+            <form method="POST" action="TrabajadorController" name="formAnnadirTrabajador">
+                <h2>Añadir/Editar trabajador:</h2><br>
+                <label>Nombre del trabajador:</label><br><br>
+                <input type="text" id="nombre" class="casilla" name="nombre" value="<c:out value="${trabajador.nombre}" />" required><br><br>
+                <label>Apellidos del trabajador:</label><br><br>
+                <input type="text" id="apellido" class="casilla" name="apellido" value="<c:out value="${trabajador.apellidos}" />" required><br><br>
                 <label>DNI del trabajador:</label><br><br>
-                <input type="text" id="nombre" class="casilla" name="nombre" value="<c:out value="${trabajador.dni}" />" required><br><br>
-                <label>Nombre del proyecto:</label><br><br>
-                <input type="text" id="apellido" class="casilla" name="apellido" value="<c:out value="${trabajador.nombreProyecto}" />" required><br><br>
-                <label>Nombre del departamento</label><br><br>
-                <input type="text" id="dep" class="casilla" name="dep" value="<c:out value="${trabajador.departamento}" />" required><br><br>
+                <input type="text" id="dni" class="casilla" name="dni" value="<c:out value="${trabajador.dni}" />" required><br><br>
                 <button type="submit" class="btnAdd">Añadir</button>
             </form>
         </div>   

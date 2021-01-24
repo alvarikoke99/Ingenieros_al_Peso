@@ -1,6 +1,6 @@
 <%-- 
-    Document   : listaPeticiones.jsp
-    Created on : 22-ene-2021, 11:44:17
+    Document   : infoTrabajadores
+    Created on : 22-ene-2021, 13:55:25
     Author     : Usuario
 --%>
 
@@ -17,14 +17,14 @@
     </head>
     <body id="cuerpo">
          <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="../plantilla.css" media="screen" /> 
+        <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" /> 
 
         <!--JavaScript-->
-        <script src="../funciones.js"></script>
+        <script src="funciones.js"></script>
         
         <!-- Cabecera -->
         <div class="cabecera" id="cabecera">
-            <img src="../img/logoSmall.png" alt="logo">
+            <img src="img/logoSmall.png" alt="logo">
         </div>
 
         <div class="topnav" id="topnav">
@@ -39,47 +39,44 @@
                     <a href="infoCalendario.jsp">Calendario</a>
                   </div>
             </div>
-            <a class="enlace" id="idPag"  href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
+            <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
             <a class="enlace" href="solicitarInforme.jsp">Solicitar informe</a>
             <a class="enlace" href="annadirUser.jsp">Añadir/Editar trabajador</a>
             <a class="enlace" href="annadirEmpresa.jsp">Añadir/Editar empresa</a>
             <a class="enlace" href="annadirProyecto.jsp">Añadir/Editar proyecto</a>
             <a class="enlace" href="asignarTrabajador.jsp">Asignar trabajador</a>
-            <a class="enlace" href="../index.html">Cerrar sesión</a>
+            <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
-        <!-- Contenido --> 
+        <!-- Contenido -->  
         <div class="content">
             <table id="tabla">
                 <thead>
                     <tr>
-                        <th>Id solicitud</th>
                         <th>Id trabajador</th>
-                        <th>Tipo</th>
-                        <th>Fecha inicio</th>
-                        <th>Fecha fin</th>
-                        <th>Observaciones</th>
-                        <th>Aceptar</th>
-                        <th>Rechazar</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Departamento</th>
+                        <th>Empresa</th>
+                        <th>Proyectos</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${solicitudes}" var="solicitud"> 
+                    <c:forEach items="${trabajadores}" var="trabajador"> 
                         <tr> 
-                            <td ><c:out value="${solicitud.idSolicitud}" /></td>
-                            <td><c:out value="${solicitud.idTrabajador}" /></td> 
-                            <td><c:out value="${solicitud.tipo}" /></td> 
-                            <td><c:out value="${solicitud.fechaIni}" /></td>
-                            <td><c:out value="${solicitud.fechaFinal}" /></td>
-                            <td><c:out value="${solicitud.observacion}" /></td>
-                            <!-- Revisar -->
-                            <td><a href="SolicitudController?action=edit&idSolicitud=<c:out value="${solicitud.idSolicitud}"/>">Aceptar</a></td> 
-                            <td><a href="SolicitudrController?action=edit&idSolicitud=<c:out value="${trabajador.idSolicitud}"/>">Rechazar</a></td> 
+                            <td ><c:out value="${trabajador.idTrabajador}" /></td>
+                            <td><c:out value="${trabajador.nombre}" /></td> 
+                            <td><c:out value="${trabajador.apellidos}" /></td> 
+                            <td><c:out value="${trabajador.departamento}" /></td>
+                            <td><a href="TrabajadorController?action=edit&idTrabajador=<c:out value="${trabajador.idTrabajador}"/>">Editar</a></td> 
+                            <td><a href="TrabajadorController?action=delete&idTrabajador=<c:out value="${trabajador.idTrabajador}"/>">Eliminar</a></td> 
                         </tr> 
-                    </c:forEach>
+                    </c:forEach> 
                 </tbody>
             </table>
-        </div>   
+        </div>  
         
 
         <!-- Pie de pagina -->

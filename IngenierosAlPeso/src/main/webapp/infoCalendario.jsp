@@ -17,14 +17,14 @@
     </head>
     <body id="cuerpo">
          <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="../plantilla.css" media="screen" /> 
+        <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" /> 
 
         <!--JavaScript-->
-        <script src="../funciones.js"></script>
+        <script src="funciones.js"></script>
         
         <!-- Cabecera -->
         <div class="cabecera" id="cabecera">
-            <img src="../img/logoSmall.png" alt="logo">
+            <img src="img/logoSmall.png" alt="logo">
         </div>
 
         <div class="topnav" id="topnav">
@@ -33,19 +33,19 @@
                   <i class="down"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="/src/main/java/controller/EmpresaController?action=listEmpresas">Empresa</a>
-                    <a href="/src/main/java/controller/ProyectoController?action=listProyectos">Proyectos</a>
-                    <a href="/src/main/java/controller/TrabajadorController?action=listTrabajadores">Trabajadores</a>
+                    <a href="EmpresaController?action=listEmpresas">Empresa</a>
+                    <a href="ProyectoController?action=listProyectos">Proyectos</a>
+                    <a href="TrabajadorController?action=listTrabajadores">Trabajadores</a>
                     <a href="infoCalendario.jsp">Calendario</a>
                   </div>
             </div>
-            <a class="enlace" href="/src/main/java/controller/SolicitudController?action=listSolicitudes">Lista peticiones</a>
+            <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
             <a class="enlace" href="solicitarInforme.jsp">Solicitar informe</a>
             <a class="enlace" href="annadirUser.jsp">Añadir/Editar trabajador</a>
             <a class="enlace" href="annadirEmpresa.jsp">Añadir/Editar empresa</a>
             <a class="enlace" href="annadirProyecto.jsp">Añadir/Editar proyecto</a>
             <a class="enlace" href="asignarTrabajador.jsp">Asignar trabajador</a>
-            <a class="enlace" href="../index.html">Cerrar sesión</a>
+            <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido -->   

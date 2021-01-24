@@ -7,7 +7,7 @@
                                 INDEX
 --------------------------------------------------------------------*/
 #index {
-    background-image: url("./img/fondo.jpg");
+    background-image: url("img/fondo.jpg");
     background-size: cover;
 }
 
@@ -40,7 +40,7 @@ h2{
                             INICIAR SESIÓN
 --------------------------------------------------------------------*/
 #iniciarSesion{
-    background-image: url("./img/fondo.jpg");
+    background-image: url("img/fondo.jpg");
     background-size: cover;
 }
 

@@ -18,10 +18,10 @@
 
     <body id="iniciarSesion">
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="../plantilla.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" />
 
         <!--JavaScript-->
-        <script src="../funciones.js"></script>
+        <script src="funciones.js"></script>
 
         <!--Contenido-->
         <form class="container">

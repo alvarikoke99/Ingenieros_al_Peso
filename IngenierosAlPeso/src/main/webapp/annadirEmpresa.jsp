@@ -1,6 +1,6 @@
 <%-- 
-    Document   : annadirUser
-    Created on : 22-ene-2021, 0:47:26
+    Document   : annadirEmpresa
+    Created on : 23 ene. 2021, 12:11:16
     Author     : Usuario
 --%>
 
@@ -17,14 +17,14 @@
     </head>
     <body id="cuerpo">
          <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="../plantilla.css" media="screen" /> 
+        <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" /> 
 
         <!--JavaScript-->
-        <script src="../funciones.js"></script>
+        <script src="funciones.js"></script>
         
         <!-- Cabecera -->
         <div class="cabecera" id="cabecera">
-            <img src="../img/logoSmall.png" alt="logo">
+            <img src="img/logoSmall.png" alt="logo">
         </div>
 
         <div class="topnav" id="topnav">
@@ -39,25 +39,23 @@
                     <a href="infoCalendario.jsp">Calendario</a>
                   </div>
             </div>
-            <a class="enlace" href="../SolicitudController?action=listSolicitudes">Lista peticiones</a>
+            <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
             <a class="enlace" href="solicitarInforme.jsp">Solicitar informe</a>
-            <a class="enlace" id="idPag" href="annadirUser.jsp">Añadir/Editar trabajador</a>
-            <a class="enlace" href="annadirEmpresa.jsp">Añadir/Editar empresa</a>
+            <a class="enlace" href="annadirUser.jsp">Añadir/Editar trabajador</a>
+            <a class="enlace" id="idPag" href="annadirEmpresa.jsp">Añadir/Editar empresa</a>
             <a class="enlace" href="annadirProyecto.jsp">Añadir/Editar proyecto</a>
             <a class="enlace" href="asignarTrabajador.jsp">Asignar trabajador</a>
-            <a class="enlace" href="../index.html">Cerrar sesión</a>
+            <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido --> 
         <div class="contentCenter">
-            <form method="POST" action="TrabajadorController" name="formAnnadirTrabajador">
+            <form method="POST" action="EmpresaController" name="formAnnadirEmpresa">
                 <h2>Añadir/Editar trabajador:</h2><br>
-                <label>Nombre del trabajador:</label><br><br>
-                <input type="text" id="nombre" class="casilla" name="nombre" value="<c:out value="${trabajador.nombre}" />" required><br><br>
-                <label>Apellidos del trabajador:</label><br><br>
-                <input type="text" id="apellido" class="casilla" name="apellido" value="<c:out value="${trabajador.apellidos}" />" required><br><br>
-                <label>DNI del trabajador:</label><br><br>
-                <input type="text" id="dni" class="casilla" name="dni" value="<c:out value="${trabajador.dni}" />" required><br><br>
+                <label>Nombre del empresa</label><br><br>
+                <input type="text" id="nombre" class="casilla" name="nombre" value="<c:out value="${empresa.nombre}" />" required><br><br>
+                <label>Descripción:</label><br><br>
+                <input type="text" id="descripcion" class="casilla" name="descripcion" value="<c:out value="${empresa.descripcion}" />" required><br><br>
                 <button type="submit" class="btnAdd">Añadir</button>
             </form>
         </div>   

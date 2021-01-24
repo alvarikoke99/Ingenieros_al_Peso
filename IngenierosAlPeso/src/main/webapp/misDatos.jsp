@@ -1,12 +1,13 @@
 <%-- 
-    Document   : misProyectos
-    Created on : 23-ene-2021, 1:21:26
+    Document   : misDatos
+    Created on : 23-ene-2021, 2:06:51
     Author     : Usuario
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="es">
+<html>
+    <html lang="es">
     <head>
         <title>
             Ingenieros al peso S.A. | Usuario
@@ -16,26 +17,26 @@
     </head>
     <body>
          <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="../plantilla.css" media="screen" /> 
-        
+        <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" /> 
+
         <!-- Cabecera -->
         <div class="cabecera" id="cabecera">
-            <img src="../img/logo_small.png" alt="logo">
+            <img src="img/logo_small.png" alt="logo">
         </div>
 
         <div class="topnav" id="topnav">
-            <a class="enlace" href="JornadaController?action=fichar">Fichar</a>
+            <a class="enlace" href="fichar.jsp">Fichar</a>
             <a class="enlace" href="solicitarVacaciones.jsp">Solicitar días libres</a>
-            <a class="enlace" id="idPag" href="/src/main/java/controller/ProyectoController?action=listMisProyectos">Mis proyectos</a>
-            <a class="enlace" href="misDatos.jsp">Mis datos</a>
+            <a class="enlace" href="ProyectoController?action=listMisProyectos">Mis proyectos</a>
+            <a class="enlace" id="idPag" href="misDatos.jsp">Mis datos</a>
             <a class="enlace" href="bandejaEntrada.jsp">Mis mensajes</a>
-            <a class="enlace" href="../index.html">Cerrar sesión</a>
+            <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido -->    
         <div class="contentCenter">
-            <h2>Mis proyectos:</h2>
-            <form method="GET" action="ProyectoController?action=listMisProyectos" name="formMisProyectos">
+            <h2>Mis datos:</h2>
+            <form method="GET" action="TrabajadorController?action=misDatosInfo" name="formMisDatos">
                 <label>DNI del trabajador:</label>
                 <input type="text" id="dni" name="dni" class="casillaPeq" placeholder="Introduzca su DNI" required><br><br>
                 <button type="submit" class="btnFichar">Validar</button><br><br>
@@ -43,9 +44,9 @@
         </div>
 
         <!-- Pie de pagina -->
-        <div class="footerLargo">Ingenieros al peso S.A. - Campus Universitario, Ctra. Madrid-Barcelona km, 33, 600, 28805 Alcalá de Henares - Teléfono: 900.000.000
+        <footer>Ingenieros al peso S.A. - Campus Universitario, Ctra. Madrid-Barcelona km, 33, 600, 28805 Alcalá de Henares - Teléfono: 900.000.000
             <br> Condiciones generales de venta, política de privacidad y utilización web y APP
             <br> © Ingenieros al peso S.A. 2020
-        </div>
+        </footer>
     </body>
 </html>
