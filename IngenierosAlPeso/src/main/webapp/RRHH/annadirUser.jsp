@@ -45,7 +45,7 @@
             <a class="enlace" href="EmpresaController?action=listEmpresas">Añadir/Editar empresa</a>
             <a class="enlace" href="ProyectoController?action=listProyectos">Añadir/Editar proyecto</a>
             <a class="enlace" href="">Asignar trabajador</a>
-            <a class="enlace" href="index.html">Cerrar sesión</a>
+            <a class="enlace" href="../index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido --> 

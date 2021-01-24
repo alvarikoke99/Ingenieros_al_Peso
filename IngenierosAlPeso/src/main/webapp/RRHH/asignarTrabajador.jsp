@@ -56,8 +56,8 @@
                 <input type="text" id="nombre" class="casilla" name="nombre" value="<c:out value="${trabajador.dni}" />" required><br><br>
                 <label>Nombre del proyecto:</label><br><br>
                 <input type="text" id="apellido" class="casilla" name="apellido" value="<c:out value="${trabajador.nombreProyecto}" />" required><br><br>
-                <label>Nombre de la empresa:</label><br><br>
-                <input type="text" id="dni" class="casilla" name="dni" value="<c:out value="${trabajador.nombreEmpresa}" />" required><br><br>
+                <label>Nombre del departamento</label><br><br>
+                <input type="text" id="dep" class="casilla" name="dep" value="<c:out value="${trabajador.departamento}" />" required><br><br>
                 <button type="submit" class="btnAdd">Añadir</button>
             </form>
         </div>   
