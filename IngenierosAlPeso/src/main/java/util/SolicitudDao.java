@@ -86,7 +86,7 @@ public class SolicitudDao {
             preparedStatement.setInt(7, solicitud.getIdSolicitud());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            Log.logdb.error("SQL Exception: " + e);            
+            Log.logdb.error("SQL Exception: " + e); 
         }
     }
     

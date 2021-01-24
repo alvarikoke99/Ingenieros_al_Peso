@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+    <Appenders>				
+        <!-- LOG -->
+        <RollingFile name="LogFile" fileName="/var/log/tomcat/logIaP.log"
+                             filePattern="/var/log/tomcat/mvc-%d{yyyy}-%i.log.gz">
+            <PatternLayout
+                pattern="%n%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %-30l %logger{36} ### %msg"
+                header="-- LOG --" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>		
+        <!-- LOGDB -->
+        <RollingFile name="LogFileDB" fileName="/var/log/tomcat/logdbIaP.log"
+                             filePattern="/var/log/tomcat/mvc-%d{yyyy}-%i.logdb.gz">
+            <PatternLayout
+                pattern="%n%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %-30l %logger{36} ### %msg"
+                header="-- LOG --" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>			    
+    </Appenders>
+    <Loggers>
+        <!-- LOG -->
+        <Logger name="log" additivity="FALSE" level="INFO">
+            <AppenderRef ref="LogFile" level="INFO" />
+        </Logger>
+        <!-- LOGDB -->
+        <Logger name="logdb" additivity="FALSE" level="INFO">
+            <AppenderRef ref="LogFileDB" level="INFO" />
+        </Logger>	    
+    </Loggers>
+</Configuration>
