@@ -27,8 +27,9 @@ import util.Log;
 public class JornadaController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String FICHAR = "/fichar.jsp";
-    private static String LIST_HORAS = "/listUser.jsp";
+    private static String FICHAR = "/Trabajador/fichar.jsp";
+    private static String LIST_MIS_HORAS = "/Trabajador/misDatosInfo.jsp";
+    private static String LIST_HORAS = "/RRHH/solicitarInforme.jsp";
     private HorasJornadaDao daoHoras;
     private RegistroJornadaDao daoRegistro;
     private TrabajadorDao daoTrabajador;
@@ -64,7 +65,7 @@ public class JornadaController extends HttpServlet {
             int idTrabajador = trabajador.getIdTrabajador();
             int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
             request.setAttribute("horas", daoHoras.getHorasJornadaById(idProyecto, idTrabajador));
-            forward = LIST_HORAS;
+            forward = LIST_MIS_HORAS;
         } else if (action.equalsIgnoreCase("listHorasProyecto")) {
             int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
             request.setAttribute("horas", daoHoras.getHorasJornadaByIdProyecto(idProyecto)); 

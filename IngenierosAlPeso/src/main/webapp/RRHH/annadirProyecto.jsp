@@ -24,7 +24,7 @@
         
         <!-- Cabecera -->
         <div class="cabecera" id="cabecera">
-            <img src="img/logoSmall.png" alt="logo">
+            <img src="../img/logoSmall.png" alt="logo">
         </div>
 
         <div class="topnav" id="topnav">
@@ -44,6 +44,7 @@
             <a class="enlace" href="TrabajadorController?action=listTrabajadores">Añadir/Editar trabajador</a>
             <a class="enlace" href="EmpresaController?action=listEmpresas">Añadir/Editar empresa</a>
             <a class="enlace" id="idPag" href="ProyectoController?action=listProyectos">Añadir/Editar proyecto</a>
+            <a class="enlace" href="">Asignar trabajador</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
@@ -55,6 +56,8 @@
                 <input type="text" id="nombreProyecto" class="casilla" name="nombreProyecto" value="<c:out value="${proyecto.nombre}" />" required><br><br>
                 <label>Información del proyecto:</label><br><br>
                 <input type="text" id="info" class="casilla" name="info" value="<c:out value="${proyecto.informacion}" />" required><br><br>
+                <label>Nombre de la empresa:</label><br><br>
+                <input type="text" id="empresa" class="casilla" name="empresa" value="<c:out value="${proyecto.nombreEmpresa}" />" required><br><br>
                 <button type="submit" class="btnAdd">Añadir</button>
             </form>
         </div>   

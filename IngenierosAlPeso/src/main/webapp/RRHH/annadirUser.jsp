@@ -24,7 +24,7 @@
         
         <!-- Cabecera -->
         <div class="cabecera" id="cabecera">
-            <img src="img/logoSmall.png" alt="logo">
+            <img src="../img/logoSmall.png" alt="logo">
         </div>
 
         <div class="topnav" id="topnav">
@@ -44,6 +44,7 @@
             <a class="enlace" id="idPag" href="TrabajadorController?action=listTrabajadores">Añadir/Editar trabajador</a>
             <a class="enlace" href="EmpresaController?action=listEmpresas">Añadir/Editar empresa</a>
             <a class="enlace" href="ProyectoController?action=listProyectos">Añadir/Editar proyecto</a>
+            <a class="enlace" href="">Asignar trabajador</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 

@@ -24,26 +24,27 @@
         
         <!-- Cabecera -->
         <div class="cabecera" id="cabecera">
-            <img src="img/logoSmall.png" alt="logo">
+            <img src="../img/logoSmall.png" alt="logo">
         </div>
 
         <div class="topnav" id="topnav">
-            <div class="dropdown" id="idPag">
+            <div class="dropdown">
                 <a class="dropbtn">Ver informacion
                   <i class="down"></i>
                 </a>
                 <div class="dropdown-content">
-                  <a href="infoEmpresa.html">Empresa</a>
-                  <a href="infoProyectos.html">Proyectos</a>
-                  <a href="infoTrabajadores.html">Trabajadores</a>
-                  <a href="infoCalendario.html">Calendario</a>
-                </div>
+                    <a href="EmpresaController?action=listEmpresas">Empresa</a>
+                    <a href="ProyectoController?action=listProyectos">Proyectos</a>
+                    <a href="TrabajadorController?action=listTrabajadores">Trabajadores</a>
+                    <a href="infoCalendario.jsp">Calendario</a>
+                  </div>
             </div>
-            <a class="enlace" href="listaPeticiones.html">Lista peticiones</a>
-            <a class="enlace" href="solicitarInforme.html">Solicitar informe</a>
-            <a class="enlace" href="annadirUser.html">Añadir trabajador</a>
-            <a class="enlace" href="annadirEmpresa.jsp">Añadir empresa</a>
-            <a class="enlace" href="annadirProyecto.jsp">Añadir proyecto</a>
+            <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
+            <a class="enlace" href="solicitarInforme.jsp">Solicitar informe</a>
+            <a class="enlace" href="TrabajadorController?action=listTrabajadores">Añadir/Editar trabajador</a>
+            <a class="enlace" href="EmpresaController?action=listEmpresas">Añadir/Editar empresa</a>
+            <a class="enlace" href="ProyectoController?action=listProyectos">Añadir/Editar proyecto</a>
+            <a class="enlace" href="">Asignar trabajador</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 

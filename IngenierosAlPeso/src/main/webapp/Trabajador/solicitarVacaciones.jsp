@@ -16,17 +16,17 @@
     </head>
     <body>
          <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" /> 
+        <link rel="stylesheet" type="text/css" href="../plantilla.css" media="screen" /> 
         
         <!-- Cabecera -->
         <div class="cabecera" id="cabecera">
-            <img src="img/logo_small.png" alt="logo">
+            <img src="../img/logo_small.png" alt="logo">
         </div>
 
         <div class="topnav" id="topnav">
-            <a class="enlace" href="fichar.jsp">Fichar</a>
+            <a class="enlace" href="JornadaController?action=fichar">Fichar</a>
             <a class="enlace" id="idPag" href="solicitarVacaciones.jsp">Solicitar días libres</a>
-            <a class="enlace" href="misProyectos.jsp">Mis proyectos</a>
+            <a class="enlace" href="ProyectoController?action=listMisProyectos">Mis proyectos</a>
             <a class="enlace" href="misDatos.jsp">Mis datos</a>
             <a class="enlace" href="bandejaEntrada.html">Mis mensajes</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
