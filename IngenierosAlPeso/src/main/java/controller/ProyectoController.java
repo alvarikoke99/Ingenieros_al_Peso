@@ -17,12 +17,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
-import model.Proyecto;
-import model.Trabajador;
-import model.RelacionProyectoTrabajador;
-import util.ProyectoDao;
-import util.TrabajadorDao;
-import util.ProyectoTrabajadorDao;
+import model.*;
+import util.*;
 import util.Log;
 
 public class ProyectoController extends HttpServlet {
@@ -34,6 +30,7 @@ public class ProyectoController extends HttpServlet {
     private ProyectoDao dao;
     private TrabajadorDao daoTrabajador;
     private ProyectoTrabajadorDao daoProyecto;
+    private EmpresaDao daoEmpresa;
     private Log log;
 
     public ProyectoController() {
@@ -41,6 +38,7 @@ public class ProyectoController extends HttpServlet {
         dao = new ProyectoDao();
         daoTrabajador = new TrabajadorDao();
         daoProyecto = new ProyectoTrabajadorDao();
+        daoEmpresa = new EmpresaDao();
     }
    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -109,8 +107,9 @@ public class ProyectoController extends HttpServlet {
 /*        processRequest(request, response); */
         Proyecto proyecto = new Proyecto();
         proyecto.setNombre(request.getParameter("nombre"));
-        proyecto.setInformacion(request.getParameter("info"));                
-        proyecto.setIdEmpresa(Integer.parseInt(request.getParameter("idEmpresa")));
+        proyecto.setInformacion(request.getParameter("info"));
+        String nombreEmpresa = request.getParameter("nombreEmpresa");
+        proyecto.setIdEmpresa(daoEmpresa.getEmpresaByNombre(nombreEmpresa).getIdEmpresa());
         String idProyecto = request.getParameter("userid");
         if (idProyecto == null || idProyecto.isEmpty()) {
             Log.log.info("Vamos a añadir el usuario");

@@ -106,4 +106,21 @@ public class EmpresaDao {
         }
         return empresa;
     }
+    
+    public Empresa getEmpresaByNombre(String nombre) {
+        Empresa empresa = new Empresa();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from empresa where nombre=?");
+            preparedStatement.setString(1, nombre);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                empresa.setIdEmpresa(rs.getInt("id_empresa"));
+                empresa.setNombre(rs.getString("nombre")); 
+                empresa.setDescripcion(rs.getString("descripcion")); 
+            }
+        } catch (SQLException e) {
+            Log.logdb.error("SQL Exception: " + e);
+        }
+        return empresa;
+    }
 }
