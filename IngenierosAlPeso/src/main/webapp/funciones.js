@@ -29,8 +29,8 @@ function iniciarSesion() {
   }
   else if (usuario=="Pruebas"){
     if(password=="Pruebas"){
-      window.open("./Trabajador/fichar.jsp");
-      window.close("./Trabajador/iniciarSesionUser.jsp");
+      window.open("./fichar.jsp");
+      window.close("./iniciarSesionUser.jsp");
     }else{
       window.alert("La contraseña no es válida");
     }

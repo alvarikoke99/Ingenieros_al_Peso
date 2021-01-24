@@ -24,12 +24,12 @@
         </div>
 
         <div class="topnav" id="topnav">
-            <a class="enlace" href="JornadaController?action=fichar">Fichar</a>
+            <a class="enlace" href="fichar.jsp">Fichar</a>
             <a class="enlace" id="idPag" href="solicitarVacaciones.jsp">Solicitar días libres</a>
-            <a class="enlace" href="ProyectoController?action=listMisProyectos">Mis proyectos</a>
+            <a class="enlace" href="/src/main/java/controller/ProyectoController?action=listMisProyectos">Mis proyectos</a>
             <a class="enlace" href="misDatos.jsp">Mis datos</a>
-            <a class="enlace" href="bandejaEntrada.html">Mis mensajes</a>
-            <a class="enlace" href="index.html">Cerrar sesión</a>
+            <a class="enlace" href="bandejaEntrada.jsp">Mis mensajes</a>
+            <a class="enlace" href="../index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido -->    
