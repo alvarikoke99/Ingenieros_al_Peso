@@ -28,14 +28,15 @@ public class HorasJornadaDao {
     private Connection connection;
 
     /**
-    *
+    * Constructor de la clase donde se crea la conexión con la BBDD
     */
     public HorasJornadaDao() {
         connection = DbUtil.getConnection();
     }
 
     /**
-    *
+    * Añade una entrada a la tabla horas_jornada de la BBDD
+    * @param horasJornada objeto HorasJornada que será insertado
     */
     public void addHorasJornada(HorasJornada horasJornada) {
         try {
@@ -52,7 +53,8 @@ public class HorasJornadaDao {
     }
 
     /**
-    *
+    * Devuelve todas las entradas de la tabla horas_jornada de la BBDD
+    * @return List de objetos HorasJornada que contiene todas las entradas de la tabla
     */
     public List<HorasJornada> getAllHorasJornadas() {
         List<HorasJornada> dbHorasJornada = new ArrayList<HorasJornada>();
@@ -82,7 +84,9 @@ public class HorasJornadaDao {
     }
 
     /**
-    *
+    * Devuelve las relaciones que contienen el ID especificado
+    * @param idProyecto ID del proyecto
+    * @return List de objetos HorasJornada asociados con el ID especificado
     */
     public List<HorasJornada> getHorasJornadaByIdProyecto(int idProyecto) {
         List<HorasJornada> dbHorasJornada = new ArrayList<HorasJornada>();
@@ -114,7 +118,9 @@ public class HorasJornadaDao {
     }
   
     /**
-    *
+    * Devuelve las relaciones que contienen el ID especificado
+    * @param idTrabajador ID del trabajador
+    * @return List de objetos HorasJornada asociados con el ID especificado
     */
     public List<HorasJornada> getHorasJornadaByIdTrabajador(int idTrabajador) {
         List<HorasJornada> dbHorasJornada = new ArrayList<HorasJornada>();
@@ -146,7 +152,10 @@ public class HorasJornadaDao {
     }
     
     /**
-    *
+    * Devuelve las relaciones que contienen los ID especificados
+    * @param idProyecto ID del proyecto
+    * @param idTrabajador ID del trabajador
+    * @return List de objetos HorasJornada asociados con el ID especificado
     */
     public List<HorasJornada> getHorasJornadaById(int idProyecto, int idTrabajador) {
         List<HorasJornada> dbHorasJornada = new ArrayList<HorasJornada>();

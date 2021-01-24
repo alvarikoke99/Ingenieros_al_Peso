@@ -28,14 +28,15 @@ public class EmpresaDao {
     private Connection connection;
 
     /**
-    *
+    * Constructor de la clase donde se crea la conexión con la BBDD
     */
     public EmpresaDao() {
         connection = DbUtil.getConnection();
     }
 
     /**
-    *
+    * Añade una entrada a la tabla empresa de la BBDD
+    * @param empresa objeto Empresa que será insertado
     */
     public void addEmpresa(Empresa empresa) {
         try {
@@ -50,11 +51,12 @@ public class EmpresaDao {
     }
 
     /**
-    *
+    * Elimina una entrada de la tabla empresa de la BBDD
+    * @param idEmpresa ID de la empresa que será eliminada
     */
     public void deleteEmpresa(int idEmpresa) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from trabajador where id_empresa=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from empresa where id_empresa=?");
             // Parameters start with 1 
             preparedStatement.setInt(1, idEmpresa);
             preparedStatement.executeUpdate();
@@ -64,7 +66,8 @@ public class EmpresaDao {
     }
 
     /**
-    *
+    * Actualiza una entrada de la tabla empresa de la BBDD
+    * @param solicitud objeto Empresa que será actualizado
     */
     public void updateEmpresa(Empresa empresa) {
         try {
@@ -79,7 +82,8 @@ public class EmpresaDao {
     }
 
     /**
-    *
+    * Devuelve todas las entradas de la tabla empresa de la BBDD
+    * @return List de objetos Empresa que contiene todas las entradas de la tabla
     */
     public List<Empresa> getAllEmpresas() {
         List<Empresa> dbEmpresa = new ArrayList<Empresa>();
@@ -109,7 +113,9 @@ public class EmpresaDao {
     }
 
     /**
-    *
+    * Devuelve la empresa que contiene el ID especificado
+    * @param idEmpresa ID de la empresa
+    * @return objeto Empresa
     */
     public Empresa getEmpresaById(int idEmpresa) {
         Empresa empresa = new Empresa();
@@ -129,7 +135,9 @@ public class EmpresaDao {
     }
     
     /**
-    *
+    * Devuelve la empresa que contiene el nombre de empresa especificado
+    * @param nombre nombre de la empresa
+    * @return objeto Empresa
     */
     public Empresa getEmpresaByNombre(String nombre) {
         Empresa empresa = new Empresa();

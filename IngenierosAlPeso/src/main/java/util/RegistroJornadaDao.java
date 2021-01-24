@@ -29,14 +29,15 @@ public class RegistroJornadaDao {
     private Connection connection;
 
     /**
-    *
+    * Constructor de la clase donde se crea la conexión con la BBDD
     */
     public RegistroJornadaDao() {
         connection = DbUtil.getConnection();
     }
 
     /**
-    *
+    * Añade una entrada a la tabla registro_jornada de la BBDD
+    * @param registro objeto RegistroJornada que será insertado
     */
     public void addRegistro(RegistroJornada registro) {
         try {
@@ -53,7 +54,8 @@ public class RegistroJornadaDao {
     }
 
     /**
-    *
+    * Elimina una entrada de la tabla registro_jornada de la BBDD
+    * @param registro objeto RegistroJornada que será eliminado
     */
     public void deleteRegistro(RegistroJornada registro) {
         try {
@@ -70,7 +72,8 @@ public class RegistroJornadaDao {
     }
    
     /**
-    *
+    * Actualiza una entrada de la tabla registro_jornada de la BBDD
+    * @param registro objeto RegistroJornada que será actualizado
     */
     public void updateFechaSalida(RegistroJornada registro) {
         try {
@@ -87,7 +90,8 @@ public class RegistroJornadaDao {
     }
 
     /**
-    *
+    * Devuelve todas las entradas de la tabla registro_jornada de la BBDD
+    * @return List de objetos RegistroJornada que contiene todas las entradas de la tabla
     */
     public List<RegistroJornada> getAllRegistros() {
         List<RegistroJornada> dbRegistro = new ArrayList<RegistroJornada>();
@@ -118,7 +122,9 @@ public class RegistroJornadaDao {
     }
 
     /**
-    *
+    * Devuelve los registros que contienen el ID especificado
+    * @param idTrabajador ID del trabajador
+    * @return List de objetos RegistroJornada asociados con el ID especificado
     */
     public List<RegistroJornada> getRegistrosByIdTrabajador(int idTrabajador) {
         List<RegistroJornada> dbRegistro = new ArrayList<RegistroJornada>();
@@ -150,7 +156,11 @@ public class RegistroJornadaDao {
     }
   
     /**
-    *
+    * Devuelve el registro especificando la fecha de entrada
+    * @param idTrabajador ID del trabajador
+    * @param idProyecto ID del proyecto
+    * @param fecha fecha de entrada del trabajador
+    * @return objeto RegistroJornada
     */
     public RegistroJornada getRegistroByFechaEntrada(int idTrabajador, int idProyecto, Timestamp fecha) {
         RegistroJornada registro = new RegistroJornada();
@@ -173,7 +183,11 @@ public class RegistroJornadaDao {
     }
    
     /**
-    *
+    * Devuelve el registro especificando la fecha de salida
+    * @param idTrabajador ID del trabajador
+    * @param idProyecto ID del proyecto
+    * @param fecha fecha de salida del trabajador
+    * @return objeto RegistroJornada
     */
     public RegistroJornada getRegistroByFechaSalida(int idTrabajador, int idProyecto, Timestamp fecha) {
         RegistroJornada registro = new RegistroJornada();

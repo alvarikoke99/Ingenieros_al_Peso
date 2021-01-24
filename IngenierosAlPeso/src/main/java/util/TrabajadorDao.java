@@ -28,14 +28,15 @@ public class TrabajadorDao {
     private Connection connection;
 
     /**
-    *
+    * Constructor de la clase donde se crea la conexión con la BBDD
     */
     public TrabajadorDao() {
         connection = DbUtil.getConnection();
     }
 
     /**
-    *
+    * Añade una entrada a la tabla trabajador de la BBDD
+    * @param trabajador objeto Trabajador que será insertado
     */
     public void addTrabajador(Trabajador trabajador) {
         try {
@@ -52,7 +53,8 @@ public class TrabajadorDao {
     }
 
     /**
-    *
+    * Elimina una entrada de la tabla trabajador de la BBDD
+    * @param idTrabajador ID del trabajador que será eliminado
     */
     public void deleteTrabajador(int idTrabajador) {
         try {
@@ -66,7 +68,8 @@ public class TrabajadorDao {
     }
 
     /**
-    *
+    * Actualiza una entrada de la tabla trabajador de la BBDD
+    * @param trabajador objeto Trabajador que será actualizado
     */
     public void updateTrabajador(Trabajador trabajador) {
         try {
@@ -84,7 +87,8 @@ public class TrabajadorDao {
     }
 
     /**
-    *
+    * Devuelve todas las entradas de la tabla trabajador de la BBDD
+    * @return List de objetos Trabajador que contiene todas las entradas de la tabla
     */
     public List<Trabajador> getAllTrabajadores() {
         List<Trabajador> dbTrabajador = new ArrayList<Trabajador>();
@@ -116,7 +120,9 @@ public class TrabajadorDao {
     }
 
     /**
-    *
+    * Devuelve el trabajador que contiene el ID especificado
+    * @param idTrabajador ID del trabajador
+    * @return objeto Trabajador
     */
     public Trabajador getTrabajadorById(int idTrabajador) {
         Trabajador trabajador = new Trabajador();
@@ -138,7 +144,9 @@ public class TrabajadorDao {
     }
    
     /**
-    *
+    * Devuelve el Trabajador que contiene el DNI especificado
+    * @param dni DNI del trabajador
+    * @return objeto Trabajador
     */
     public Trabajador getTrabajadorByDni(String dni) {
         Trabajador trabajador = new Trabajador();

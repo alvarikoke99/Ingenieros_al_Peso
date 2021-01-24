@@ -28,14 +28,15 @@ public class ProyectoTrabajadorDao {
     private Connection connection;
 
     /**
-    *
+    * Constructor de la clase donde se crea la conexión con la BBDD
     */
     public ProyectoTrabajadorDao() {
         connection = DbUtil.getConnection();
     }
 
     /**
-    *
+    * Añade una entrada a la tabla relacion_proyecto_trabajador de la BBDD
+    * @param relacion objeto RelacionProyectoTrabajador que será insertado
     */
     public void addRelacion(RelacionProyectoTrabajador relacion) {
         try {
@@ -50,7 +51,9 @@ public class ProyectoTrabajadorDao {
     }
 
     /**
-    *
+    * Elimina una entrada de la tabla relacion_proyecto_trabajador de la BBDD
+    * @param idProyecto ID del proyecto
+    * @param idTrabajador ID del trabajador
     */
     public void deleteRelacion(int idProyecto, int idTrabajador) {
         try {
@@ -65,7 +68,8 @@ public class ProyectoTrabajadorDao {
     }
 
     /**
-    *
+    * Devuelve todas las entradas de la tabla relacion_proyecto_trabajador de la BBDD
+    * @return List de objetos RelacionProyectoTrabajador que contiene todas las entradas de la tabla
     */
     public List<RelacionProyectoTrabajador> getAllRelaciones() {
         List<RelacionProyectoTrabajador> dbRelacion = new ArrayList<RelacionProyectoTrabajador>();
@@ -94,7 +98,9 @@ public class ProyectoTrabajadorDao {
     }
  
     /**
-    *
+    * Devuelve la relaciones que contienen el ID especificado
+    * @param idProyecto ID del proyecto
+    * @return List de objetos RelacionProyectoTrabajador asociados con el ID especificado
     */
     public List<RelacionProyectoTrabajador> getRelacionesByIdProyecto(int idProyecto) {
         List<RelacionProyectoTrabajador> dbRelacion = new ArrayList<RelacionProyectoTrabajador>();
@@ -124,7 +130,9 @@ public class ProyectoTrabajadorDao {
     }
 
     /**
-    *
+    * Devuelve las relaciones que contiene el ID especificado
+    * @param idTrabajador ID del trabajador
+    * @return List de objetos RelacionProyectoTrabajador asociados con el ID especificado
     */
     public List<RelacionProyectoTrabajador> getRelacionesByIdTrabajador(int idTrabajador) {
         List<RelacionProyectoTrabajador> dbRelacion = new ArrayList<RelacionProyectoTrabajador>();
@@ -154,7 +162,10 @@ public class ProyectoTrabajadorDao {
     }
    
     /**
-    *
+    * Devuelve las relaciones que contienen los ID especificados
+    * @param idProyecto ID del proyecto
+    * @param idTrabajador ID del trbajador
+    * @return List de objetos RelacionProyectoTrabajador asociados con el ID especificado
     */
     public List<RelacionProyectoTrabajador> getRelacionesById(int idProyecto, int idTrabajador) {
         List<RelacionProyectoTrabajador> dbRelacion = new ArrayList<RelacionProyectoTrabajador>();
