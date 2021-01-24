@@ -20,14 +20,23 @@ import model.RelacionProyectoTrabajador;
 import util.DbUtil;
 import util.Log;
 
+/**
+*
+*/
 public class ProyectoTrabajadorDao {
 
     private Connection connection;
 
+    /**
+    *
+    */
     public ProyectoTrabajadorDao() {
         connection = DbUtil.getConnection();
     }
 
+    /**
+    *
+    */
     public void addRelacion(RelacionProyectoTrabajador relacion) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into relacion_proyecto_trabajador(id_proyecto, id_trabajador) values (?, ?)");
@@ -40,6 +49,9 @@ public class ProyectoTrabajadorDao {
         }
     }
 
+    /**
+    *
+    */
     public void deleteRelacion(int idProyecto, int idTrabajador) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from relacion_proyecto_trabajador where id_proyecto=? and id_trabajador=?");
@@ -52,6 +64,9 @@ public class ProyectoTrabajadorDao {
         }
     }
 
+    /**
+    *
+    */
     public List<RelacionProyectoTrabajador> getAllRelaciones() {
         List<RelacionProyectoTrabajador> dbRelacion = new ArrayList<RelacionProyectoTrabajador>();
         if (connection != null)
@@ -77,7 +92,10 @@ public class ProyectoTrabajadorDao {
         }
        
     }
-    
+ 
+    /**
+    *
+    */
     public List<RelacionProyectoTrabajador> getRelacionesByIdProyecto(int idProyecto) {
         List<RelacionProyectoTrabajador> dbRelacion = new ArrayList<RelacionProyectoTrabajador>();
         if (connection != null)
@@ -105,6 +123,9 @@ public class ProyectoTrabajadorDao {
         }
     }
 
+    /**
+    *
+    */
     public List<RelacionProyectoTrabajador> getRelacionesByIdTrabajador(int idTrabajador) {
         List<RelacionProyectoTrabajador> dbRelacion = new ArrayList<RelacionProyectoTrabajador>();
         if (connection != null)
@@ -131,7 +152,10 @@ public class ProyectoTrabajadorDao {
             return null;
         }
     }
-    
+   
+    /**
+    *
+    */
     public List<RelacionProyectoTrabajador> getRelacionesById(int idProyecto, int idTrabajador) {
         List<RelacionProyectoTrabajador> dbRelacion = new ArrayList<RelacionProyectoTrabajador>();
         if (connection != null)

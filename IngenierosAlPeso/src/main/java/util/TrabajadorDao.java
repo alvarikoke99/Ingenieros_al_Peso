@@ -20,14 +20,23 @@ import model.Trabajador;
 import util.DbUtil;
 import util.Log;
 
+/**
+*
+*/
 public class TrabajadorDao {
 
     private Connection connection;
 
+    /**
+    *
+    */
     public TrabajadorDao() {
         connection = DbUtil.getConnection();
     }
 
+    /**
+    *
+    */
     public void addTrabajador(Trabajador trabajador) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into trabajador(nombre,apellidos, dni, ultima_jornada) values (?, ?, ?, ?)");
@@ -42,6 +51,9 @@ public class TrabajadorDao {
         }
     }
 
+    /**
+    *
+    */
     public void deleteTrabajador(int idTrabajador) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from trabajador where id_trabajador=?");
@@ -53,6 +65,9 @@ public class TrabajadorDao {
         }
     }
 
+    /**
+    *
+    */
     public void updateTrabajador(Trabajador trabajador) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("update trabajador set nombre=?, apellidos=?, dni=?, ultima_jornada=?" + "where id_trabajador=?");
@@ -68,6 +83,9 @@ public class TrabajadorDao {
         }
     }
 
+    /**
+    *
+    */
     public List<Trabajador> getAllTrabajadores() {
         List<Trabajador> dbTrabajador = new ArrayList<Trabajador>();
         if (connection != null)
@@ -97,6 +115,9 @@ public class TrabajadorDao {
        
     }
 
+    /**
+    *
+    */
     public Trabajador getTrabajadorById(int idTrabajador) {
         Trabajador trabajador = new Trabajador();
         try {
@@ -115,7 +136,10 @@ public class TrabajadorDao {
         }
         return trabajador;
     }
-    
+   
+    /**
+    *
+    */
     public Trabajador getTrabajadorByDni(String dni) {
         Trabajador trabajador = new Trabajador();
         try {

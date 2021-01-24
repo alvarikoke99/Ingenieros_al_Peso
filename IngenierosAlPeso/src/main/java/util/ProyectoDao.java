@@ -20,14 +20,24 @@ import model.Proyecto;
 import util.DbUtil;
 import util.Log;
 
+/**
+ * Manejo de la tabla proyecto
+ */
 public class ProyectoDao {
 
     private Connection connection;
 
+    /**
+    * Constructor de la clase donde se crea la conexión con la BBDD
+    */
     public ProyectoDao() {
         connection = DbUtil.getConnection();
     }
 
+    /**
+    * Añade una entrada a la tabla proyecto de la BBDD
+    * @param proyecto objeto Proyecto que será insertado
+    */
     public void addProyecto(Proyecto proyecto) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into proyecto(nombre, informacion, id_empresa) values (?, ?, ?)");
@@ -41,6 +51,10 @@ public class ProyectoDao {
         }
     }
 
+    /**
+    * Elimina una entrada de la tabla proyecto de la BBDD
+    * @param idProyecto ID del proyecto que será eliminado
+    */
     public void deleteProyecto(int idProyecto) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from proyecto where id_proyecto=?");
@@ -52,6 +66,10 @@ public class ProyectoDao {
         }
     }
 
+    /**
+    * Actualiza una entrada de la tabla proyecto de la BBDD
+    * @param proyecto objeto Proyecto que será actualizado
+    */
     public void updateProyecto(Proyecto proyecto) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("update proyecto set nombre=?, informacion=?, id_empresa=?" + "where id_proyecto=?");
@@ -66,6 +84,10 @@ public class ProyectoDao {
         }
     }
 
+    /**
+    * Devuelve todas las entradas de la tabla proyecto de la BBDD
+    * @return List de objetos Proyecto que contiene todas las entradas de la tabla
+    */
     public List<Proyecto> getAllProyectos() {
         List<Proyecto> dbProyecto = new ArrayList<Proyecto>();
         if (connection != null)
@@ -94,6 +116,11 @@ public class ProyectoDao {
        
     }
 
+    /**
+    * Devuelve el proyecto que contiene el ID especificado
+    * @param idProyecto ID del proyecto
+    * @return objeto Proyecto
+    */
     public Proyecto getProyectoById(int idProyecto) {
         Proyecto proyecto = new Proyecto();
         try {
@@ -112,6 +139,11 @@ public class ProyectoDao {
         return proyecto;
     }
     
+    /**
+    * Devuelve el proyecto que contiene el nombre especificado
+    * @param nombre nombre del proyecto
+    * @return objeto Proyecto
+    */
     public Proyecto getProyectoByNombre(String nombre) {
         Proyecto proyecto = new Proyecto();
         try {

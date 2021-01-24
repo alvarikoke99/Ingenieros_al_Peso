@@ -20,14 +20,24 @@ import model.Solicitud;
 import util.DbUtil;
 import util.Log;
 
+/**
+ * Manejo de la tabla solicitud
+ */
 public class SolicitudDao {
 
     private Connection connection;
 
+    /**
+    * Constructor de la clase donde se crea la conexión con la BBDD
+    */
     public SolicitudDao() {
         connection = DbUtil.getConnection();
     }
-
+    
+    /**
+    * Añade una entrada a la tabla solicitud de la BBDD
+    * @param solicitud objeto Solicitud que será insertado
+    */
     public void addSolicitud(Solicitud solicitud) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into solicitud(tipo,fecha_ini,fecha_final,observacion,tramitada,id_trabajador) values (?, ?, ?, ?, ?, ?)");
@@ -43,7 +53,11 @@ public class SolicitudDao {
             Log.logdb.error("SQL Exception: " + e);
         }
     }
-
+    
+    /**
+    * Elimina una entrada de la tabla solicitud de la BBDD
+    * @param idSolicitud ID de la solicitud que será eliminada
+    */
     public void deleteSolicitud(int idSolicitud) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from solicitud where id_solicitud=?");
@@ -55,6 +69,10 @@ public class SolicitudDao {
         }
     }
 
+    /**
+    * Actualiza una entrada de la tabla solicictud de la BBDD
+    * @param solicitud objeto Solicitud que será actualizado
+    */
     public void updateSolicitud(Solicitud solicitud) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("update solicitud set tipo=?, fecha_ini=?, fecha_final=?, observacion=?, tramitada=?, id_trabajador=?" + "where id_solicitud=?");
@@ -71,7 +89,11 @@ public class SolicitudDao {
             Log.logdb.error("SQL Exception: " + e);            
         }
     }
-
+    
+    /**
+    * Devuelve todas las entradas de la tabla solicitudes de la BBDD
+    * @return List de objetos Solicitud que contiene todas las entradas de la tabla
+    */
     public List<Solicitud> getAllSolicitudes() {
         List<Solicitud> dbSolicitud = new ArrayList<Solicitud>();
         if (connection != null)
@@ -102,7 +124,12 @@ public class SolicitudDao {
         }
        
     }
-
+    
+    /**
+    * Devuelve la solicitud que contiene el ID especificado
+    * @param idSolicitud ID de la solicitud
+    * @return objeto Solicitud
+    */
     public Solicitud getSolicitudById(int idSolicitud) {
         Solicitud solicitud = new Solicitud();
         try {
@@ -124,6 +151,11 @@ public class SolicitudDao {
         return solicitud;
     }
     
+    /**
+    * Devuelve la solicitud que contiene el ID de trabajador especificado
+    * @param idTrabajador ID del trabajador asociado con la solicitud
+    * @return objeto Solicitud
+    */
     public Solicitud getSolicitudByTrabajador(int idTrabajador) {
         Solicitud solicitud = new Solicitud();
         try {

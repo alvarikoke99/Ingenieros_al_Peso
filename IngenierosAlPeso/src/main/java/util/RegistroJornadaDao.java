@@ -21,14 +21,23 @@ import model.RegistroJornada;
 import util.DbUtil;
 import util.Log;
 
+/**
+*
+*/
 public class RegistroJornadaDao {
 
     private Connection connection;
 
+    /**
+    *
+    */
     public RegistroJornadaDao() {
         connection = DbUtil.getConnection();
     }
 
+    /**
+    *
+    */
     public void addRegistro(RegistroJornada registro) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into registro_jornada(fecha_entrada, fecha_salida, id_trabajador, id_proyecto) values (?, ?, ?, ?)");
@@ -43,6 +52,9 @@ public class RegistroJornadaDao {
         }
     }
 
+    /**
+    *
+    */
     public void deleteRegistro(RegistroJornada registro) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from registro_jornada where fecha_entrada=? and fecha_salida=? and id_trabajador=? and id_proyecto=?");
@@ -56,7 +68,10 @@ public class RegistroJornadaDao {
             Log.logdb.error("SQL Exception: " + e);
         }
     }
-    
+   
+    /**
+    *
+    */
     public void updateFechaSalida(RegistroJornada registro) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("update registro_jornada set fecha_salida=?" + "where fecha_entrada=? and id_trabajador=? and id_proyecto=?");
@@ -71,6 +86,9 @@ public class RegistroJornadaDao {
         }
     }
 
+    /**
+    *
+    */
     public List<RegistroJornada> getAllRegistros() {
         List<RegistroJornada> dbRegistro = new ArrayList<RegistroJornada>();
         if (connection != null)
@@ -99,6 +117,9 @@ public class RegistroJornadaDao {
        
     }
 
+    /**
+    *
+    */
     public List<RegistroJornada> getRegistrosByIdTrabajador(int idTrabajador) {
         List<RegistroJornada> dbRegistro = new ArrayList<RegistroJornada>();
         if (connection != null)
@@ -127,7 +148,10 @@ public class RegistroJornadaDao {
             return null;
         }
     }
-    
+  
+    /**
+    *
+    */
     public RegistroJornada getRegistroByFechaEntrada(int idTrabajador, int idProyecto, Timestamp fecha) {
         RegistroJornada registro = new RegistroJornada();
         try {
@@ -147,7 +171,10 @@ public class RegistroJornadaDao {
         }
         return registro;
     }
-    
+   
+    /**
+    *
+    */
     public RegistroJornada getRegistroByFechaSalida(int idTrabajador, int idProyecto, Timestamp fecha) {
         RegistroJornada registro = new RegistroJornada();
         try {

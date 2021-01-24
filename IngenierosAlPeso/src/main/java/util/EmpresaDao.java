@@ -20,14 +20,23 @@ import model.Empresa;
 import util.DbUtil;
 import util.Log;
 
+/**
+*
+*/
 public class EmpresaDao {
 
     private Connection connection;
 
+    /**
+    *
+    */
     public EmpresaDao() {
         connection = DbUtil.getConnection();
     }
 
+    /**
+    *
+    */
     public void addEmpresa(Empresa empresa) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into empresa(nombre,descripcion) values (?,?)");
@@ -40,6 +49,9 @@ public class EmpresaDao {
         }
     }
 
+    /**
+    *
+    */
     public void deleteEmpresa(int idEmpresa) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from trabajador where id_empresa=?");
@@ -51,6 +63,9 @@ public class EmpresaDao {
         }
     }
 
+    /**
+    *
+    */
     public void updateEmpresa(Empresa empresa) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("update empresa set nombre=?, descripcion=?" + "where id_empresa=?");
@@ -63,6 +78,9 @@ public class EmpresaDao {
         }
     }
 
+    /**
+    *
+    */
     public List<Empresa> getAllEmpresas() {
         List<Empresa> dbEmpresa = new ArrayList<Empresa>();
         if (connection != null)
@@ -90,6 +108,9 @@ public class EmpresaDao {
        
     }
 
+    /**
+    *
+    */
     public Empresa getEmpresaById(int idEmpresa) {
         Empresa empresa = new Empresa();
         try {
@@ -107,6 +128,9 @@ public class EmpresaDao {
         return empresa;
     }
     
+    /**
+    *
+    */
     public Empresa getEmpresaByNombre(String nombre) {
         Empresa empresa = new Empresa();
         try {

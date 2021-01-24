@@ -20,14 +20,23 @@ import model.RelacionEmpresaTrabajador;
 import util.DbUtil;
 import util.Log;
 
+/**
+    *
+    */
 public class EmpresaTrabajadorDao {
 
     private Connection connection;
 
+    /**
+    *
+    */
     public EmpresaTrabajadorDao() {
         connection = DbUtil.getConnection();
     }
 
+    /**
+    *
+    */
     public void addRelacion(RelacionEmpresaTrabajador relacion) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into relacion_empresa_trabajador(id_trabajador, id_empresa, departamento) values (?, ?, ? )");
@@ -41,6 +50,9 @@ public class EmpresaTrabajadorDao {
         }
     }
 
+    /**
+    *
+    */
     public void deleteRelacion(int idTrabajador, int idEmpresa, String departamento) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from relacion_empresa_trabajador where id_trabajador=? and id_empresa=? and departamento=?");
@@ -54,6 +66,9 @@ public class EmpresaTrabajadorDao {
         }
     }
 
+    /**
+    *
+    */
     public List<RelacionEmpresaTrabajador> getAllRelaciones() {
         List<RelacionEmpresaTrabajador> dbRelacion = new ArrayList<RelacionEmpresaTrabajador>();
         if (connection != null)
@@ -81,6 +96,9 @@ public class EmpresaTrabajadorDao {
        
     }
 
+    /**
+    *
+    */
     public List<RelacionEmpresaTrabajador> getRelacionesByIdTrabajador(int idTrabajador) {
         List<RelacionEmpresaTrabajador> dbRelacion = new ArrayList<RelacionEmpresaTrabajador>();
         if (connection != null)
@@ -108,7 +126,10 @@ public class EmpresaTrabajadorDao {
             return null;
         }
     }
-    
+ 
+    /**
+    *
+    */
     public List<RelacionEmpresaTrabajador> getRelacionesByIdEmpresa(int idEmpresa) {
         List<RelacionEmpresaTrabajador> dbRelacion = new ArrayList<RelacionEmpresaTrabajador>();
         if (connection != null)
@@ -136,7 +157,10 @@ public class EmpresaTrabajadorDao {
             return null;
         }
     }
-    
+ 
+    /**
+    *
+    */
     public List<RelacionEmpresaTrabajador> getRelacionesById(int idTrabajador, int idEmpresa) {
         List<RelacionEmpresaTrabajador> dbRelacion = new ArrayList<RelacionEmpresaTrabajador>();
         if (connection != null)

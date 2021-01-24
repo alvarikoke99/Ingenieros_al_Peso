@@ -20,14 +20,23 @@ import model.HorasJornada;
 import util.DbUtil;
 import util.Log;
 
+/**
+*
+*/
 public class HorasJornadaDao {
 
     private Connection connection;
 
+    /**
+    *
+    */
     public HorasJornadaDao() {
         connection = DbUtil.getConnection();
     }
 
+    /**
+    *
+    */
     public void addHorasJornada(HorasJornada horasJornada) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into horas_jornada(horas, fecha, id_proyecto, id_trabajador) values (?, ?, ?, ?)");
@@ -42,6 +51,9 @@ public class HorasJornadaDao {
         }
     }
 
+    /**
+    *
+    */
     public List<HorasJornada> getAllHorasJornadas() {
         List<HorasJornada> dbHorasJornada = new ArrayList<HorasJornada>();
         if (connection != null)
@@ -69,6 +81,9 @@ public class HorasJornadaDao {
         }   
     }
 
+    /**
+    *
+    */
     public List<HorasJornada> getHorasJornadaByIdProyecto(int idProyecto) {
         List<HorasJornada> dbHorasJornada = new ArrayList<HorasJornada>();
         if (connection != null)
@@ -97,7 +112,10 @@ public class HorasJornadaDao {
             return null;
         }
     }
-    
+  
+    /**
+    *
+    */
     public List<HorasJornada> getHorasJornadaByIdTrabajador(int idTrabajador) {
         List<HorasJornada> dbHorasJornada = new ArrayList<HorasJornada>();
         if (connection != null)
@@ -127,6 +145,9 @@ public class HorasJornadaDao {
         }
     }
     
+    /**
+    *
+    */
     public List<HorasJornada> getHorasJornadaById(int idProyecto, int idTrabajador) {
         List<HorasJornada> dbHorasJornada = new ArrayList<HorasJornada>();
         if (connection != null)
