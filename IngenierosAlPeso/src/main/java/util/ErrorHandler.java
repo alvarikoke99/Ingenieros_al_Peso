@@ -35,9 +35,11 @@ public class ErrorHandler extends HttpServlet {
               ERROR_STATUS_CODE, 
               ERROR_EXCEPTION_TYPE, 
               ERROR_MESSAGE)
-              .forEach(e ->
-                writer.write("<li>" + e + ":" + req.getAttribute(e) + " </li>")
-            );
+              .forEach(e -> {
+                writer.write("<li>" + e + ":" + req.getAttribute(e) + " </li>");
+                Log.log.error(e);
+                Log.log.error(req.getAttribute(e));
+              });
             writer.write("</ul>");
             writer.write("</html></body>");
         }
