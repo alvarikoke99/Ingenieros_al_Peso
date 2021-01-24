@@ -23,7 +23,13 @@ INSERT INTO `web`.`relacion_empresa_trabajador`(`id_trabajador`,`id_empresa`,`de
 INSERT INTO `web`.`relacion_empresa_trabajador`(`id_trabajador`,`id_empresa`,`departamento`)VALUES(1,2,'Tecnologia');
 INSERT INTO `web`.`relacion_empresa_trabajador`(`id_trabajador`,`id_empresa`,`departamento`)VALUES(3,3,'I+D');
 # registro_jornada 
-INSERT INTO `web`.`registro_jornada`
-(`fecha_entrada`,`fecha_salida`,`id_trabajador`,`id_proyecto`)VALUES();
+INSERT INTO `web`.`registro_jornada`(`fecha_entrada`,`fecha_salida`,`id_trabajador`,`id_proyecto`)VALUES('2020-01-15 10:10:02','2020-01-15 12:10:05',1,2);
+INSERT INTO `web`.`registro_jornada`(`fecha_entrada`,`fecha_salida`,`id_trabajador`,`id_proyecto`)VALUES('2020-01-16 10:10:02','2020-01-15 16:10:05',2,1);
+INSERT INTO `web`.`registro_jornada`(`fecha_entrada`,`fecha_salida`,`id_trabajador`,`id_proyecto`)VALUES('2020-01-17 10:10:02','2020-01-15 17:10:05',3,3);
+# horas_jornada
+INSERT INTO `web`.`horas_jornada`(`horas`,`fecha`,`id_proyecto`,`id_trabajador`)VALUES(16,'2020-01-14',1,2);
+INSERT INTO `web`.`horas_jornada`(`horas`,`fecha`,`id_proyecto`,`id_trabajador`)VALUES(20,'2020-01-15',2,3);
+INSERT INTO `web`.`horas_jornada`(`horas`,`fecha`,`id_proyecto`,`id_trabajador`)VALUES(10,'2020-01-16',3,1);
+
 
 
