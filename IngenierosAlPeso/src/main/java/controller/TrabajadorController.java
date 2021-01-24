@@ -138,7 +138,32 @@ public class TrabajadorController extends HttpServlet{
 /*        processRequest(request, response); */
         String action = request.getParameter("action");
         
-        if (action.equalsIgnoreCase("addRelEmpresa")) { //revisar - fusionar
+        if (action.equalsIgnoreCase("addRelaciones")) { 
+            Log.log.info("Parametro valor INSERT RELACIONES");
+            
+            String dni = request.getParameter("dni");
+            int idTrabajador = daoTrabajador.getTrabajadorByDni(dni).getIdTrabajador();
+            
+            String nombreProyecto = request.getParameter("nombreProyecto");
+            Proyecto proyecto = daoProyecto.getProyectoByNombre(nombreProyecto);
+            int idProyecto = proyecto.getIdProyecto();
+            int idEmpresa = proyecto.getIdEmpresa();
+            
+            RelacionEmpresaTrabajador relacionEmpresa = new RelacionEmpresaTrabajador();
+            relacionEmpresa.setIdTrabajador(idTrabajador);
+            relacionEmpresa.setIdEmpresa(idEmpresa);
+            relacionEmpresa.setDepartamento(request.getParameter("departamento"));
+            
+            RelacionProyectoTrabajador relacionProyecto = new RelacionProyectoTrabajador();
+            relacionProyecto.setIdTrabajador(idTrabajador);
+            relacionProyecto.setIdProyecto(idProyecto);
+            
+            daoRelProyecto.addRelacion(relacionProyecto);
+            daoRelEmpresa.addRelacion(relacionEmpresa);
+      
+            forward = INSERT_EMPRESA;
+            request.setAttribute("relaciones", daoRelEmpresa.getAllRelaciones());
+        } else if (action.equalsIgnoreCase("addRelEmpresa")) { //revisar - fusionar
             Log.log.info("Parametro valor INSERT RelacionEmpresaTrabajdor");
             
             RelacionEmpresaTrabajador relacionEmpresa = new RelacionEmpresaTrabajador();
@@ -150,7 +175,7 @@ public class TrabajadorController extends HttpServlet{
             forward = INSERT_EMPRESA;
             request.setAttribute("relaciones", daoRelEmpresa.getAllRelaciones());
         } else if (action.equalsIgnoreCase("addRelProyecto")) {
-            Log.log.info("Parametro valor INSERT RelacionEmpresaTrabajdor");
+            Log.log.info("Parametro valor INSERT RelacionProyectoTrabajdor");
             
             RelacionProyectoTrabajador relacionProyecto = new RelacionProyectoTrabajador();
             relacionProyecto.setIdTrabajador(Integer.parseInt(request.getParameter("idTrabajador")));

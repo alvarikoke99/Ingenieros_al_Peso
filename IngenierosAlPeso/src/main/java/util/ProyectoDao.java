@@ -111,4 +111,22 @@ public class ProyectoDao {
         }
         return proyecto;
     }
+    
+    public Proyecto getProyectoByNombre(String nombre) {
+        Proyecto proyecto = new Proyecto();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from proyecto where nombre=?");
+            preparedStatement.setString(1, nombre);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                proyecto.setIdProyecto(rs.getInt("id_proyecto"));
+                proyecto.setNombre(rs.getString("nombre"));
+                proyecto.setInformacion(rs.getString("informacion"));
+                proyecto.setIdEmpresa(rs.getInt("id_empresa"));
+            }
+        } catch (SQLException e) {
+            Log.logdb.error("SQL Exception: " + e);
+        }
+        return proyecto;
+    }
 }
