@@ -16,39 +16,57 @@ public class HorasJornada {
     private Date fecha;
     private int idProyecto;
     private int idTrabajador;
-
+/**
+ * 
+ */
     public float getHoras() {
         return horas;
     }
-
+/**
+ * 
+ */
     public void setHoras(float horas) {
         this.horas = horas;
     }
-
+/**
+ * 
+ */
     public Date getFecha() {
         return fecha;
     }
-
+/**
+ * 
+ */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
+/**
+ * 
+ */
     public int getIdProyecto() {
         return idProyecto;
     }
-
+/**
+ * 
+ */
     public void setIdProyecto(int idProyecto) {
         this.idProyecto = idProyecto;
     }
-
+/**
+ * 
+ */
     public int getIdTrabajador() {
         return idTrabajador;
     }
-
+/**
+ * 
+ */
     public void setIdTrabajador(int idTrabajador) {
         this.idTrabajador = idTrabajador;
     }
-
+/**
+ * 
+ */
     @Override
     public String toString() {
         return "HorasJornada{" + "horas=" + horas + ", fecha=" + fecha + ", idProyecto=" + idProyecto + ", idTrabajador=" + idTrabajador + '}';

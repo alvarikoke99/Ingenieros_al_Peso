@@ -17,47 +17,69 @@ public class RegistroJornada {
     private int idJornada;
     private int idTrabajador;
     private int idProyecto;
-
+/**
+ * 
+ */
     public Timestamp getFechaEntrada() {
         return fechaEntrada;
     }
-
+/**
+ * 
+ */
     public void setFechaEntrada(Timestamp fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
-
+/**
+ * 
+ */
     public Timestamp getFechaSalida() {
         return fechaSalida;
     }
-
+/**
+ * 
+ */
     public void setFechaSalida(Timestamp fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
-
+/**
+ * 
+ */
     public int getIdJornada() {
         return idJornada;
     }
-
+/**
+ * 
+ */
     public void setIdJornada(int idJornada) {
         this.idJornada = idJornada;
     }
-
+/**
+ * 
+ */
     public int getIdTrabajador() {
         return idTrabajador;
     }
-
+/**
+ * 
+ */
     public void setIdTrabajador(int idTrabajador) {
         this.idTrabajador = idTrabajador;
     }
-
+/**
+ * 
+ */
     public int getIdProyecto() {
         return idProyecto;
     }
-
+/**
+ * 
+ */
     public void setIdProyecto(int idProyecto) {
         this.idProyecto = idProyecto;
     }
-
+/**
+ * 
+ */
     @Override
     public String toString() {
         return "RegistroJornada{" + "fechaEntrada=" + fechaEntrada + ", fechaSalida=" + fechaSalida + ", idJornada=" + idJornada + ", idTrabajador=" + idTrabajador + ", idProyecto=" + idProyecto + '}';

@@ -19,47 +19,69 @@ public class Trabajador {
     private Timestamp ultimaJornada;
     
     
-    //Getters and setters
+ /**
+ * 
+ */
     public int getIdTrabajador() {
         return idTrabajador;
     }
-
+/**
+ * 
+ */
     public void setIdTrabajador(int idTrabajador) {
         this.idTrabajador = idTrabajador;
     }
-
+/**
+ * 
+ */
     public String getDni() {
         return dni;
     }
-
+/**
+ * 
+ */
     public void setDni(String dni) {
         this.dni = dni;
     }
-
+/**
+ * 
+ */
     public String getNombre() {
         return nombre;
     }
-
+/**
+ * 
+ */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+/**
+ * 
+ */
     public String getApellidos() {
         return apellidos;
     }
-
+/**
+ * 
+ */
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
-
+/**
+ * 
+ */
     public Timestamp getUltimaJornada() {
         return ultimaJornada;
     }
-
+/**
+ * 
+ */
     public void setUltimaJornada(Timestamp ultimaJornada) {
         this.ultimaJornada = ultimaJornada;
     }
-
+/**
+ * 
+ */
     @Override
     public String toString() {
         return "Trabajador{" + "idTrabajador=" + idTrabajador + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", ultimaJornada=" + ultimaJornada + '}';
