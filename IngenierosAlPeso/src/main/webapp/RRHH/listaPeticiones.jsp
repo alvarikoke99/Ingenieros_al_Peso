@@ -33,13 +33,13 @@
                   <i class="down"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="/src/main/java/controller/EmpresaController?action=listEmpresas">Empresa</a>
-                    <a href="/src/main/java/controller/ProyectoController?action=listProyectos">Proyectos</a>
-                    <a href="/src/main/java/controller/TrabajadorController?action=listTrabajadores">Trabajadores</a>
+                    <a href="EmpresaController?action=listEmpresas">Empresa</a>
+                    <a href="ProyectoController?action=listProyectos">Proyectos</a>
+                    <a href="TrabajadorController?action=listTrabajadores">Trabajadores</a>
                     <a href="infoCalendario.jsp">Calendario</a>
                   </div>
             </div>
-            <a class="enlace" id="idPag"  href="/src/main/java/controller/SolicitudController?action=listSolicitudes">Lista peticiones</a>
+            <a class="enlace" id="idPag"  href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
             <a class="enlace" href="solicitarInforme.jsp">Solicitar informe</a>
             <a class="enlace" href="annadirUser.jsp">Añadir/Editar trabajador</a>
             <a class="enlace" href="annadirEmpresa.jsp">Añadir/Editar empresa</a>
