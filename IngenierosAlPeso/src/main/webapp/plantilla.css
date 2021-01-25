@@ -270,6 +270,29 @@ table {
 }
 
 /*-------------------------------------------------------------------
+                            PAGINA ERROR
+--------------------------------------------------------------------*/
+#error {
+  margin-top: 5%;
+  font-size: large;
+  text-align: center; 
+}
+
+.buttonError {
+  background-color: #2670AB;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.9;
+  font-size: x-large;
+  border-radius: 15px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/*-------------------------------------------------------------------
                               MIS DATOS
 --------------------------------------------------------------------*/
 .casillaPeq {

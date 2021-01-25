@@ -41,7 +41,7 @@
             </div>
             <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
             <a class="enlace" href="solicitarInforme.jsp">Solicitar informe</a>
-            <a class="enlace" href="annadirUser.jsp">Añadir/Editar trabajador</a>
+            <a class="enlace" href="annadirUser.jsp">Añadir trabajador</a>
             <a class="enlace" href="annadirEmpresa.jsp">Añadir/Editar empresa</a>
             <a class="enlace" id="idPag" href="annadirProyecto.jsp">Añadir/Editar proyecto</a>
             <a class="enlace" href="asignarTrabajador.jsp">Asignar trabajador</a>
@@ -51,7 +51,7 @@
         <!-- Contenido --> 
         <div class="contentCenter">
             <form method="POST" action="ProyectoController" name="formAnnadirTrabajador">
-                <h2>Añadir/Editar trabajador:</h2><br>
+                <h2>Añadir/Editar proyecto:</h2><br>
                 <label>Nombre del proyecto</label><br><br>
                 <input type="text" id="nombreProyecto" class="casilla" name="nombreProyecto" value="<c:out value="${proyecto.nombre}" />" required><br><br>
                 <label>Información del proyecto:</label><br><br>

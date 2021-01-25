@@ -41,7 +41,7 @@
             </div>
             <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
             <a class="enlace" id="idPag" href="solicitarInforme.jsp">Solicitar informe</a>
-            <a class="enlace" href="annadirUser.jsp">Añadir/Editar trabajador</a>
+            <a class="enlace" href="annadirUser.jsp">Añadir trabajador</a>
             <a class="enlace" href="annadirEmpresa.jsp">Añadir/Editar empresa</a>
             <a class="enlace" href="annadirProyecto.jsp">Añadir/Editar proyecto</a>
             <a class="enlace" href="asignarTrabajador.jsp">Asignar trabajador</a>

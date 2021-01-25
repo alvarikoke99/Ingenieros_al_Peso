@@ -41,7 +41,7 @@
             </div>
             <a class="enlace" href="SolicitudController?action=listSolicitudes">Lista peticiones</a>
             <a class="enlace" href="solicitarInforme.jsp">Solicitar informe</a>
-            <a class="enlace" id="idPag" href="annadirUser.jsp">Añadir/Editar trabajador</a>
+            <a class="enlace" id="idPag" href="annadirUser.jsp">Añadir trabajador</a>
             <a class="enlace" href="annadirEmpresa.jsp">Añadir/Editar empresa</a>
             <a class="enlace" href="annadirProyecto.jsp">Añadir/Editar proyecto</a>
             <a class="enlace" href="asignarTrabajador.jsp">Asignar trabajador</a>
@@ -51,11 +51,11 @@
         <!-- Contenido --> 
         <div class="contentCenter">
             <form method="POST" action="TrabajadorController" name="formAnnadirTrabajador">
-                <h2>Añadir/Editar trabajador:</h2><br>
+                <h2>Añadir trabajador:</h2><br>
                 <label>Nombre del trabajador:</label><br><br>
                 <input type="text" id="nombre" class="casilla" name="nombre" value="<c:out value="${trabajador.nombre}" />" required><br><br>
                 <label>Apellidos del trabajador:</label><br><br>
-                <input type="text" id="apellido" class="casilla" name="apellido" value="<c:out value="${trabajador.apellidos}" />" required><br><br>
+                <input type="text" id="apellido" class="casilla" name="apellidos" value="<c:out value="${trabajador.apellidos}" />" required><br><br>
                 <label>DNI del trabajador:</label><br><br>
                 <input type="text" id="dni" class="casilla" name="dni" value="<c:out value="${trabajador.dni}" />" required><br><br>
                 <button type="submit" class="btnAdd">Añadir</button>
