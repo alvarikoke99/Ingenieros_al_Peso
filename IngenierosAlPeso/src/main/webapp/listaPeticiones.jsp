@@ -73,8 +73,8 @@
                             <td><c:out value="${solicitud.fechaFinal}" /></td>
                             <td><c:out value="${solicitud.observacion}" /></td>
                             <!-- Revisar -->
-                            <td><a href="SolicitudController?action=edit&idSolicitud=<c:out value="${solicitud.idSolicitud}"/>">Aceptar</a></td> 
-                            <td><a href="SolicitudrController?action=edit&idSolicitud=<c:out value="${trabajador.idSolicitud}"/>">Rechazar</a></td> 
+                            <td><a href="SolicitudController?action=aceptar&idSolicitud=<c:out value="${solicitud.idSolicitud}"/>">Aceptar</a></td> 
+                            <td><a href="SolicitudrController?action=rechazar&idSolicitud=<c:out value="${trabajador.idSolicitud}"/>">Rechazar</a></td> 
                         </tr> 
                     </c:forEach>
                 </tbody>

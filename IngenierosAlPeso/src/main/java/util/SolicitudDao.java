@@ -151,6 +151,30 @@ public class SolicitudDao {
         return solicitud;
     }
     
+    public void aceptarSolicitud(int idSolicitud) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("update solicitud set tramitada=?" + "where id_solicitud=?");
+            // Parameters start with 1 
+            preparedStatement.setBoolean(1, true);
+            preparedStatement.setInt(2, idSolicitud);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            Log.logdb.error("SQL Exception: " + e); 
+        }
+    }
+    
+    public void rechazarSolicitud(int idSolicitud) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("update solicitud set tramitada=?" + "where id_solicitud=?");
+            // Parameters start with 1 
+            preparedStatement.setBoolean(1, false);
+            preparedStatement.setInt(2, idSolicitud);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            Log.logdb.error("SQL Exception: " + e); 
+        }
+    }
+    
     /**
     * Devuelve la solicitud que contiene el ID de trabajador especificado
     * @param idTrabajador ID del trabajador asociado con la solicitud
