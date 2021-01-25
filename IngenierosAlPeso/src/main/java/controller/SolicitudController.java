@@ -55,16 +55,26 @@ public class SolicitudController extends HttpServlet {
         Log.log.info("Recogemos el parametro action con valor " + action);
         if (action.equalsIgnoreCase("delete")) {
             Log.log.info("Parametro valor DELETE");
-            int idSolicitud = Integer.parseInt(request.getParameter("solicitudId"));
+            int idSolicitud = Integer.parseInt(request.getParameter("idSolicitud"));
             dao.deleteSolicitud(idSolicitud);
             forward = LIST_SOLICITUDES;
             request.setAttribute("solicitudes", dao.getAllSolicitudes());
-        } else if (action.equalsIgnoreCase("edit")) {
-            Log.log.info("Parametro valor EDIT");
-            forward = INSERT_OR_EDIT;
-            int idSolicitud = Integer.parseInt(request.getParameter("userId"));
-            Solicitud solicitud = dao.getSolicitudById(idSolicitud);
-            request.setAttribute("solicitud", solicitud);
+//        } else if (action.equalsIgnoreCase("edit")) {
+//            Log.log.info("Parametro valor EDIT");
+//            forward = INSERT_OR_EDIT;
+//            int idSolicitud = Integer.parseInt(request.getParameter("userId"));
+//            Solicitud solicitud = dao.getSolicitudById(idSolicitud);
+//            request.setAttribute("solicitud", solicitud);
+        } else if (action.equalsIgnoreCase("aceptar")) {    //usado
+            Log.log.info("Parametro valor ACEPTAR");
+            forward = LIST_SOLICITUDES;
+            dao.aceptarSolicitud(Integer.parseInt(request.getParameter("idSolicitud")));
+            request.setAttribute("solicitudes", dao.getAllSolicitudes());
+        } else if (action.equalsIgnoreCase("rechazar")) {    //usado
+            Log.log.info("Parametro valor RECHAZAR");
+            forward = LIST_SOLICITUDES;
+            dao.rechazarSolicitud(Integer.parseInt(request.getParameter("idSolicitud")));
+            request.setAttribute("solicitudes", dao.getAllSolicitudes());
         } else if (action.equalsIgnoreCase("listSolicitudes")) {    //usado
             Log.log.info("Parametro valor LIST");
             forward = LIST_SOLICITUDES;
