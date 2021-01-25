@@ -180,13 +180,14 @@ public class SolicitudDao {
     * @param idTrabajador ID del trabajador asociado con la solicitud
     * @return objeto Solicitud
     */
-    public Solicitud getSolicitudByTrabajador(int idTrabajador) {
-        Solicitud solicitud = new Solicitud();
+    public List<Solicitud> getSolicitudesByIdTrabajador(int idTrabajador) {
+        List<Solicitud> dbSolicitud = new ArrayList<Solicitud>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("select * from solicitud where id_trabajador=?");
             preparedStatement.setInt(1, idTrabajador);
             ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
+                Solicitud solicitud = new Solicitud();
                 solicitud.setIdSolicitud(rs.getInt("id_solicitud"));
                 solicitud.setTipo(rs.getString("tipo"));
                 solicitud.setFechaIni(rs.getDate("fecha_ini"));
@@ -194,10 +195,11 @@ public class SolicitudDao {
                 solicitud.setObservacion(rs.getString("observacion"));
                 solicitud.setTramitada(rs.getBoolean("tramitada"));
                 solicitud.setIdTrabajador(rs.getInt("id_trabajador"));
+                dbSolicitud.add(solicitud);
             }
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);
         }
-        return solicitud;
+        return dbSolicitud;
     }
 }

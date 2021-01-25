@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 import model.Solicitud;
@@ -27,7 +28,7 @@ public class SolicitudController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/user.jsp";
     private static String LIST_SOLICITUDES = "/listaPeticiones.jsp"; //RRHH
-    private static String LIST_MIS_SOLICITUDES = "/misSolicitudesInfo"; //Trabajador
+    private static String LIST_MIS_SOLICITUDES = "/misSolicitudesInfo.jsp"; //Trabajador
     private SolicitudDao dao;
     private TrabajadorDao daoTrabajador;
     private Log log;
@@ -128,10 +129,11 @@ public class SolicitudController extends HttpServlet {
             }*/
         } else if (action.equalsIgnoreCase("listSolicitudesByTrabajador")) {    //usado
             Log.log.info("Parametro valor LIST BY TRABAJADOR");
-            forward = LIST_MIS_SOLICITUDES;
             String dni = request.getParameter("dni");
             int idTrabajador = daoTrabajador.getTrabajadorByDni(dni).getIdTrabajador();
-            request.setAttribute("solicitudesTrabajador", dao.getSolicitudById(idTrabajador));
+            List<Solicitud> solicitudes = dao.getSolicitudesByIdTrabajador(idTrabajador);
+            forward = LIST_MIS_SOLICITUDES;
+            request.setAttribute("solicitudesTrabajador", solicitudes);
         } 
         
         RequestDispatcher view = request.getRequestDispatcher(forward);    //solic del trabajador        

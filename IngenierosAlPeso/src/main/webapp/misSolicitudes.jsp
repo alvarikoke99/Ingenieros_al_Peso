@@ -28,15 +28,15 @@
             <a class="enlace" href="fichar.jsp">Fichar</a>
             <a class="enlace" href="solicitarVacaciones.jsp">Solicitar días libres</a>
             <a class="enlace" href="misProyectos.jsp">Mis proyectos</a>
-            <a class="enlace" id="idPag" href="misDatos.jsp">Mis datos</a>
-            <a class="enlace" href="misSolicitudes.jsp">Mis mensajes</a>
+            <a class="enlace" href="misDatos.jsp">Mis datos</a>
+            <a class="enlace" id="idPag" href="misSolicitudes.jsp">Mis mensajes</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido -->    
         <div class="contentCenter">
-            <h2>Mis datos:</h2>
-            <form method="POST" action="SolicitudController?action=listSolicitudesByTrabajador" name="formMisDatos">
+            <h2>Mis solicitudes:</h2>
+            <form method="POST" action="SolicitudController?action=listSolicitudesByTrabajador" name="formMisSolicitudes">
                 <label>DNI del trabajador:</label>
                 <input type="text" id="dni" name="dni" class="casillaPeq" placeholder="Introduzca su DNI" required><br><br>
                 <button type="submit" class="btnFichar">Validar</button><br><br>

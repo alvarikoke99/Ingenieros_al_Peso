@@ -28,15 +28,15 @@
         <div class="topnav" id="topnav">
             <a class="enlace" href="fichar.jsp">Fichar</a>
             <a class="enlace" href="solicitarVacaciones.jsp">Solicitar días libres</a>
-            <a class="enlace" id="idPag" href="misProyectos.jsp">Mis proyectos</a>
+            <a class="enlace" href="misProyectos.jsp">Mis proyectos</a>
             <a class="enlace" href="misDatos.jsp">Mis datos</a>
-            <a class="enlace" href="misSolicitudes.jsp">Mis mensajes</a>
+            <a class="enlace" id="idPag" href="misSolicitudes.jsp">Mis mensajes</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido -->    
         <div class="content">
-            <h2>Mis proyectos:</h2>
+            <h2>Mis solicitudes:</h2>
             <table id="tabla">
                 <thead>
                     <tr>
@@ -45,7 +45,7 @@
                         <th>Fecha inicio:</th>
                         <th>Fecha final:</th>
                         <th>Observación:</th>
-                        <th>Tramitada:</th>
+                        <th>Estado:</th>
                         
                     </tr>  
                 </thead>
@@ -58,6 +58,19 @@
                             <td><c:out value="${solicitud.fechaFinal}" /></td>
                             <td><c:out value="${solicitud.observacion}" /></td>
                             <td><c:out value="${solicitud.tramitada}" /></td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${solicitud.tramitada==null}" >
+                                        No tramitada
+                                    </c:when>
+                                    <c:when test="${solicitud.tramitada==false}" >
+                                        Rechazada
+                                    </c:when>
+                                    <c:otherwise>   <!--solicitud.tramitada==1 -->
+                                       Aceptada
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
                         </tr> 
                     </c:forEach>
                 </tbody>
