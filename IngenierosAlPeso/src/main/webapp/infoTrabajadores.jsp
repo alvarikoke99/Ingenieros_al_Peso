@@ -58,7 +58,6 @@
                         <th>Apellidos</th>
                         <th>DNI</th>
                         <th>Última Jornada</th>
-                        <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
@@ -70,7 +69,6 @@
                             <td><c:out value="${trabajador.apellidos}" /></td> 
                             <td><c:out value="${trabajador.dni}" /></td>
                             <td><c:out value="${trabajador.ultimaJornada}" /></td>
-                            <td><a href="TrabajadorController?action=edit&idTrabajador=<c:out value="${trabajador.idTrabajador}"/>">Editar</a></td> 
                             <td><a href="TrabajadorController?action=delete&idTrabajador=<c:out value="${trabajador.idTrabajador}"/>">Eliminar</a></td> 
                         </tr> 
                     </c:forEach> 

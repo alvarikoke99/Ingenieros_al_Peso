@@ -51,7 +51,7 @@
         <!-- Contenido --> 
         <div class="contentCenter">
             <form method="POST" action="EmpresaController" name="formAnnadirEmpresa">
-                <h2>Añadir/Editar trabajador:</h2><br>
+                <h2>Añadir/Editar empresa:</h2><br>
                 <label>Nombre del empresa</label><br><br>
                 <input type="text" id="nombre" class="casilla" name="nombre" value="<c:out value="${empresa.nombre}" />" required><br><br>
                 <label>Descripción:</label><br><br>

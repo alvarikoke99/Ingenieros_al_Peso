@@ -29,7 +29,7 @@
             <a class="enlace" href="solicitarVacaciones.jsp">Solicitar días libres</a>
             <a class="enlace" href="misProyectos.jsp">Mis proyectos</a>
             <a class="enlace" href="misDatos.jsp">Mis datos</a>
-            <a class="enlace" href="bandejaEntrada.jsp">Mis mensajes</a>
+            <a class="enlace" href="misSolicitudes.jsp">Mis mensajes</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
