@@ -12,7 +12,7 @@ INSERT INTO `web`.`proyecto`(`nombre`,`informacion`,`id_empresa`)VALUES('CorteIn
 INSERT INTO `web`.`proyecto`(`nombre`,`informacion`,`id_empresa`)VALUES('Pokemon Escudo en llamas','Nueva version de pokemon scudo',2);
 # Solicitud
 INSERT INTO `web`.`solicitud`(`tipo`,`fecha_ini`,`fecha_final`,`tramitada`,`id_trabajador`)VALUES('Dias libres','2020-01-23','2020-02-01',null,1);
-INSERT INTO `web`.`solicitud`(`tipo`,`fecha_ini`,`fecha_final`,`tramitada`,`id_trabajador`)VALUES('Vaciones','2020-03-01','2020-04-01',null,2);
+INSERT INTO `web`.`solicitud`(`tipo`,`fecha_ini`,`fecha_final`,`tramitada`,`id_trabajador`)VALUES('Vacaciones','2020-03-01','2020-04-01',null,2);
 INSERT INTO `web`.`solicitud`(`tipo`,`fecha_ini`,`fecha_final`,`tramitada`,`id_trabajador`)VALUES('Medico-ginecologo','2020-01-2','2020-01-3',null,3);
 # relacion_proyecto_trabajador
 INSERT INTO `web`.`relacion_proyecto_trabajador`(`id_proyecto`,`id_trabajador`)VALUES(3,2);
