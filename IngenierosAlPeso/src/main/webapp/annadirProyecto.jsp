@@ -50,14 +50,14 @@
 
         <!-- Contenido --> 
         <div class="contentCenter">
-            <form method="POST" action="ProyectoController" name="formAnnadirTrabajador">
+            <form method="POST" action="ProyectoController?action=annadirProyecto" name="formAnnadirTrabajador">
                 <h2>Añadir/Editar proyecto:</h2><br>
                 <label>Nombre del proyecto</label><br><br>
-                <input type="text" id="nombreProyecto" class="casilla" name="nombreProyecto" value="<c:out value="${proyecto.nombre}" />" required><br><br>
+                <input type="text" id="nombreProyecto" class="casilla" name="nombre" value="<c:out value="${proyecto.nombre}" />" required><br><br>
                 <label>Información del proyecto:</label><br><br>
                 <input type="text" id="info" class="casilla" name="info" value="<c:out value="${proyecto.informacion}" />" required><br><br>
                 <label>Nombre de la empresa:</label><br><br>
-                <input type="text" id="empresa" class="casilla" name="empresa" value="<c:out value="${proyecto.nombreEmpresa}" />" required><br><br>
+                <input type="text" id="empresa" class="casilla" name="nombreEmpresa" value="<c:out value="${proyecto.nombreEmpresa}" />" required><br><br>
                 <button type="submit" class="btnAdd">Añadir</button>
             </form>
         </div>   

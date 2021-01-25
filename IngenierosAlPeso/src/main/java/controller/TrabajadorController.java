@@ -26,7 +26,7 @@ import util.Log;
  */
 public class TrabajadorController extends HttpServlet{
     private static final long serialVersionUID = 1L;
-    private static String INSERT = "/annadirUser"; //usado
+    private static String INSERT = "/annadirUser.jsp"; //usado
     private static String LIST_TRABAJADORES = "/infoTrabajadores.jsp";
     private static String INSERT_EMPRESA = "_";
     private static String LIST_EMPRESAS = "_";
@@ -112,6 +112,7 @@ public class TrabajadorController extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         String forward = "";
+        boolean redireccion = false;
         Log.log.info("Entramos por el doPost");
 /*        processRequest(request, response); */
         String action = request.getParameter("action");
@@ -163,7 +164,7 @@ public class TrabajadorController extends HttpServlet{
             forward = INSERT_PROYECTO;
             request.setAttribute("relaciones", daoRelProyecto.getAllRelaciones());
             
-        }   else if (action.equalsIgnoreCase("listDatos")) {   //usado infoTrabajadores
+        } else if (action.equalsIgnoreCase("listDatos")) {   //usado infoTrabajadores
             Log.log.info("Parametro valor LIST DATOS");
             forward = MIS_DATOS_INFO;
             String dni = request.getParameter("dni");
@@ -194,9 +195,15 @@ public class TrabajadorController extends HttpServlet{
             trabajador.setUltimaJornada(null);
             daoTrabajador.addTrabajador(trabajador);
             forward = INSERT;
-        }      
-        RequestDispatcher view = request.getRequestDispatcher(forward);            
-        view.forward(request, response);
+            redireccion = true;
+        }   
+        
+        if(redireccion) {
+            response.sendRedirect(forward);
+        } else {
+            RequestDispatcher view = request.getRequestDispatcher(forward);            
+            view.forward(request, response);
+        } 
         return;
     }
 
