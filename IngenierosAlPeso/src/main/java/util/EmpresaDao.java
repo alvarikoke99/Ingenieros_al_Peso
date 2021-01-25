@@ -71,7 +71,7 @@ public class EmpresaDao {
     */
     public void updateEmpresa(Empresa empresa) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update empresa set nombre=?, descripcion=?" + "where id_empresa=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("update empresa set nombre=?, descripcion=? where id_empresa=?");
             // Parameters start with 1 
             preparedStatement.setString(1, empresa.getNombre());
             preparedStatement.setString(2, empresa.getDescripcion());
