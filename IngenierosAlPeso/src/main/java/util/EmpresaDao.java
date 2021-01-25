@@ -75,6 +75,7 @@ public class EmpresaDao {
             // Parameters start with 1 
             preparedStatement.setString(1, empresa.getNombre());
             preparedStatement.setString(2, empresa.getDescripcion());
+            preparedStatement.setInt(3, empresa.getIdEmpresa());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             Log.logdb.error("SQL Exception: " + e);            

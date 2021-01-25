@@ -50,9 +50,9 @@
 
         <!-- Contenido --> 
         <div class="contentCenter">
-            <form method="POST" action="ProyectoController?action=annadirProyecto" name="formAnnadirTrabajador">
+            <form method="POST" action="ProyectoController" name="formAnnadirTrabajador">
                 <h2>Añadir/Editar proyecto:</h2><br>
-                <label>Nombre del proyecto</label><br><br>
+                <label>Nombre del proyecto:</label><br><br>
                 <input type="text" id="nombreProyecto" class="casilla" name="nombre" value="<c:out value="${proyecto.nombre}" />" required><br><br>
                 <label>Información del proyecto:</label><br><br>
                 <input type="text" id="info" class="casilla" name="info" value="<c:out value="${proyecto.informacion}" />" required><br><br>
