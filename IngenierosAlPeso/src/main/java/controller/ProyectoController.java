@@ -97,7 +97,7 @@ public class ProyectoController extends HttpServlet {
         String action = request.getParameter("action");
         String forward = "";
 /*        processRequest(request, response); */
-        if (action.equalsIgnoreCase("annadirProyecto")) {
+        if (action.equalsIgnoreCase("addProyecto")) {
             Proyecto proyecto = new Proyecto();
             proyecto.setNombre(request.getParameter("nombre"));
             proyecto.setInformacion(request.getParameter("info"));

@@ -50,7 +50,7 @@
 
         <!-- Contenido --> 
         <div class="contentCenter">
-            <form method="POST" action="TrabajadorController" name="formAnnadirTrabajador">
+            <form method="POST" action="TrabajadorController?action=add" name="formAnnadirTrabajador">
                 <h2>Añadir trabajador:</h2><br>
                 <label>Nombre del trabajador:</label><br><br>
                 <input type="text" id="nombre" class="casilla" name="nombre" value="<c:out value="${trabajador.nombre}" />" required><br><br>

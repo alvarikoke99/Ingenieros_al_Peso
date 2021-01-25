@@ -189,7 +189,7 @@ public class TrabajadorController extends HttpServlet{
             request.setAttribute("proyectos", proyectos);
             request.setAttribute("empresas", empresas);
             
-        } else {    //usado - revisar
+        } else if (action.equalsIgnoreCase("add")) {    //usado - revisar
             Log.log.info("Vamos a añadir el trabajador");
             Trabajador trabajador = new Trabajador();
             trabajador.setNombre(request.getParameter("nombre"));
