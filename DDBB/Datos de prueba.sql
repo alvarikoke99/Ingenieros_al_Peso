@@ -1,7 +1,7 @@
 # Empresas 
 INSERT INTO `web`.`empresa`(`nombre`,`descripcion`)VALUES('MariaDB','Base datos.');
 INSERT INTO `web`.`empresa`(`nombre`,`descripcion`)VALUES('Pokemon company','Compania japonesa creada para controlar.');
-INSERT INTO `web`.`empresa`(`nombre`,`descripcion`)VALUES('Riot Games','es una desarrollador de videojuegos estadounidense  y organizada de torneos eSports.');
+INSERT INTO `web`.`empresa`(`nombre`,`descripcion`)VALUES('Riot Games','Desarrollador de videojuegos estadounidense.');
 # Trabajadores
 INSERT INTO `web`.`trabajador`(`nombre`,`apellidos`,`dni`)VALUES('Alvaro','Barchin','0987654A');
 INSERT INTO `web`.`trabajador`(`nombre`,`apellidos`,`dni`)VALUES('María','Bravo','0123456G');
@@ -15,7 +15,7 @@ INSERT INTO `web`.`solicitud`(`tipo`,`fecha_ini`,`fecha_final`,`tramitada`,`id_t
 INSERT INTO `web`.`solicitud`(`tipo`,`fecha_ini`,`fecha_final`,`tramitada`,`id_trabajador`)VALUES('Vaciones','2020-03-01','2020-04-01',null,2);
 INSERT INTO `web`.`solicitud`(`tipo`,`fecha_ini`,`fecha_final`,`tramitada`,`id_trabajador`)VALUES('Medico-ginecologo','2020-01-2','2020-01-3',null,3);
 # relacion_proyecto_trabajador
-INSERT INTO `web`.`relacion_proyecto_trabajador`(`id_proyecto`,`id_trabajador`)VALUES(3,2);s
+INSERT INTO `web`.`relacion_proyecto_trabajador`(`id_proyecto`,`id_trabajador`)VALUES(3,2);
 INSERT INTO `web`.`relacion_proyecto_trabajador`(`id_proyecto`,`id_trabajador`)VALUES(2,1);
 INSERT INTO `web`.`relacion_proyecto_trabajador`(`id_proyecto`,`id_trabajador`)VALUES(1,3);
 # relacion_empresa_trabajador
