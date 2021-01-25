@@ -99,13 +99,13 @@ public class ProyectoController extends HttpServlet {
 /*        processRequest(request, response); */
         if (action.equalsIgnoreCase("addProyecto")) {
             Proyecto proyecto = new Proyecto();
+            String idProyecto = request.getParameter("idProyecto");
             proyecto.setNombre(request.getParameter("nombre"));
             proyecto.setInformacion(request.getParameter("info"));
-            String nombreEmpresa = request.getParameter("nombreEmpresa");
-            proyecto.setIdEmpresa(daoEmpresa.getEmpresaByNombre(nombreEmpresa).getIdEmpresa());
-            String idProyecto = request.getParameter("idProyecto");
+            int idEmpresa = Integer.parseInt(request.getParameter("idEmpresa"));
+            proyecto.setIdEmpresa(idEmpresa);
             if (idProyecto == null || idProyecto.isEmpty()) {
-                Log.log.info("Vamos a añadir el usuario");
+                Log.log.info("Vamos a añadir el proyecto");
                 dao.addProyecto(proyecto);
             } else {
                 proyecto.setIdProyecto(Integer.parseInt(idProyecto));

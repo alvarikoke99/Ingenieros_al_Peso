@@ -75,7 +75,7 @@ public class SolicitudDao {
     */
     public void updateSolicitud(Solicitud solicitud) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update solicitud set tipo=?, fecha_ini=?, fecha_final=?, observacion=?, tramitada=?, id_trabajador=?" + "where id_solicitud=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("update solicitud set tipo=?, fecha_ini=?, fecha_final=?, observacion=?, tramitada=?, id_trabajador=? where id_solicitud=?");
             // Parameters start with 1 
             preparedStatement.setString(1, solicitud.getTipo());
             preparedStatement.setDate(2, solicitud.getFechaIni());            

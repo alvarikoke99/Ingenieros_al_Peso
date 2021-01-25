@@ -90,7 +90,7 @@ public class EmpresaController extends HttpServlet {
         empresa.setDescripcion(request.getParameter("descripcion"));                
         String idEmpresa = request.getParameter("idEmpresa");
         if (idEmpresa == null || idEmpresa.isEmpty()) {
-            Log.log.info("Vamos a añadir el usuario");
+            Log.log.info("Vamos a añadir la empresa");
             dao.addEmpresa(empresa);
         } else {
             empresa.setIdEmpresa(Integer.parseInt(idEmpresa));
