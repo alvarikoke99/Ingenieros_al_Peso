@@ -1,13 +1,13 @@
 <%-- 
-    Document   : fichar
-    Created on : 22-ene-2021, 20:21:09
+    Document   : misSolicitudes
+    Created on : 25-ene-2021, 14:47:06
     Author     : Usuario
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="es">
+<html>
+    <html lang="es">
     <head>
         <title>
             Ingenieros al peso S.A. | Usuario
@@ -18,31 +18,28 @@
     <body>
          <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="plantilla.css" media="screen" /> 
-        
+
         <!-- Cabecera -->
         <div class="cabecera" id="cabecera">
             <img src="img/logo_small.png" alt="logo">
         </div>
 
         <div class="topnav" id="topnav">
-            <a class="enlace" id="idPag" href="fichar.jsp">Fichar</a>
+            <a class="enlace" href="fichar.jsp">Fichar</a>
             <a class="enlace" href="solicitarVacaciones.jsp">Solicitar días libres</a>
             <a class="enlace" href="misProyectos.jsp">Mis proyectos</a>
-            <a class="enlace" href="misDatos.jsp">Mis datos</a>
+            <a class="enlace" id="idPag" href="misDatos.jsp">Mis datos</a>
             <a class="enlace" href="bandejaEntrada.jsp">Mis mensajes</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
         </div>
 
         <!-- Contenido -->    
         <div class="contentCenter">
-            <form method="POST" action="JornadaController?action=fichar" name="formRegJornada">
-                <h2>Registro de la jornada:</h2><br>
-                <label>Id del proyecto:</label><br><br>
-                <input type="text" id="id" class="casilla" name="idProyecto" required><br><br>
-                <label>DNI:</label><br><br>
-                <input type="text" id="dni" class="casilla" name="dni" required><br><br>
-                <button type="submit" class="btnFichar" name="btn" value="entrada">Fichar entrada</button>
-                <button type="submit" class="btnFichar" name="btn" value="salida">Fichar salida</button>
+            <h2>Mis datos:</h2>
+            <form method="POST" action="SolicitudController?action=listSolicitudesByTrabajador" name="formMisDatos">
+                <label>DNI del trabajador:</label>
+                <input type="text" id="dni" name="dni" class="casillaPeq" placeholder="Introduzca su DNI" required><br><br>
+                <button type="submit" class="btnFichar">Validar</button><br><br>
             </form>
         </div>
 

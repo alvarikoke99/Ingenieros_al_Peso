@@ -27,7 +27,7 @@
         <div class="topnav" id="topnav">
             <a class="enlace" href="fichar.jsp">Fichar</a>
             <a class="enlace" href="solicitarVacaciones.jsp">Solicitar días libres</a>
-            <a class="enlace" href="ProyectoController?action=listMisProyectos">Mis proyectos</a>
+            <a class="enlace" href="misProyectos.jsp">Mis proyectos</a>
             <a class="enlace" id="idPag" href="misDatos.jsp">Mis datos</a>
             <a class="enlace" href="bandejaEntrada.jsp">Mis mensajes</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
@@ -36,7 +36,7 @@
         <!-- Contenido -->    
         <div class="contentCenter">
             <h2>Mis datos:</h2>
-            <form method="GET" action="TrabajadorController?action=misDatosInfo" name="formMisDatos">
+            <form method="POST" action="TrabajadorController?action=listDatos" name="formMisDatos">
                 <label>DNI del trabajador:</label>
                 <input type="text" id="dni" name="dni" class="casillaPeq" placeholder="Introduzca su DNI" required><br><br>
                 <button type="submit" class="btnFichar">Validar</button><br><br>

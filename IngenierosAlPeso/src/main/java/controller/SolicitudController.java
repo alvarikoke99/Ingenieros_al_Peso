@@ -27,7 +27,7 @@ public class SolicitudController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/user.jsp";
     private static String LIST_SOLICITUDES = "/listaPeticiones.jsp"; //RRHH
-    private static String LIST_MIS_SOLICITUDES = "/_"; //Trabajador
+    private static String LIST_MIS_SOLICITUDES = "/misSolicitudesInfo"; //Trabajador
     private SolicitudDao dao;
     private TrabajadorDao daoTrabajador;
     private Log log;
@@ -69,12 +69,6 @@ public class SolicitudController extends HttpServlet {
             Log.log.info("Parametro valor LIST");
             forward = LIST_SOLICITUDES;
             request.setAttribute("solicitudes", dao.getAllSolicitudes());
-        } else if (action.equalsIgnoreCase("listSolicitudesByTrabajador")) {    //usado
-            Log.log.info("Parametro valor LIST BY TRABAJADOR");
-            forward = LIST_SOLICITUDES;
-            String dni = request.getParameter("dni");
-            int idTrabajador = daoTrabajador.getTrabajadorByDni(dni).getIdTrabajador();
-            request.setAttribute("solicitudesTrabajador", dao.getSolicitudById(idTrabajador));
         } else {
             Log.log.info("Parametro valor vacio vamos a insertar");
             forward = INSERT_OR_EDIT;
@@ -95,29 +89,42 @@ public class SolicitudController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         Log.log.info("Entramos por el doPost");
+        String forward="";
+        String action = request.getParameter("action");
+        Log.log.info("Recogemos el parametro action con valor " + action);
 /*        processRequest(request, response); */
-        Solicitud solicitud = new Solicitud();
-        solicitud.setTipo(request.getParameter("tipo"));
-        Date fechaIni = Date.valueOf(request.getParameter("fechaIni"));
-        solicitud.setFechaIni(fechaIni); 
-        Date fechaFinal = Date.valueOf(request.getParameter("fechaFinal"));
-        solicitud.setFechaIni(fechaFinal); 
-        solicitud.setObservacion(request.getParameter("observacion"));
-        solicitud.setTramitada(false);
+        if (action.equalsIgnoreCase("annadirSolicitud")) {
+            Solicitud solicitud = new Solicitud();
+            solicitud.setTipo(request.getParameter("tipo"));
+            Date fechaIni = Date.valueOf(request.getParameter("fechaIni"));
+            solicitud.setFechaIni(fechaIni); 
+            Date fechaFinal = Date.valueOf(request.getParameter("fechaFinal"));
+            solicitud.setFechaIni(fechaFinal); 
+            solicitud.setObservacion(request.getParameter("observacion"));
+            solicitud.setTramitada(false);
+
+            String dni = request.getParameter("dni");
+            Trabajador trabajador = daoTrabajador.getTrabajadorByDni(dni);
+            solicitud.setIdTrabajador(trabajador.getIdTrabajador());
+            forward=LIST_MIS_SOLICITUDES;
+            request.setAttribute("solicitudes", dao.getAllSolicitudes());   //dao.getSolicitudesByIdTrabajador(idTrabajador)
+
+            /*if (dni == null || dni.isEmpty()) {
+                Log.log.info("Vamos a añadir el usuario");
+                dao.addUser(solicitud);
+            } else {
+                solicitud.setUserid(Integer.parseInt(userid));
+                dao.updateUser(solicitud);
+            }*/
+        } else if (action.equalsIgnoreCase("listSolicitudesByTrabajador")) {    //usado
+            Log.log.info("Parametro valor LIST BY TRABAJADOR");
+            forward = LIST_MIS_SOLICITUDES;
+            String dni = request.getParameter("dni");
+            int idTrabajador = daoTrabajador.getTrabajadorByDni(dni).getIdTrabajador();
+            request.setAttribute("solicitudesTrabajador", dao.getSolicitudById(idTrabajador));
+        } 
         
-        String dni = request.getParameter("dni");
-        Trabajador trabajador = daoTrabajador.getTrabajadorByDni(dni);
-        solicitud.setIdTrabajador(trabajador.getIdTrabajador());
-        
-        /*if (dni == null || dni.isEmpty()) {
-            Log.log.info("Vamos a añadir el usuario");
-            dao.addUser(solicitud);
-        } else {
-            solicitud.setUserid(Integer.parseInt(userid));
-            dao.updateUser(solicitud);
-        }*/
-        request.setAttribute("solicitudes", dao.getAllSolicitudes());   //dao.getSolicitudesByIdTrabajador(idTrabajador)
-        RequestDispatcher view = request.getRequestDispatcher(LIST_MIS_SOLICITUDES);    //solic del trabajador        
+        RequestDispatcher view = request.getRequestDispatcher(forward);    //solic del trabajador        
         view.forward(request, response);
         return;
     }

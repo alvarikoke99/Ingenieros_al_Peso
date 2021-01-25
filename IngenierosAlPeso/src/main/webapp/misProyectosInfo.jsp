@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -27,7 +27,7 @@
         <div class="topnav" id="topnav">
             <a class="enlace" href="fichar.jsp">Fichar</a>
             <a class="enlace" href="solicitarVacaciones.jsp">Solicitar días libres</a>
-            <a class="enlace" id="idPag" href="ProyectoController?action=listMisProyectos">Mis proyectos</a>
+            <a class="enlace" id="idPag" href="misProyectos.jsp">Mis proyectos</a>
             <a class="enlace" href="misDatos.jsp">Mis datos</a>
             <a class="enlace" href="bandejaEntrada.jsp">Mis mensajes</a>
             <a class="enlace" href="index.html">Cerrar sesión</a>
@@ -46,7 +46,7 @@
                     </tr>  
                 </thead>
                 <tbody>
-                    <c:forEach items="${misProyectos}" var="proyecto"> 
+                    <c:forEach items="${proyectosTrabajador}" var="proyecto"> 
                         <tr> 
                             <td ><c:out value="${proyecto.idProyecto}" /></td>
                             <td><c:out value="${proyecto.nombre}" /></td> 

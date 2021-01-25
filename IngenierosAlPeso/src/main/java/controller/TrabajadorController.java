@@ -92,28 +92,6 @@ public class TrabajadorController extends HttpServlet{
             forward = LIST_TRABAJADORES;
             request.setAttribute("trabajadores", daoTrabajador.getAllTrabajadores());
             
-        } else if (action.equalsIgnoreCase("listDatos")) {   //usado infoTrabajadores
-            Log.log.info("Parametro valor LIST DATOS");
-            forward = MIS_DATOS_INFO;
-            String dni = request.getParameter("dni");
-            Trabajador trabajador = daoTrabajador.getTrabajadorByDni(dni);
-            int idTrabajador = trabajador.getIdTrabajador();
-            
-            List<RelacionProyectoTrabajador> relacionesProyecto = daoRelProyecto.getRelacionesByIdTrabajador(idTrabajador);
-            List<Proyecto> proyectos = new ArrayList<>();
-            for (RelacionProyectoTrabajador relacion : relacionesProyecto) {
-                proyectos.add(daoProyecto.getProyectoById(relacion.getIdProyecto()));
-            }
-            
-            List<Empresa> empresas = new ArrayList<>();
-            for (Proyecto proyecto : proyectos) {
-                empresas.add(daoEmpresa.getEmpresaById(proyecto.getIdEmpresa()));
-            }
-            
-            request.setAttribute("trabajador", trabajador);
-            request.setAttribute("proyectos", proyectos);
-            request.setAttribute("empresas", empresas);
-            
         } else {    //usado - revisar
             Log.log.info("Parametro valor vacio vamos a insertar");
             forward = INSERT;
@@ -184,6 +162,29 @@ public class TrabajadorController extends HttpServlet{
             daoRelProyecto.addRelacion(relacionProyecto);
             forward = INSERT_PROYECTO;
             request.setAttribute("relaciones", daoRelProyecto.getAllRelaciones());
+            
+        }   else if (action.equalsIgnoreCase("listDatos")) {   //usado infoTrabajadores
+            Log.log.info("Parametro valor LIST DATOS");
+            forward = MIS_DATOS_INFO;
+            String dni = request.getParameter("dni");
+            Trabajador trabajador = daoTrabajador.getTrabajadorByDni(dni);
+            int idTrabajador = trabajador.getIdTrabajador();
+            
+            List<RelacionProyectoTrabajador> relacionesProyecto = daoRelProyecto.getRelacionesByIdTrabajador(idTrabajador);
+            List<Proyecto> proyectos = new ArrayList<>();
+            for (RelacionProyectoTrabajador relacion : relacionesProyecto) {
+                proyectos.add(daoProyecto.getProyectoById(relacion.getIdProyecto()));
+            }
+            
+            List<Empresa> empresas = new ArrayList<>();
+            for (Proyecto proyecto : proyectos) {
+                empresas.add(daoEmpresa.getEmpresaById(proyecto.getIdEmpresa()));
+            }
+            
+            request.setAttribute("trabajador", trabajador);
+            request.setAttribute("proyectos", proyectos);
+            request.setAttribute("empresas", empresas);
+            
         } else {    //usado - revisar
             Log.log.info("Vamos a añadir el trabajador");
             Trabajador trabajador = new Trabajador();
