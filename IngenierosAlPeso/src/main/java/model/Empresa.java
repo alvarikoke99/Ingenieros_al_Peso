@@ -28,36 +28,36 @@ public class Empresa {
         this.idEmpresa = idEmpresa;
     }
 /**
- * 
- * @return nombre
+ * Devuelve el valor del nombre de la empresa
+ * @return nombre de la empresa
  */
     public String getNombre() {
         return nombre;
     }
 /**
- * 
- * @param nombre
+ * Establece el valor al nombre de la empresa
+ * @param nombre string con el nombre de la empresa
  */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 /**
- * 
- * @return descripicion
+ * Devuelve la descripcion de la empresa
+ * @return el contenido en el atributo descripcion
  */
     public String getDescripcion() {
         return descripcion;
     }
 /**
- * 
- * @param descripcion
+ * Establecemos el contenido de descripcion.
+ * @param descripcion string con el contenido  
  */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 /**
- * 
- * @return 
+ * Devuelve el contenido del objeto empresa
+ * @return contenido de los atributos de la empresa
  */
     @Override
     public String toString() {

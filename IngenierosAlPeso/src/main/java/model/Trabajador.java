@@ -20,13 +20,13 @@ public class Trabajador {
     
     
  /**
- * 
+ * Devuelve el valor del atributo 
  */
     public int getIdTrabajador() {
         return idTrabajador;
     }
 /**
- * 
+ * Establece el valor al atributo 
  */
     public void setIdTrabajador(int idTrabajador) {
         this.idTrabajador = idTrabajador;
@@ -38,43 +38,44 @@ public class Trabajador {
         return dni;
     }
 /**
- * 
+ * Establece el valor al atributo 
  */
     public void setDni(String dni) {
         this.dni = dni;
     }
 /**
- * 
+ * Devuelve el valor del atributo 
  */
     public String getNombre() {
         return nombre;
     }
 /**
- * 
+ * Establece el valor al atributo 
  */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 /**
- * 
+ * Devuelve el valor del atributo 
  */
     public String getApellidos() {
         return apellidos;
     }
 /**
- * 
+ * Establece el valor al atributo 
  */
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 /**
+ *Devuelve el valor del atributo 
  * 
  */
     public Timestamp getUltimaJornada() {
         return ultimaJornada;
     }
 /**
- * 
+ * Establece el valor al atributo 
  */
     public void setUltimaJornada(Timestamp ultimaJornada) {
         this.ultimaJornada = ultimaJornada;

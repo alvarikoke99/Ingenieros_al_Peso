@@ -20,98 +20,98 @@ public class Solicitud {
     private boolean tramitada;
     private int idTrabajador;
 /**
- * 
+ * Devuelve el valor del atributo 
  * @return idSolicitud
  */
     public int getIdSolicitud() {
         return idSolicitud;
     }
 /**
- * 
+ * Establece el valor al atributo 
  * @param idSolicitud
  */
     public void setIdSolicitud(int idSolicitud) {
         this.idSolicitud = idSolicitud;
     }
 /**
- * 
+ * Devuelve el valor del atributo 
  * @return tipo
  */
     public String getTipo() {
         return tipo;
     }
 /**
- * 
+ * Establece el valor al atributo 
  * @param tipo
  */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 /**
- * 
+ * Devuelve el valor del atributo 
  * @return fechaIni
  */
     public Date getFechaIni() {
         return fechaIni;
     }
 /**
- * 
+ * Establece el valor al atributo 
  * @param fechaIni
  */
     public void setFechaIni(Date fechaIni) {
         this.fechaIni = fechaIni;
     }
 /**
- * 
+ * Devuelve el valor del atributo 
  * @return fechalFinal
  */
     public Date getFechaFinal() {
         return fechaFinal;
     }
 /**
- * 
+ * Establece el valor al atributo 
  * @param fechaFinal
  */
     public void setFechaFinal(Date fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
 /**
- * 
+ * Devuelve el valor del atributo 
  * @return observacion
  */
     public String getObservacion() {
         return observacion;
     }
 /**
- * 
+ * Establece el valor al atributo 
  * @param observacion
  */
     public void setObservacion(String observacion) {
         this.observacion = observacion;
     }
 /**
- * 
+ * Devuelve el valor del atributo 
  * @return tramitada
  */
     public boolean getTramitada() {
         return tramitada;
     }
 /**
- * 
+ * Establece el valor al atributo 
  * @param tramitada
  */
     public void setTramitada(boolean tramitada) {
         this.tramitada = tramitada;
     }
 /**
- * 
+ * Devuelve el valor del atributo 
  * @return idTrabajador
  */
     public int getIdTrabajador() {
         return idTrabajador;
     }
 /**
- * 
+ * Establece el valor al atributo 
  * @param idTrabajador
  */
     public void setIdTrabajador(int idTrabajador) {

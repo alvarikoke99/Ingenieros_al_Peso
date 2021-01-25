@@ -14,52 +14,45 @@ import java.sql.Timestamp;
 public class RegistroJornada {
     private Timestamp fechaEntrada;
     private Timestamp fechaSalida;
-    private int idJornada;
     private int idTrabajador;
     private int idProyecto;
 /**
- * 
+ *Devuelve el valor del atributo fechaEntrada
+ * @return tipo timestap que contiene el valor del atriuto fechaEntrada
  */
     public Timestamp getFechaEntrada() {
         return fechaEntrada;
     }
 /**
- * 
+ * Establece el valor al atributo fechaEntrada
+ * @param fechaEntrada timestamp fecha de entrada
  */
     public void setFechaEntrada(Timestamp fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
 /**
- * 
+ * Devuelve el valor del atributo FechaSalida
+ * @return tipo timestamp que contiene el valor del atributo fechaSalida
  */
     public Timestamp getFechaSalida() {
         return fechaSalida;
     }
 /**
- * 
+ * Establece el valor al atributo fechaSalida
+ * @param fechaSalida timepstamp fecha de salida
  */
     public void setFechaSalida(Timestamp fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 /**
- * 
- */
-    public int getIdJornada() {
-        return idJornada;
-    }
-/**
- * 
- */
-    public void setIdJornada(int idJornada) {
-        this.idJornada = idJornada;
-    }
-/**
- * 
+ * Devuelve el valor del atributo idTrabajador
+ * @return tipo int que contiene el valor del atributo idTrabajador
  */
     public int getIdTrabajador() {
         return idTrabajador;
     }
 /**
+ * Establece el valor al atributo 
  * 
  */
     public void setIdTrabajador(int idTrabajador) {
@@ -67,11 +60,13 @@ public class RegistroJornada {
     }
 /**
  * 
+ * 
  */
     public int getIdProyecto() {
         return idProyecto;
     }
 /**
+ * Establece el valor al atributo 
  * 
  */
     public void setIdProyecto(int idProyecto) {
@@ -79,10 +74,11 @@ public class RegistroJornada {
     }
 /**
  * 
+ * 
  */
     @Override
     public String toString() {
-        return "RegistroJornada{" + "fechaEntrada=" + fechaEntrada + ", fechaSalida=" + fechaSalida + ", idJornada=" + idJornada + ", idTrabajador=" + idTrabajador + ", idProyecto=" + idProyecto + '}';
+        return "RegistroJornada{" + "fechaEntrada=" + fechaEntrada + ", fechaSalida=" + fechaSalida + ", idTrabajador=" + idTrabajador + ", idProyecto=" + idProyecto + '}';
     }
     
     

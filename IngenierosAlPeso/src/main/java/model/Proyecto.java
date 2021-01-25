@@ -16,58 +16,63 @@ public class Proyecto {
     private int idEmpresa;
 /**
  * Devuelve el valor del id del proyecto
- * @return valor del id
+ * @return int id del proyecto
  */
     public int getIdProyecto() {
         return idProyecto;
     }
 /**
- * @param idProyecto
+ * Establece el valor al atributo idProyecto
+ * @param idProyecto int id del proyecto
  */
     public void setIdProyecto(int idProyecto) {
         this.idProyecto = idProyecto;
     }
 /**
- * 
- * @return nombre
+ * Devuelve el valor del atributo Nombre
+ * @return nombre string con el contenido del atributo 
  */
     public String getNombre() {
         return nombre;
     }
 /**
- * 
- * @param nombre
+ * Establece el valor al atributo Nombre
+ * @param nombre String nombre del proyecto 
  */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 /**
- * 
- * 
+ * Devuelve el valor del atributo informacion 
+ * @return informacion string con el contenio de informacion
  */
     public String getInformacion() {
         return informacion;
     }
 /**
- * 
+ * Establece el valor en el atributo informacion
+ * @param informacion string informacion
  */
     public void setInformacion(String informacion) {
         this.informacion = informacion;
     }
 /**
- * 
+ * Devuelve el contenido del atributo idEmpresa
+ * @return  int con el contenido de id Empresa
  */
     public int getIdEmpresa() {
         return idEmpresa;
     }
 /**
- * 
+ * Establece el valor al atributo idEmpresa
+ * @param idEmpresa int id del la Empresa
  */
     public void setIdEmpresa(int idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
 /**
- * 
+ * Devuelve el contenido del objeto Proyecto
+ * @return string con el contenido del objeto Proyecto
  */
     @Override
     public String toString() {

@@ -14,37 +14,40 @@ public class RelacionEmpresaTrabajador {
     private int idTrabajador;
     private String departamento;
 /**
+ * Devuelve el valor del atributo 
  * 
  */
     public int getIdEmpresa() {
         return idEmpresa;
     }
 /**
- * 
+ * Establece el valor al atributo 
  */
     public void setIdEmpresa(int idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
 /**
+ * Devuelve el valor del atributo 
  * 
  */
     public int getIdTrabajador() {
         return idTrabajador;
     }
 /**
- * 
+ *Establece el valor al atributo  
  */
     public void setIdTrabajador(int idTrabajador) {
         this.idTrabajador = idTrabajador;
     }
 /**
+ * v
  * 
  */
     public String getDepartamento() {
         return departamento;
     }
 /**
- * 
+ * Establece el valor al atributo 
  */
     public void setDepartamento(String departamento) {
         this.departamento = departamento;

@@ -5,8 +5,13 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema web
 -- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema web
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `web` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 -- -----------------------------------------------------
 -- Schema web
 -- -----------------------------------------------------
@@ -15,6 +20,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema web
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `web` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `web` ;
 USE `web` ;
 
 -- -----------------------------------------------------
@@ -26,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `web`.`empresa` (
   `descripcion` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_empresa`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -39,13 +46,9 @@ CREATE TABLE IF NOT EXISTS `web`.`proyecto` (
   `informacion` VARCHAR(45) NULL DEFAULT NULL,
   `id_empresa` INT NOT NULL,
   PRIMARY KEY (`id_proyecto`),
-  INDEX `fk_proyecto_empresa1_idx` (`id_empresa` ASC) VISIBLE,
-  CONSTRAINT `fk_proyecto_empresa1`
-    FOREIGN KEY (`id_empresa`)
-    REFERENCES `web`.`empresa` (`id_empresa`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_proyecto_empresa1_idx` (`id_empresa` ASC) VISIBLE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -61,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `web`.`trabajador` (
   `ultima_jornada` DATETIME NULL DEFAULT NULL,
   PRIMARY KEY (`id_trabajador`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -74,15 +78,7 @@ CREATE TABLE IF NOT EXISTS `web`.`horas_jornada` (
   `id_proyecto` INT NOT NULL,
   `id_trabajador` INT NOT NULL,
   INDEX `fk_horas_jornada_proyecto1_idx` (`id_proyecto` ASC) VISIBLE,
-  INDEX `fk_horas_jornada_trabajador1_idx` (`id_trabajador` ASC) VISIBLE,
-  CONSTRAINT `fk_horas_jornada_proyecto1`
-    FOREIGN KEY (`id_proyecto`)
-    REFERENCES `web`.`proyecto` (`id_proyecto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_horas_jornada_trabajador1`
-    FOREIGN KEY (`id_trabajador`)
-    REFERENCES `web`.`trabajador` (`id_trabajador`))
+  INDEX `fk_horas_jornada_trabajador1_idx` (`id_trabajador` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -97,17 +93,7 @@ CREATE TABLE IF NOT EXISTS `web`.`registro_jornada` (
   `id_trabajador` INT NOT NULL,
   `id_proyecto` INT NOT NULL,
   INDEX `fk_registro_jornada_trabajador1_idx` (`id_trabajador` ASC) VISIBLE,
-  INDEX `fk_registro_jornada_proyecto1_idx` (`id_proyecto` ASC) VISIBLE,
-  CONSTRAINT `fk_registro_jornada_proyecto1`
-    FOREIGN KEY (`id_proyecto`)
-    REFERENCES `web`.`proyecto` (`id_proyecto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_registro_jornada_trabajador1`
-    FOREIGN KEY (`id_trabajador`)
-    REFERENCES `web`.`trabajador` (`id_trabajador`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_registro_jornada_proyecto1_idx` (`id_proyecto` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -122,16 +108,7 @@ CREATE TABLE IF NOT EXISTS `web`.`relacion_empresa_trabajador` (
   `departamento` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_trabajador`, `id_empresa`),
   INDEX `fk_trabajador_has_empresa_empresa1_idx` (`id_empresa` ASC) VISIBLE,
-  INDEX `fk_trabajador_has_empresa_trabajador1_idx` (`id_trabajador` ASC) VISIBLE,
-  CONSTRAINT `fk_trabajador_has_empresa_empresa1`
-    FOREIGN KEY (`id_empresa`)
-    REFERENCES `web`.`empresa` (`id_empresa`)
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trabajador_has_empresa_trabajador1`
-    FOREIGN KEY (`id_trabajador`)
-    REFERENCES `web`.`trabajador` (`id_trabajador`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_trabajador_has_empresa_trabajador1_idx` (`id_trabajador` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -145,17 +122,7 @@ CREATE TABLE IF NOT EXISTS `web`.`relacion_proyecto_trabajador` (
   `id_trabajador` INT NOT NULL,
   PRIMARY KEY (`id_proyecto`, `id_trabajador`),
   INDEX `fk_proyecto_has_trabajador_trabajador1_idx` (`id_trabajador` ASC) VISIBLE,
-  INDEX `fk_proyecto_has_trabajador_proyecto1_idx` (`id_proyecto` ASC) VISIBLE,
-  CONSTRAINT `fk_proyecto_has_trabajador_proyecto1`
-    FOREIGN KEY (`id_proyecto`)
-    REFERENCES `web`.`proyecto` (`id_proyecto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_proyecto_has_trabajador_trabajador1`
-    FOREIGN KEY (`id_trabajador`)
-    REFERENCES `web`.`trabajador` (`id_trabajador`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_proyecto_has_trabajador_proyecto1_idx` (`id_proyecto` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -173,13 +140,9 @@ CREATE TABLE IF NOT EXISTS `web`.`solicitud` (
   `tramitada` TINYINT NULL DEFAULT NULL,
   `id_trabajador` INT NOT NULL,
   PRIMARY KEY (`id_solicitud`),
-  INDEX `fk_solicitud_trabajador1_idx` (`id_trabajador` ASC) VISIBLE,
-  CONSTRAINT `fk_solicitud_trabajador1`
-    FOREIGN KEY (`id_trabajador`)
-    REFERENCES `web`.`trabajador` (`id_trabajador`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_solicitud_trabajador1_idx` (`id_trabajador` ASC) VISIBLE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 

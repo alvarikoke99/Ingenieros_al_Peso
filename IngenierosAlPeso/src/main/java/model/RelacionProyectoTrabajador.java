@@ -13,25 +13,27 @@ public class RelacionProyectoTrabajador {
     private int idProyecto;
     private int idTrabajador;
 /**
+ * Devuelve el valor del atributo 
  * 
  */
     public int getIdProyecto() {
         return idProyecto;
     }
 /**
- * 
+ * Establece el valor al atributo 
  */
     public void setIdProyecto(int idProyecto) {
         this.idProyecto = idProyecto;
     }
 /**
+ * Devuelve el valor del atributo 
  * 
  */
     public int getIdTrabajador() {
         return idTrabajador;
     }
 /**
- * 
+ * Establece el valor al atributo 
  */
     public void setIdTrabajador(int idTrabajador) {
         this.idTrabajador = idTrabajador;
