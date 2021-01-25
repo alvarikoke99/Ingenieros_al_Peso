@@ -29,6 +29,7 @@ public class SolicitudController extends HttpServlet {
     private static String INSERT_OR_EDIT = "/user.jsp";
     private static String LIST_SOLICITUDES = "/listaPeticiones.jsp"; //RRHH
     private static String LIST_MIS_SOLICITUDES = "/misSolicitudesInfo.jsp"; //Trabajador
+    private static String MIS_SOLICITUDES = "/misSolicitudes.jsp"; //Pide el dni antes
     private SolicitudDao dao;
     private TrabajadorDao daoTrabajador;
     private Log log;
@@ -110,14 +111,16 @@ public class SolicitudController extends HttpServlet {
             Date fechaIni = Date.valueOf(request.getParameter("fechaIni"));
             solicitud.setFechaIni(fechaIni); 
             Date fechaFinal = Date.valueOf(request.getParameter("fechaFinal"));
-            solicitud.setFechaIni(fechaFinal); 
+            solicitud.setFechaFinal(fechaFinal); 
             solicitud.setObservacion(request.getParameter("observacion"));
-            solicitud.setTramitada(false);
-
+            solicitud.setTramitada(false);  //0=null
+            
             String dni = request.getParameter("dni");
             Trabajador trabajador = daoTrabajador.getTrabajadorByDni(dni);
             solicitud.setIdTrabajador(trabajador.getIdTrabajador());
-            forward=LIST_MIS_SOLICITUDES;
+            dao.addSolicitud(solicitud);
+            
+            forward=MIS_SOLICITUDES;
             request.setAttribute("solicitudes", dao.getAllSolicitudes());   //dao.getSolicitudesByIdTrabajador(idTrabajador)
 
             /*if (dni == null || dni.isEmpty()) {

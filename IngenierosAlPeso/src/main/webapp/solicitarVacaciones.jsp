@@ -35,7 +35,7 @@
 
         <!-- Contenido -->    
         <div class="contentCenter">
-            <form method="POST" action="SolicitudController" name="formSolicitarVac">
+            <form method="POST" action="SolicitudController?action=annadirSolicitud" name="formSolicitarVac">
                 <h2>Solicitar días libres:</h2>
                 <label>DNI:</label>
                 <input type="text" id="dni" name="dni" placeholder="Introduzca su DNI" value="<c:out value="${solicitud.dni}" />" required><br><br>

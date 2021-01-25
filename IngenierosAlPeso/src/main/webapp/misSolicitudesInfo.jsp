@@ -57,16 +57,15 @@
                             <td><c:out value="${solicitud.fechaIni}" /></td> 
                             <td><c:out value="${solicitud.fechaFinal}" /></td>
                             <td><c:out value="${solicitud.observacion}" /></td>
-                            <td><c:out value="${solicitud.tramitada}" /></td>
                             <td>
                                 <c:choose>
-                                    <c:when test="${solicitud.tramitada==null}" >
+                                    <c:when test="${solicitud.tramitada==0}" >
                                         No tramitada
                                     </c:when>
-                                    <c:when test="${solicitud.tramitada==false}" >
+                                    <c:when test="${solicitud.tramitada==1}" >
                                         Rechazada
                                     </c:when>
-                                    <c:otherwise>   <!--solicitud.tramitada==1 -->
+                                    <c:otherwise>   <!--solicitud.tramitada==2 -->
                                        Aceptada
                                     </c:otherwise>
                                 </c:choose>
