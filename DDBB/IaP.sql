@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `web`.`empresa` (
   `descripcion` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_empresa`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `web`.`proyecto` (
   PRIMARY KEY (`id_proyecto`),
   INDEX `fk_proyecto_empresa1_idx` (`id_empresa` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `web`.`trabajador` (
   `ultima_jornada` DATETIME NULL DEFAULT NULL,
   PRIMARY KEY (`id_trabajador`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `web`.`solicitud` (
   PRIMARY KEY (`id_solicitud`),
   INDEX `fk_solicitud_trabajador1_idx` (`id_trabajador` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
