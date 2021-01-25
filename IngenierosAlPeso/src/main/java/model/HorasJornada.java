@@ -24,7 +24,7 @@ public class HorasJornada {
         return horas;
     }
 /**
- * Establece el valor de las horas
+ * Establece el valor al atributo horas
  * @param horas tipo float
  */
     public void setHoras(float horas) {

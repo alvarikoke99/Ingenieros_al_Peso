@@ -52,29 +52,29 @@ public class RegistroJornada {
         return idTrabajador;
     }
 /**
- * Establece el valor al atributo 
- * 
+ * Establece el valor al atributo idTrabajador
+ * @param idTrabajador int id del trabajador
  */
     public void setIdTrabajador(int idTrabajador) {
         this.idTrabajador = idTrabajador;
     }
 /**
- * 
- * 
+ * Devuelve el valor del atributo idProyecto
+ * return tipo int con el contenido idProyecto
  */
     public int getIdProyecto() {
         return idProyecto;
     }
 /**
- * Establece el valor al atributo 
- * 
+ * Establece el valor al atributo idProyecto
+ * @param idProyecto int id del proyecto  
  */
     public void setIdProyecto(int idProyecto) {
         this.idProyecto = idProyecto;
     }
 /**
- * 
- * 
+ * Devuelve  el contenido del objeto RegistroJornada
+ * @return string con el contenido del objeto RegistroJornada
  */
     @Override
     public String toString() {

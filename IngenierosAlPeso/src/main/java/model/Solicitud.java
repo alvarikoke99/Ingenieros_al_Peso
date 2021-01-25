@@ -118,8 +118,8 @@ public class Solicitud {
         this.idTrabajador = idTrabajador;
     }
 /**
- * 
- * @return 
+ * Devuelve  el contenido del objeto Solicitud
+ * @return string con el contenido del objeto Solicitud
  */
     @Override
     public String toString() {
