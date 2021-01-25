@@ -103,7 +103,7 @@ public class ProyectoController extends HttpServlet {
             proyecto.setInformacion(request.getParameter("info"));
             String nombreEmpresa = request.getParameter("nombreEmpresa");
             proyecto.setIdEmpresa(daoEmpresa.getEmpresaByNombre(nombreEmpresa).getIdEmpresa());
-            String idProyecto = request.getParameter("userid");
+            String idProyecto = request.getParameter("idProyecto");
             if (idProyecto == null || idProyecto.isEmpty()) {
                 Log.log.info("Vamos a añadir el usuario");
                 dao.addProyecto(proyecto);
