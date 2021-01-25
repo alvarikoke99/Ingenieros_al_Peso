@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -37,13 +38,13 @@
             <form method="POST" action="SolicitudController" name="formSolicitarVac">
                 <h2>Solicitar días libres:</h2>
                 <label>DNI:</label>
-                <input type="text" id="dni" name="dni" placeholder="Introduzca su DNI" required><br><br>
+                <input type="text" id="dni" name="dni" placeholder="Introduzca su DNI" value="<c:out value="${solicitud.dni}" />" required><br><br>
                 <label>Desde:</label>
-                <input type="date" id="fechaIni" name="fechaIni" required><br><br>
+                <input type="date" id="fechaIni" name="fechaIni" value="<c:out value="${solicitud.fechaIni}" />" required><br><br>
                 <label>Hasta:</label>
-                <input type="date" id="fechaFinal" name="fechaFinal" required><br><br>
+                <input type="date" id="fechaFinal" name="fechaFinal" value="<c:out value="${solicitud.fechaFinal}" />" required><br><br>
                 <label>Observaciones:</label><br><br>
-                <textarea id="observaciones" name="observacion" rows="15" cols="50" required></textarea><br><br>
+                <textarea id="observaciones" name="observacion" rows="15" cols="50" value="<c:out value="${solicitud.observacion}" />" required></textarea><br><br>
                 <label class="contenido">Días libres
                     <input type="radio" checked="checked" name="tipo" value="diasLibres">
                     <span class="checkmark"></span>

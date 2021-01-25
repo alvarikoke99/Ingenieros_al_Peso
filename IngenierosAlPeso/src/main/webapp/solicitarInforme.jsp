@@ -66,27 +66,8 @@
                     <span class="checkmark"></span>
                 </label><br><br>
             </div>
-            <div>
-                <label>Mostrar formato:</label><br><br>
-                <label class="contenido">Semanal
-                    <input type="radio" name="tiempo" id="semanal">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="contenido">Mensual
-                    <input type="radio" name="tiempo" id="mensual">
-                    <span class="checkmark"></span>
-                </label> 
-                <label class="contenido">Anual
-                    <input type="radio" name="tiempo" id="anual">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="contenido">Periodo determinado
-                    <input type="radio" name="tiempo" id="periodo">
-                    <span class="checkmark"></span>
-                </label><br><br>
-            </div>
             <form action="informe.html">
-                <button type="submit" class="btnAdd" onclick="solicitarInforme()">Solicitar informe</button><br><br>
+                <button type="submit" class="btnAdd">Solicitar informe</button><br><br>
             </form>
         </div>   
         
