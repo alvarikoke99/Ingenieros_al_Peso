@@ -52,7 +52,7 @@
         <div class="contentCenter">
             <form method="POST" action="ProyectoController" name="formAnnadirTrabajador">
                 <h2>Añadir/Editar proyecto:</h2><br>
-                <input type="text" id="idProyecto" class="oculto" name="idProyecto" value="<c:out value="${empresa.idProyecto}" />" readonly><br><br>
+                <input type="text" id="idProyecto" class="oculto" name="idProyecto" value="<c:out value="${proyecto.idProyecto}" />" readonly><br><br>
                 <label>Nombre del proyecto:</label><br><br>
                 <input type="text" id="nombreProyecto" class="casilla" name="nombre" value="<c:out value="${proyecto.nombre}" />" required><br><br>
                 <label>Información del proyecto:</label><br><br>

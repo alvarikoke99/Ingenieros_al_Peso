@@ -28,6 +28,7 @@ public class TrabajadorController extends HttpServlet{
     private static final long serialVersionUID = 1L;
     private static String INSERT = "/annadirUser.jsp"; //usado
     private static String LIST_TRABAJADORES = "/infoTrabajadores.jsp";
+    private static String ASIGNAR = "/asignarTrabajador.jsp";
     private static String INSERT_EMPRESA = "_";
     private static String LIST_EMPRESAS = "_";
     private static String INSERT_PROYECTO = "_";
@@ -136,11 +137,13 @@ public class TrabajadorController extends HttpServlet{
             RelacionProyectoTrabajador relacionProyecto = new RelacionProyectoTrabajador();
             relacionProyecto.setIdTrabajador(idTrabajador);
             relacionProyecto.setIdProyecto(idProyecto);
-            
-            daoRelProyecto.addRelacion(relacionProyecto);
-            daoRelEmpresa.addRelacion(relacionEmpresa);
+            if (idTrabajador != 0 && idProyecto != 0 && idEmpresa != 0) {
+                daoRelProyecto.addRelacion(relacionProyecto);
+                daoRelEmpresa.addRelacion(relacionEmpresa);
+            }
       
-            forward = INSERT_EMPRESA;
+            forward = ASIGNAR;
+            redireccion = true;
             request.setAttribute("relaciones", daoRelEmpresa.getAllRelaciones());
         } else if (action.equalsIgnoreCase("addRelEmpresa")) { //revisar - fusionar
             Log.log.info("Parametro valor INSERT RelacionEmpresaTrabajdor");
