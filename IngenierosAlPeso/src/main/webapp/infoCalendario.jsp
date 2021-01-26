@@ -59,13 +59,13 @@
 
                     <div class="current-month">
                       <ul class="week-days">
-                        <span>Lu</span>
-                        <span>Ma</span>
-                        <span>Mi</span>
-                        <span>Ju</span>
-                        <span>Vi</span>
-                        <span>Sa</span>
-                        <span>Do</span>
+                        <li>Lu</li>
+                        <li>Ma</li>
+                        <li>Mi</li>
+                        <li>Ju</li>
+                        <li>Vi</li>
+                        <li>Sa</li>
+                        <li>Do</li>
                       </ul>
 
                       <div class="weeks">
