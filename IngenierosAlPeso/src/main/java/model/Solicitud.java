@@ -28,7 +28,7 @@ public class Solicitud {
     }
 /**
  * Establece el valor al atributo 
- * @param idSolicitud
+ * @param idSolicitud id de la solicitud
  */
     public void setIdSolicitud(int idSolicitud) {
         this.idSolicitud = idSolicitud;
@@ -42,7 +42,7 @@ public class Solicitud {
     }
 /**
  * Establece el valor al atributo 
- * @param tipo
+ * @param tipo dias libres o vacaciones
  */
     public void setTipo(String tipo) {
         this.tipo = tipo;
@@ -56,7 +56,7 @@ public class Solicitud {
     }
 /**
  * Establece el valor al atributo 
- * @param fechaIni
+ * @param fechaIni fecha inicio de la solicitud
  */
     public void setFechaIni(Date fechaIni) {
         this.fechaIni = fechaIni;
@@ -70,7 +70,7 @@ public class Solicitud {
     }
 /**
  * Establece el valor al atributo 
- * @param fechaFinal
+ * @param fechaFinal fecha final de la solicitud
  */
     public void setFechaFinal(Date fechaFinal) {
         this.fechaFinal = fechaFinal;
@@ -84,7 +84,7 @@ public class Solicitud {
     }
 /**
  * Establece el valor al atributo 
- * @param observacion
+ * @param observacion comentarios
  */
     public void setObservacion(String observacion) {
         this.observacion = observacion;
@@ -98,7 +98,7 @@ public class Solicitud {
     }
 /**
  * Establece el valor al atributo 
- * @param tramitada
+ * @param tramitada si ha sido tramitada por recursos humanos
  */
     public void setTramitada(int tramitada) {
         this.tramitada = tramitada;
@@ -112,7 +112,7 @@ public class Solicitud {
     }
 /**
  * Establece el valor al atributo 
- * @param idTrabajador
+ * @param idTrabajador id del trabajador
  */
     public void setIdTrabajador(int idTrabajador) {
         this.idTrabajador = idTrabajador;

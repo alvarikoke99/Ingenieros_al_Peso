@@ -60,7 +60,7 @@ public class RegistroJornada {
     }
 /**
  * Devuelve el valor del atributo idProyecto
- * return tipo int con el contenido idProyecto
+ * @return tipo int con el contenido idProyecto
  */
     public int getIdProyecto() {
         return idProyecto;

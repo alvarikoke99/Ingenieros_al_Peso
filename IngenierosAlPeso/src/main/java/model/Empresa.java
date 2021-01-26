@@ -22,7 +22,7 @@ public class Empresa {
     }
 /**
  * Establece el valor al id de la empresa
- * @ param idEmpresa integer
+ * @param idEmpresa integer
  */
     public void setIdEmpresa(int idEmpresa) {
         this.idEmpresa = idEmpresa;

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Javi
+ * @author alvarikoke
  */
 public class ErrorHandler extends HttpServlet {
 

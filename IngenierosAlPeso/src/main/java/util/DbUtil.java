@@ -18,6 +18,7 @@ public class DbUtil {
     
 /**
  *Inicia la conexion a la base de datos.
+ * @return tipo connection 
  */ 
     public static Connection getConnection() {
         String driver = "com.mysql.jdbc.Driver";// Cambiar userdb por el nombre de la base de datos en MySQL

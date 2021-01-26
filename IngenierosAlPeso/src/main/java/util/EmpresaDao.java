@@ -67,7 +67,7 @@ public class EmpresaDao {
 
     /**
     * Actualiza una entrada de la tabla empresa de la BBDD
-    * @param solicitud objeto Empresa que será actualizado
+    * @param empresa objeto Empresa que será actualizado
     */
     public void updateEmpresa(Empresa empresa) {
         try {
