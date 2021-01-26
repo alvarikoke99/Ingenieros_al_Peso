@@ -28,10 +28,10 @@
             <h1>Iniciar sesión</h1>
             <h2>--- Recursos humanos ---</h2>
         
-            <label for="user"><b>Usuario</b></label><br>
+            <label><b>Usuario</b></label><br>
             <input type="text" id="idUser" placeholder="Introduzca su usuario" required><br>
         
-            <label for="psw"><b>Password</b></label><br>
+            <label><b>Password</b></label><br>
             <input type="password" id="idPsw" placeholder="Introduzca su contraseña" required><br>
         
             <button class="btn" onclick="iniciarSesion()">Iniciar sesión</button>
