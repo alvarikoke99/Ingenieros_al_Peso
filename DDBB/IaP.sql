@@ -7,11 +7,20 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema web
 -- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema web
+-- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `web` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 -- -----------------------------------------------------
 -- Schema web
 -- -----------------------------------------------------
 
+-- -----------------------------------------------------
+-- Schema web
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `web` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `web` ;
 USE `web` ;
 
 -- -----------------------------------------------------
@@ -64,7 +73,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `web`.`horas_jornada`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `web`.`horas_jornada` (
-  `horas` INT NULL DEFAULT NULL,
+  `horas` FLOAT NULL DEFAULT NULL,
   `fecha` DATE NULL DEFAULT NULL,
   `id_proyecto` INT NOT NULL,
   `id_trabajador` INT NOT NULL,
