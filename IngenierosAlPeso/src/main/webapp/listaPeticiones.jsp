@@ -65,17 +65,20 @@
                 </thead>
                 <tbody>
                     <c:forEach items="${solicitudes}" var="solicitud"> 
-                        <tr> 
-                            <td ><c:out value="${solicitud.idSolicitud}" /></td>
-                            <td><c:out value="${solicitud.idTrabajador}" /></td> 
-                            <td><c:out value="${solicitud.tipo}" /></td> 
-                            <td><c:out value="${solicitud.fechaIni}" /></td>
-                            <td><c:out value="${solicitud.fechaFinal}" /></td>
-                            <td><c:out value="${solicitud.observacion}" /></td>
-                            <!-- Revisar -->
-                            <td><a href="SolicitudController?action=aceptar&idSolicitud=<c:out value="${solicitud.idSolicitud}"/>">Aceptar</a></td> 
-                            <td><a href="SolicitudController?action=rechazar&idSolicitud=<c:out value="${solicitud.idSolicitud}"/>">Rechazar</a></td> 
-                        </tr> 
+                        <c:set var="t" value="${solicitud.tramitada}" />
+                        <c:if test="${t==0}">
+                            <tr> 
+                                <td ><c:out value="${solicitud.idSolicitud}" /></td>
+                                <td><c:out value="${solicitud.idTrabajador}" /></td> 
+                                <td><c:out value="${solicitud.tipo}" /></td> 
+                                <td><c:out value="${solicitud.fechaIni}" /></td>
+                                <td><c:out value="${solicitud.fechaFinal}" /></td>
+                                <td><c:out value="${solicitud.observacion}" /></td>
+                                <td><a href="SolicitudController?action=aceptar&idSolicitud=<c:out value="${solicitud.idSolicitud}"/>">Aceptar</a></td> 
+                                <td><a href="SolicitudController?action=rechazar&idSolicitud=<c:out value="${solicitud.idSolicitud}"/>">Rechazar</a></td> 
+                            </tr>
+                        </c:if>
+                       
                     </c:forEach>
                 </tbody>
             </table>
