@@ -97,7 +97,6 @@ public class JornadaController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("btn");
-        String forward = "/fichar.jsp";
         Log.log.info("Entramos por el doPost");
 /*        processRequest(request, response); */
         
@@ -108,24 +107,23 @@ public class JornadaController extends HttpServlet {
         Timestamp fechaActual = new Timestamp (System.currentTimeMillis());
         Timestamp ultimaFecha = trabajador.getUltimaJornada();
         
-//        if (action.equalsIgnoreCase("entrada")) {   //comparar value del submit button
-//            Log.log.info("Parametro valor ENTRADA");
-//            RegistroJornada registro = new RegistroJornada();
-//            registro.setFechaEntrada(fechaActual);
-//            registro.setFechaSalida(fechaActual);
-//            registro.setIdTrabajador(idTrabajador);
-//            registro.setIdProyecto(idProyecto);
-//            daoRegistro.addRegistro(registro);
+        if (action.equalsIgnoreCase("entrada")) {   //comparar value del submit button
+            Log.log.info("Parametro valor ENTRADA");
+            RegistroJornada registro = new RegistroJornada();
+            registro.setFechaEntrada(fechaActual);
+            registro.setFechaSalida(fechaActual);
+            registro.setIdTrabajador(idTrabajador);
+            registro.setIdProyecto(idProyecto);
+            daoRegistro.addRegistro(registro);
             
             RegistroJornada ultimoRegistro = daoRegistro.getRegistroByFechaSalida(idTrabajador, idProyecto, ultimaFecha);
-//            if(ultimoRegistro.getFechaEntrada() == null && ultimoRegistro.getFechaSalida() == null) {
+            if(ultimoRegistro.getFechaEntrada() == null && ultimoRegistro.getFechaSalida() == null) {
                 long entrada = ultimoRegistro.getFechaEntrada().getTime();
                 long salida = ultimoRegistro.getFechaSalida().getTime();
                 long segundosTotales = (salida - entrada) / 1000;
-                float horasTrabajadas = (float) segundosTotales / 3600;
+                float horas = (float) segundosTotales / 3600;
+                float horasTrabajadas = Math.round(horas * 100f) / 100f;
                 Date fechaJornada = new Date(entrada);
-                request.setAttribute("h", horasTrabajadas);
-                request.setAttribute("f", fechaJornada);
                 
                 HorasJornada jornada = new HorasJornada();
                 jornada.setHoras(horasTrabajadas);
@@ -134,24 +132,21 @@ public class JornadaController extends HttpServlet {
                 jornada.setIdTrabajador(idTrabajador);
                 daoHoras.addHorasJornada(jornada);
                 request.setAttribute("registro", jornada);
-            //}
+            }
             
-//            trabajador.setUltimaJornada(fechaActual);
-//            daoTrabajador.updateTrabajador(trabajador);
+            trabajador.setUltimaJornada(fechaActual);
+            daoTrabajador.updateTrabajador(trabajador);
            
-//        } else if (action.equalsIgnoreCase("salida")) {
-//            Log.log.info("Parametro valor SALIDA");
-//            RegistroJornada registro = daoRegistro.getRegistroByFechaEntrada(idTrabajador, idProyecto, ultimaFecha);
-//            registro.setFechaSalida(fechaActual);
-//            daoRegistro.updateFechaSalida(registro);
-//            trabajador.setUltimaJornada(fechaActual);
-//            daoTrabajador.updateTrabajador(trabajador);
-//            request.setAttribute("registro", registro);
-            
-            forward="/prueba.jsp";
-//        }
-        RequestDispatcher view = request.getRequestDispatcher(forward);            
-        view.forward(request, response);
+        } else if (action.equalsIgnoreCase("salida")) {
+            Log.log.info("Parametro valor SALIDA");
+            RegistroJornada registro = daoRegistro.getRegistroByFechaEntrada(idTrabajador, idProyecto, ultimaFecha);
+            registro.setFechaSalida(fechaActual);
+            daoRegistro.updateFechaSalida(registro);
+            trabajador.setUltimaJornada(fechaActual);
+            daoTrabajador.updateTrabajador(trabajador);
+            request.setAttribute("registro", registro);
+        }
+        response.sendRedirect(FICHAR);
         return;
     }
 

@@ -23,7 +23,7 @@ public class DbUtil {
         String driver = "com.mysql.jdbc.Driver";// Cambiar userdb por el nombre de la base de datos en MySQL
         String url="jdbc:mysql://localhost:3306/web?useTimezone=true&serverTimezone=UTC";
         String user="root";
-        String password="root"; 
+        String password="1234"; 
         Log.logdb.info("Entramos a conectar con la BBDD");
         if (connection != null) {
             Log.logdb.info("Ya hay una conexion");
