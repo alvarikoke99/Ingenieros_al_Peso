@@ -117,7 +117,7 @@ public class JornadaController extends HttpServlet {
             daoRegistro.addRegistro(registro);
             
             RegistroJornada ultimoRegistro = daoRegistro.getRegistroByFechaSalida(idTrabajador, idProyecto, ultimaFecha);
-            if(ultimoRegistro.getFechaEntrada() == null && ultimoRegistro.getFechaSalida() == null) {
+            if(ultimoRegistro.getFechaEntrada() != ultimoRegistro.getFechaSalida()) {
                 long entrada = ultimoRegistro.getFechaEntrada().getTime();
                 long salida = ultimoRegistro.getFechaSalida().getTime();
                 long segundosTotales = (salida - entrada) / 1000;
@@ -130,8 +130,7 @@ public class JornadaController extends HttpServlet {
                 jornada.setFecha(fechaJornada);
                 jornada.setIdProyecto(idProyecto);
                 jornada.setIdTrabajador(idTrabajador);
-                daoHoras.addHorasJornada(jornada);
-                request.setAttribute("registro", jornada);
+                daoHoras.addHorasJornada(jornada);                
             }
             
             trabajador.setUltimaJornada(fechaActual);
@@ -144,7 +143,6 @@ public class JornadaController extends HttpServlet {
             daoRegistro.updateFechaSalida(registro);
             trabajador.setUltimaJornada(fechaActual);
             daoTrabajador.updateTrabajador(trabajador);
-            request.setAttribute("registro", registro);
         }
         response.sendRedirect(FICHAR);
         return;
