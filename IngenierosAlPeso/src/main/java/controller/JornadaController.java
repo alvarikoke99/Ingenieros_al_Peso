@@ -106,8 +106,10 @@ public class JornadaController extends HttpServlet {
         int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
         Timestamp fechaActual = new Timestamp (System.currentTimeMillis());
         Timestamp ultimaFecha = trabajador.getUltimaJornada();
+        Date dateActual = new Date(fechaActual.getTime());
+        Date dateAnterior = new Date(ultimaFecha.getTime());
         
-        if (action.equalsIgnoreCase("entrada")) {   //comparar value del submit button
+        if (action.equalsIgnoreCase("entrada") && !dateActual.toString().equals(dateAnterior.toString())) {   //comparar value del submit button
             Log.log.info("Parametro valor ENTRADA");
             RegistroJornada registro = new RegistroJornada();
             registro.setFechaEntrada(fechaActual);
