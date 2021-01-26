@@ -199,7 +199,25 @@ public class TrabajadorController extends HttpServlet{
             daoTrabajador.addTrabajador(trabajador);
             forward = INSERT;
             redireccion = true;
-        }   
+            
+        } else if (action.equalsIgnoreCase("informe")){
+            String parametro = request.getParameter("tipo");
+            if (parametro.equalsIgnoreCase("empresa")) {
+                Log.log.info("Parametro valor EMPRESA");
+                forward = "/infoEmpresa.jsp";
+                request.setAttribute("empresas", daoEmpresa.getAllEmpresas());          
+            }
+            else if (parametro.equalsIgnoreCase("proyecto")) {
+                Log.log.info("Parametro valor PROYECTO");
+                forward = "/infoProyectos.jsp";
+                request.setAttribute("proyectos", daoProyecto.getAllProyectos()); 
+            }
+            else {
+                Log.log.info("Parametro valor TRABAJADOR");
+                forward = "/infoTrabajadores.jsp";
+                request.setAttribute("trabajadores", daoTrabajador.getAllTrabajadores());
+            }
+        }
         
         if(redireccion) {
             response.sendRedirect(forward);

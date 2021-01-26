@@ -77,8 +77,7 @@
                                 <td><a href="SolicitudController?action=aceptar&idSolicitud=<c:out value="${solicitud.idSolicitud}"/>">Aceptar</a></td> 
                                 <td><a href="SolicitudController?action=rechazar&idSolicitud=<c:out value="${solicitud.idSolicitud}"/>">Rechazar</a></td> 
                             </tr>
-                        </c:if>
-                       
+                        </c:if>                    
                     </c:forEach>
                 </tbody>
             </table>

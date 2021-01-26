@@ -122,14 +122,15 @@ public class SolicitudController extends HttpServlet {
             
             forward=MIS_SOLICITUDES;
             request.setAttribute("solicitudes", dao.getAllSolicitudes());   //dao.getSolicitudesByIdTrabajador(idTrabajador)
+        
         } else if (action.equalsIgnoreCase("listSolicitudesByTrabajador")) {    //usado
             Log.log.info("Parametro valor LIST BY TRABAJADOR");
             String dni = request.getParameter("dni");
             int idTrabajador = daoTrabajador.getTrabajadorByDni(dni).getIdTrabajador();
             List<Solicitud> solicitudes = dao.getSolicitudesByIdTrabajador(idTrabajador);
             forward = LIST_MIS_SOLICITUDES;
-            request.setAttribute("solicitudesTrabajador", solicitudes);
-        } 
+            request.setAttribute("solicitudesTrabajador", solicitudes); 
+        }
         
         RequestDispatcher view = request.getRequestDispatcher(forward);    //solic del trabajador        
         view.forward(request, response);

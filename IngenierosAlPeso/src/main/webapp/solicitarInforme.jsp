@@ -50,23 +50,24 @@
 
         <!-- Contenido --> 
         <div class="contentCenter">
-            <h2>Solicitar informe:</h2>
-            <label>Parámetro de búsqueda:</label><br><br>
-            <div>
-                <label class="contenido">Empresa
-                    <input type="radio" name="tipo" id="empresa">
-                    <span class="checkmark"></span>
-                  </label>
-                <label class="contenido">Proyecto
-                    <input type="radio" name="tipo" id="proyecto">
-                    <span class="checkmark"></span>
-                </label> 
-                <label class="contenido">Empleado
-                    <input type="radio" name="tipo" id="empleado">
-                    <span class="checkmark"></span>
-                </label><br><br>
-            </div>
-            <form action="informe.html">
+            <form method="POST" action="TrabajadorController?action=informe">
+                <h2>Solicitar informe:</h2>
+                <label>Parámetro de búsqueda:</label><br><br>
+                <div>
+                    <label class="contenido">Empresa
+                        <input type="radio" name="tipo" id="empresa" value="empresa">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="contenido">Proyecto
+                        <input type="radio" name="tipo" id="proyecto" value="proyecto">
+                        <span class="checkmark"></span>
+                    </label> 
+                    <label class="contenido">Empleado
+                        <input type="radio" name="tipo" id="empleado" value="empleado">
+                        <span class="checkmark"></span>
+                    </label><br><br>
+                </div>
+
                 <button type="submit" class="btnAdd">Solicitar informe</button><br><br>
             </form>
         </div>   
