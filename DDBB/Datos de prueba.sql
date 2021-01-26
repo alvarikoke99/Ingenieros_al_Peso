@@ -3,9 +3,9 @@ INSERT INTO `web`.`empresa`(`nombre`,`descripcion`)VALUES('MariaDB','Base datos.
 INSERT INTO `web`.`empresa`(`nombre`,`descripcion`)VALUES('Pokemon company','Compania japonesa creada para controlar.');
 INSERT INTO `web`.`empresa`(`nombre`,`descripcion`)VALUES('Riot Games','Desarrollador de videojuegos estadounidense.');
 # Trabajadores
-INSERT INTO `web`.`trabajador`(`nombre`,`apellidos`,`dni`)VALUES('Alvaro','Barchin','0987654A');
-INSERT INTO `web`.`trabajador`(`nombre`,`apellidos`,`dni`)VALUES('María','Bravo','0123456G');
-INSERT INTO `web`.`trabajador`(`nombre`,`apellidos`,`dni`)VALUES('Daniela','Durand','098765D');
+INSERT INTO `web`.`trabajador`(`nombre`,`apellidos`,`dni`,`ultima_jornada`)VALUES('Álvaro','Barchín','0987654A','2020-01-15 12:10:05');
+INSERT INTO `web`.`trabajador`(`nombre`,`apellidos`,`dni`,`ultima_jornada`)VALUES('María','Bravo','0123456G','2020-01-15 16:10:05');
+INSERT INTO `web`.`trabajador`(`nombre`,`apellidos`,`dni`,`ultima_jornada`)VALUES('Daniela','Durand','098765D','2020-01-15 17:10:05');
 # Proyectos
 INSERT INTO `web`.`proyecto`(`nombre`,`informacion`,`id_empresa`)VALUES('Lol','Nuevo MOBA',3);
 INSERT INTO `web`.`proyecto`(`nombre`,`informacion`,`id_empresa`)VALUES('CorteIngles','Base de datos de la empresa CorteIngles',1);
@@ -24,7 +24,7 @@ INSERT INTO `web`.`relacion_empresa_trabajador`(`id_trabajador`,`id_empresa`,`de
 INSERT INTO `web`.`relacion_empresa_trabajador`(`id_trabajador`,`id_empresa`,`departamento`)VALUES(3,3,'Programador');
 # registro_jornada 
 INSERT INTO `web`.`registro_jornada`(`fecha_entrada`,`fecha_salida`,`id_trabajador`,`id_proyecto`)VALUES('2020-01-15 10:10:02','2020-01-15 12:10:05',1,2);
-INSERT INTO `web`.`registro_jornada`(`fecha_entrada`,`fecha_salida`,`id_trabajador`,`id_proyecto`)VALUES('2020-01-16 10:10:02','2020-01-15 16:10:05',2,1);
+INSERT INTO `web`.`registro_jornada`(`fecha_entrada`,`fecha_salida`,`id_trabajador`,`id_proyecto`)VALUES('2020-01-15 10:10:02','2020-01-15 16:10:05',2,1);
 INSERT INTO `web`.`registro_jornada`(`fecha_entrada`,`fecha_salida`,`id_trabajador`,`id_proyecto`)VALUES('2020-01-17 10:10:02','2020-01-15 17:10:05',3,3);
 # horas_jornada
 INSERT INTO `web`.`horas_jornada`(`horas`,`fecha`,`id_proyecto`,`id_trabajador`)VALUES(16,'2020-01-14',1,2);
