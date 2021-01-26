@@ -15,8 +15,13 @@
     <body>
         <h1>Registro</h1>
         <p>
-            <c:out value="${registro.idProyecto}" /><br>
+            <c:out value="${h}" /><br>
+            <c:out value="${f}" /><br><br><br>
             
+            <c:out value="${registro.horas}" /><br>
+            <c:out value="${registro.fecha}" /><br>
+            <c:out value="${registro.idTrabajador}" /><br>
+            <c:out value="${registro.idProyecto}" /><br>                       
 
         </p>
     </body>
