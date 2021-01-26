@@ -17,7 +17,7 @@ public class Solicitud {
     private Date fechaIni;
     private Date fechaFinal;
     private String observacion;
-    private boolean tramitada;
+    private int tramitada;
     private int idTrabajador;
 /**
  * Devuelve el valor del atributo 
@@ -93,14 +93,14 @@ public class Solicitud {
  * Devuelve el valor del atributo 
  * @return tramitada
  */
-    public boolean getTramitada() {
+    public int getTramitada() {
         return tramitada;
     }
 /**
  * Establece el valor al atributo 
  * @param tramitada
  */
-    public void setTramitada(boolean tramitada) {
+    public void setTramitada(int tramitada) {
         this.tramitada = tramitada;
     }
 /**

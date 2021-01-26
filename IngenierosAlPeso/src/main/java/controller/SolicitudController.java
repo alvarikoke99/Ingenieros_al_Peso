@@ -113,7 +113,7 @@ public class SolicitudController extends HttpServlet {
             Date fechaFinal = Date.valueOf(request.getParameter("fechaFinal"));
             solicitud.setFechaFinal(fechaFinal); 
             solicitud.setObservacion(request.getParameter("observacion"));
-            solicitud.setTramitada(false);  //0=null
+            solicitud.setTramitada(0);  //0=null
             
             String dni = request.getParameter("dni");
             Trabajador trabajador = daoTrabajador.getTrabajadorByDni(dni);
@@ -122,14 +122,6 @@ public class SolicitudController extends HttpServlet {
             
             forward=MIS_SOLICITUDES;
             request.setAttribute("solicitudes", dao.getAllSolicitudes());   //dao.getSolicitudesByIdTrabajador(idTrabajador)
-
-            /*if (dni == null || dni.isEmpty()) {
-                Log.log.info("Vamos a añadir el usuario");
-                dao.addUser(solicitud);
-            } else {
-                solicitud.setUserid(Integer.parseInt(userid));
-                dao.updateUser(solicitud);
-            }*/
         } else if (action.equalsIgnoreCase("listSolicitudesByTrabajador")) {    //usado
             Log.log.info("Parametro valor LIST BY TRABAJADOR");
             String dni = request.getParameter("dni");

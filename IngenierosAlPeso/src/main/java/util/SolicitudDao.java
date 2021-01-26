@@ -46,7 +46,7 @@ public class SolicitudDao {
             preparedStatement.setDate(2, solicitud.getFechaIni());            
             preparedStatement.setDate(3, solicitud.getFechaFinal());
             preparedStatement.setString(4, solicitud.getObservacion());
-            preparedStatement.setBoolean(5, solicitud.getTramitada());
+            preparedStatement.setInt(5, solicitud.getTramitada());
             preparedStatement.setInt(6, solicitud.getIdTrabajador());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -81,7 +81,7 @@ public class SolicitudDao {
             preparedStatement.setDate(2, solicitud.getFechaIni());            
             preparedStatement.setDate(3, solicitud.getFechaFinal());
             preparedStatement.setString(4, solicitud.getObservacion());
-            preparedStatement.setBoolean(5, solicitud.getTramitada());
+            preparedStatement.setInt(5, solicitud.getTramitada());
             preparedStatement.setInt(6, solicitud.getIdTrabajador());
             preparedStatement.setInt(7, solicitud.getIdSolicitud());
             preparedStatement.executeUpdate();
@@ -108,7 +108,7 @@ public class SolicitudDao {
                     solicitud.setFechaIni(rs.getDate("fecha_ini"));
                     solicitud.setFechaFinal(rs.getDate("fecha_final"));
                     solicitud.setObservacion(rs.getString("observacion"));
-                    solicitud.setTramitada(rs.getBoolean("tramitada"));
+                    solicitud.setTramitada(rs.getInt("tramitada"));
                     solicitud.setIdTrabajador(rs.getInt("id_trabajador"));
                     dbSolicitud.add(solicitud);
                 }
@@ -142,7 +142,7 @@ public class SolicitudDao {
                 solicitud.setFechaIni(rs.getDate("fecha_ini"));
                 solicitud.setFechaFinal(rs.getDate("fecha_final"));
                 solicitud.setObservacion(rs.getString("observacion"));
-                solicitud.setTramitada(rs.getBoolean("tramitada"));
+                solicitud.setTramitada(rs.getInt("tramitada"));
                 solicitud.setIdTrabajador(rs.getInt("id_trabajador"));
             }
         } catch (SQLException e) {
@@ -153,9 +153,9 @@ public class SolicitudDao {
     
     public void aceptarSolicitud(int idSolicitud) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update solicitud set tramitada=?" + "where id_solicitud=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("update solicitud set tramitada=? where id_solicitud=?");
             // Parameters start with 1 
-            preparedStatement.setBoolean(1, true);
+            preparedStatement.setInt(1, 2);
             preparedStatement.setInt(2, idSolicitud);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -165,9 +165,9 @@ public class SolicitudDao {
     
     public void rechazarSolicitud(int idSolicitud) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update solicitud set tramitada=?" + "where id_solicitud=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("update solicitud set tramitada=? where id_solicitud=?");
             // Parameters start with 1 
-            preparedStatement.setBoolean(1, false);
+            preparedStatement.setInt(1, 1);
             preparedStatement.setInt(2, idSolicitud);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -193,7 +193,7 @@ public class SolicitudDao {
                 solicitud.setFechaIni(rs.getDate("fecha_ini"));
                 solicitud.setFechaFinal(rs.getDate("fecha_final"));
                 solicitud.setObservacion(rs.getString("observacion"));
-                solicitud.setTramitada(rs.getBoolean("tramitada"));
+                solicitud.setTramitada(rs.getInt("tramitada"));
                 solicitud.setIdTrabajador(rs.getInt("id_trabajador"));
                 dbSolicitud.add(solicitud);
             }
