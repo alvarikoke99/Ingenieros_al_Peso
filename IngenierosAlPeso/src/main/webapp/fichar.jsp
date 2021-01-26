@@ -35,14 +35,15 @@
 
         <!-- Contenido -->    
         <div class="contentCenter">
-            <form method="POST" action="JornadaController?action=fichar" name="formRegJornada">
+            <form method="POST" action="JornadaController" name="formRegJornada">
                 <h2>Registro de la jornada:</h2><br>
                 <label>Id del proyecto:</label><br><br>
-                <input type="text" id="id" class="casilla" name="idProyecto" value="<c:out value="${jornada.idProyecto}" />" required><br><br>
+                <input type="text" id="idProyecto" class="casilla" name="idProyecto" required><br><br>
                 <label>DNI:</label><br><br>
-                <input type="text" id="dni" class="casilla" name="dni" value="<c:out value="${jornada.dni}" />" required><br><br>
-                <button type="submit" class="btnFichar" name="btn" value="entrada">Fichar entrada</button>
-                <button type="submit" class="btnFichar" name="btn" value="salida">Fichar salida</button>
+                <input type="text" id="dni" class="casilla" name="dni" required><br><br>
+                <input type="radio" name="btn" value="entrada">Fichar entrada
+                <input type="radio" name="btn" value="salida">Fichar salida
+                <button type="submit" class="btnFichar" name="btnSubmit" value="salida">Fichar</button>
             </form>
         </div>
 
