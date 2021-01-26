@@ -7,20 +7,11 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema web
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema web
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `web` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 -- -----------------------------------------------------
 -- Schema web
 -- -----------------------------------------------------
 
--- -----------------------------------------------------
--- Schema web
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `web` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `web` ;
 USE `web` ;
 
 -- -----------------------------------------------------
@@ -137,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `web`.`solicitud` (
   `fecha_ini` DATE NULL DEFAULT NULL,
   `fecha_final` DATE NULL DEFAULT NULL,
   `observacion` VARCHAR(45) NULL DEFAULT NULL,
-  `tramitada` TINYINT NULL DEFAULT NULL,
+  `tramitada` INT NOT NULL,
   `id_trabajador` INT NOT NULL,
   PRIMARY KEY (`id_solicitud`),
   INDEX `fk_solicitud_trabajador1_idx` (`id_trabajador` ASC) VISIBLE)
