@@ -77,7 +77,7 @@ public class RegistroJornadaDao {
     */
     public void updateFechaSalida(RegistroJornada registro) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("update registro_jornada set fecha_salida=?" + "where fecha_entrada=? and id_trabajador=? and id_proyecto=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("update registro_jornada set fecha_salida=? where fecha_entrada=? and id_trabajador=? and id_proyecto=?");
             // Parameters start with 1 
             preparedStatement.setTimestamp(1, registro.getFechaSalida()); 
             preparedStatement.setTimestamp(2, registro.getFechaEntrada());                      

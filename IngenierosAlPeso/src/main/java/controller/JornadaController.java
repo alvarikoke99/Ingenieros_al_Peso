@@ -102,22 +102,22 @@ public class JornadaController extends HttpServlet {
 /*        processRequest(request, response); */
         
         String dni = request.getParameter("dni");
-        //Trabajador trabajador = daoTrabajador.getTrabajadorByDni(dni);
-        //int idTrabajador = trabajador.getIdTrabajador();
-        //int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
-        //Timestamp fechaActual = new Timestamp (System.currentTimeMillis());
-        //Timestamp ultimaFecha = trabajador.getUltimaJornada();
+        Trabajador trabajador = daoTrabajador.getTrabajadorByDni(dni);
+        int idTrabajador = trabajador.getIdTrabajador();
+        int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
+        Timestamp fechaActual = new Timestamp (System.currentTimeMillis());
+        Timestamp ultimaFecha = trabajador.getUltimaJornada();
         
-        /*if (action.equalsIgnoreCase("entrada")) {   //comparar value del submit button
+        if (action.equalsIgnoreCase("entrada")) {   //comparar value del submit button
             Log.log.info("Parametro valor ENTRADA");
             RegistroJornada registro = new RegistroJornada();
             registro.setFechaEntrada(fechaActual);
             registro.setFechaSalida(fechaActual);
             registro.setIdTrabajador(idTrabajador);
             registro.setIdProyecto(idProyecto);
-            daoRegistro.addRegistro(registro);*/
+            daoRegistro.addRegistro(registro);
             
-            /*RegistroJornada ultimoRegistro = daoRegistro.getRegistroByFechaSalida(idTrabajador, idProyecto, ultimaFecha);
+            RegistroJornada ultimoRegistro = daoRegistro.getRegistroByFechaSalida(idTrabajador, idProyecto, ultimaFecha);
             if(ultimoRegistro != null) {
                 long entrada = ultimoRegistro.getFechaEntrada().getTime();
                 long salida = ultimoRegistro.getFechaSalida().getTime();
@@ -134,16 +134,18 @@ public class JornadaController extends HttpServlet {
             }
             
             trabajador.setUltimaJornada(fechaActual);
-            daoTrabajador.updateTrabajador(trabajador);*/
-        /*    
+            daoTrabajador.updateTrabajador(trabajador);
+           
         } else if (action.equalsIgnoreCase("salida")) {
             Log.log.info("Parametro valor SALIDA");
             RegistroJornada registro = daoRegistro.getRegistroByFechaEntrada(idTrabajador, idProyecto, ultimaFecha);
-            registro.setFechaSalida(fechaActual);
-            daoRegistro.updateFechaSalida(registro);
+            //registro.setFechaSalida(fechaActual);
+            //daoRegistro.updateFechaSalida(registro);
             trabajador.setUltimaJornada(fechaActual);
             daoTrabajador.updateTrabajador(trabajador);
-        }*/
+            request.setAttribute("registro", registro);
+            forward="/prueba.jsp";
+        }
         RequestDispatcher view = request.getRequestDispatcher(forward);            
         view.forward(request, response);
         return;
