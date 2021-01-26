@@ -46,11 +46,11 @@
                 <label>Observaciones:</label><br><br>
                 <textarea id="observaciones" name="observacion" rows="15" cols="50" value="<c:out value="${solicitud.observacion}" />" required></textarea><br><br>
                 <label class="contenido">Días libres
-                    <input type="radio" checked="checked" name="tipo" value="diasLibres">
+                    <input type="radio" checked="checked" name="tipo" value="Dias Libres">
                     <span class="checkmark"></span>
                 </label>
                 <label class="contenido">Vacaciones
-                    <input type="radio" name="tipo" value="vacaciones">
+                    <input type="radio" name="tipo" value="Vacaciones">
                     <span class="checkmark"></span>
                 </label> <br><br>
                 <button type="submit" class="btnAdd">Mandar solicitud</button>
